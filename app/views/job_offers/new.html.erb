@@ -1,12 +1,6 @@
-<h1 class="text-center title">Add you new job offer</h1>
+<h1 class="text-center title">Add your new job offer</h1>
 
 <div class="formulaire">
-  <%= simple_form_for ([@company, @job_offer]) do |f| %>
-    <%= f.error_notification %>
-
-    <%= f.input :title %>
-    <%= f.input :document, as: :attachinary %>
-    <%= f.button :submit, class: "btn btn-primary"%>
-  <% end %>
+  <%= render 'form' %>
   <%= link_to "Cancel", company_job_offers_path, class: "btn btn-danger" %>
 </div>

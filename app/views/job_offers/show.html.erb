@@ -7,7 +7,10 @@
     <%= cl_image_tag @job_offer.document.path, width: 200, height: 300, crop: :fill %>
   <% end %>
 
-  <p><%= link_to "Back", company_job_offers_path(@job_offer.user.company), class: "btn btn-primary back-button" %></p>
+  <ul class="list-inline">
+  <%= link_to "Edit", edit_job_offer_path(@job_offer), class: "btn btn-primary back-button" %>
+  <%= link_to "Back", company_job_offers_path(@job_offer.user.company), class: "btn btn-primary back-button" %>
+  </ul>
 
 </div>
 

@@ -28,15 +28,20 @@ class JobOffersController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    @job_offer.user = current_user
+    if @job_offer.save
+      redirect_to job_offer_path(@job_offer)
+    else
+      render :new
+    end
   end
 
   def destroy
-
+    @job_offer.delete
+    redirect_to company_job_offers_path(@job_offer.user.company)
   end
 
 private

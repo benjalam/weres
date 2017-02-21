@@ -1,3 +1,4 @@
+
 #sidebar {
   position: fixed;
   width: 200px;
@@ -27,4 +28,15 @@
 .tabs.active {
   background: #7293A0;
   color:white;
+}
+
+// design 1st tab
+
+
+.sous-titres {
+  color: $blue;
+}
+
+.profile-title {
+  margin-top: 100px;
 }

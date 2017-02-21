@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+<!--       <%= image_tag @candidate.cv %> -->
+      <%= candidate.position %>
+      <p>Recommendation: <%= canditate.job_offer.company %></p>
+      <%= link_to 'Send inmail', matches_path, method: :post, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

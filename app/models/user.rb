@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
-  belongs_to :company, dependent: :destroy
-  has_many :job_offers
+  belongs_to :company
+  has_many :job_offers, dependent: :nullify
+  has_many :candidates, dependent: :nullify
 end

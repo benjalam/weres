@@ -1,0 +1,5 @@
+<h1>Your job offer</h1>
+
+<% if @job_offer.document? %>
+  <%= cl_image_tag @job_offer.document.path, width: 200, height: 300, crop: :fill %>
+<% end %>

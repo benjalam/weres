@@ -1,0 +1,11 @@
+<h1 class="text-center title">Add you new job offer</h1>
+
+<div class="formulaire">
+  <%= simple_form_for ([@company, @job_offer]) do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.input :title %>
+    <%= f.input :document, as: :attachinary %>
+    <%= f.button :submit, class: "btn btn-primary"%>
+  <% end %>
+</div>

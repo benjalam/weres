@@ -4,6 +4,7 @@ class Company < ApplicationRecord
   has_many :users
   has_many :candidates, through: :users
   has_many :matches
+  has_many :job_offers, through: :users
 
 
 

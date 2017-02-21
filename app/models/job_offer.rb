@@ -3,4 +3,5 @@ class JobOffer < ApplicationRecord
   has_many :candidates, dependent: :nullify
   validates :title, presence: true
   has_many :contacted_candidates, dependent: :destroy
+  has_attachment :document
 end

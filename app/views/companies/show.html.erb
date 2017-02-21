@@ -1,0 +1,18 @@
+<% if policy(@company).show? %>
+<div id="sidebar">
+    <a class="tabs active" data-target="#myprofile">
+      <h4>My profile</h4>
+      <a class="tabs" data-target="#skills">
+        <h4>My skills</h4>
+      </a>
+      <a class="tabs" data-target="#bookings">
+        <h4>My bookings</h4>
+      </a>
+      <a class="tabs" data-target="#whobookedme">
+        <h4>Who booked me</h4>
+      </a>
+</div>
+<div id="page-content">
+</div>
+
+<% end %>

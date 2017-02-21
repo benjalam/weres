@@ -1,5 +1,6 @@
 class Company < ApplicationRecord
   validates :name, presence: true
+  has_many :company_companies, dependent: :destroy
   has_many :black_listed_companies, through: :company_companies
   has_many :users, dependent: :destroy
   has_many :candidates, through: :users

@@ -15,6 +15,7 @@
       <div class="col-xs-3">
         <div class="product-candidates text-center">
           <p class="productright"><i class="fa fa-user"></i>   2 contacted</p>
+        <% if current_user ==  @company.users.where(company_admin: true) %>
           <ul class="list-inline">
           <li><%= link_to edit_job_offer_path(job_offer) do %>
               <i class="fa fa-file-text-o"></i>
@@ -23,6 +24,8 @@
               <i class="fa fa-trash delete-offer"></i>
           <% end %></li>
           </ul>
+        <% end %>
+
         </div>
       </div>
     <% end %>

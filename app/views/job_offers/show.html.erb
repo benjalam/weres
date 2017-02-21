@@ -1,5 +1,13 @@
-<h1>Your job offer</h1>
+<div class="text-center">
+  <h1 class="text-center title">Your job offer</h1>
 
-<% if @job_offer.document? %>
-  <%= cl_image_tag @job_offer.document.path, width: 200, height: 300, crop: :fill %>
-<% end %>
+  <p class="sous-title"><%= @job_offer.title %></p>
+
+  <% if @job_offer.document? %>
+    <%= cl_image_tag @job_offer.document.path, width: 200, height: 300, crop: :fill %>
+  <% end %>
+
+  <p><%= link_to "Back", company_job_offers_path(@job_offer.user.company), class: "btn btn-primary back-button" %></p>
+
+</div>
+

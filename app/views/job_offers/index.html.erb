@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <% @company.job_offers.each do |job_offer|%>
-    <%= link_to job_offer_path(@company, job_offer) do %>
+    <%= link_to job_offer_path(job_offer) do %>
       <div class="col-xs-9">
          <div class="product">
             <div class='product-body'>
@@ -24,6 +24,6 @@
 <!-- </div>
  -->
 
-<div class="add-btn">
-  <%= link_to "Add Job Offer", new_company_job_offer_path, class: "btn btn-primary" %>
+<div class="add-btn text-center">
+  <%= link_to "Add Job Offer", new_company_job_offer_path, class: "btn btn-danger" %>
 </div>

@@ -8,14 +8,7 @@
   justify-content: space-between;
   &:hover {
     background: #E9E9E9;
-    cursor: pointer;
     border-radius: 3px;
-    text-decoration: none;
-  }
-  h3:hover {
-    text-decoration: none;
-  }
-  p:hover {
     text-decoration: none;
   }
 }
@@ -28,14 +21,23 @@
   text-decoration: none;
   }
 }
-.producttrash {
-  margin-top: 100px;
-}
 
-.skill-title {
+
+.job_offer-title {
   padding-left : 30px;
   color: $darkblue;
 }
+
+.product-candidates {
+  flex: 1 1 auto;
+  margin-top: 42px;
+}
+
+.delete-offer {
+  color: $red;
+}
+
+
 
 
 // /* Product image */

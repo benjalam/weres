@@ -3,6 +3,7 @@ class Company < ApplicationRecord
   has_many :black_listed_companies, through: :company_companies
   has_many :users, dependent: :destroy
   has_many :candidates, through: :users
+  has_many :job_offers, through: :users
   has_many :contacted_candidates, dependent: :destroy
 
   def companies_who_blacklisted_me

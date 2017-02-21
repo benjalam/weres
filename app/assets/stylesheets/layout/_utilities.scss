@@ -23,3 +23,38 @@
 .bg-dark-blue {
   background: #3b5998;
 }
+
+.title {
+  color: $blue;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.sous-title {
+  color: $lightblue;
+  font-size: 30px;
+  margin: 20px;
+}
+
+body {
+  color: black;
+}
+
+.back-button {
+  margin:20px;
+  color: white;
+  transition: all o.8s;
+  &:hover {
+    color: $blue;
+    border: 1px solid $blue;
+    border-radius: 3px;
+    background-color: white;
+    text-decoration: none;
+  }
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}

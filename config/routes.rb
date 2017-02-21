@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :candidates, only: [:show]
   resources :companies, only: [:show, :edit, :update] do
-    resources :job_offers
-    resources :matches, only: [:show, :index, :edit, :update]
+    resources :job_offers do
+      resources :matches, only: [:show, :index, :edit, :update]
+    end
   end
 end

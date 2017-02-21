@@ -1,0 +1,9 @@
+li {
+  padding: 30px;
+  border: 1px solid black;
+  list-style: none;
+  background-color: $gray;
+  &:nth-child(odd) {
+    background-color: white;
+  }
+}

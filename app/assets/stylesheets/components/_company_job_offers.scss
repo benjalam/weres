@@ -1,0 +1,85 @@
+.product {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  justify-content: space-between;
+  &:hover {
+    background: #E9E9E9;
+    cursor: pointer;
+    border-radius: 3px;
+    text-decoration: none;
+  }
+  h3:hover {
+    text-decoration: none;
+  }
+  p:hover {
+    text-decoration: none;
+  }
+}
+
+/* Body design */
+.product-body{
+  flex: 1 1 auto;
+  text-decoration: none;
+  &:hover {
+  text-decoration: none;
+  }
+}
+.producttrash {
+  margin-top: 100px;
+}
+
+.skill-title {
+  padding-left : 30px;
+  color: $darkgrey;
+}
+
+
+// /* Product image */
+// .product-image {
+//   border-radius: 10px;
+//   margin-right: 20px;
+//   width: 175px;
+// }
+// ul {
+//   list-style-type: none;
+// }
+
+// .btn-medium {
+//   color: $blue;
+//   border: 1px solid $blue;
+//   padding: 10px 15px;
+//   border-radius: 50px;
+//   font-weight: lighter;
+//   transition: all 0.5s;
+
+// }
+// .btn-medium:hover {
+
+//   text-decoration: none;
+//   color: white;
+//   background-color: $blue;
+// }
+
+// .btn-medium-red {
+//   color: #ac0d1f;
+//   border: 1px solid #ac0d1f;
+//   padding: 10px 15px;
+//   border-radius: 50px;
+//   font-weight: lighter;
+//   margin: 25px;
+//   transition: all 0.5s
+// }
+// .btn-medium-red:hover {
+//   text-decoration: none;
+//   color: white;
+//   background-color:#ac0d1f;
+// }
+
+// .confirmation-btn {
+//   margin-top: 64px;
+// }
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220172810) do
+ActiveRecord::Schema.define(version: 20170221103032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,18 @@ ActiveRecord::Schema.define(version: 20170220172810) do
     t.index ["user_id"], name: "index_job_offers_on_user_id", using: :btree
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.integer  "company_id"
+    t.integer  "job_offer_id"
+    t.integer  "candidate_id"
+    t.boolean  "contacted"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["candidate_id"], name: "index_matches_on_candidate_id", using: :btree
+    t.index ["company_id"], name: "index_matches_on_company_id", using: :btree
+    t.index ["job_offer_id"], name: "index_matches_on_job_offer_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -76,5 +88,8 @@ ActiveRecord::Schema.define(version: 20170220172810) do
   add_foreign_key "candidates", "job_offers"
   add_foreign_key "candidates", "users"
   add_foreign_key "job_offers", "users"
+  add_foreign_key "matches", "candidates"
+  add_foreign_key "matches", "companies"
+  add_foreign_key "matches", "job_offers"
   add_foreign_key "users", "companies"
 end

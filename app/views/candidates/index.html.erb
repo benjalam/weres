@@ -1,3 +1,21 @@
+
+<div class="big-container">
+  <div id="sidebar">
+    <a class="tabs active" data-target="#company_profile">
+      <h4>Company profile</h4>
+    </a>
+    <a class="tabs" data-target="#job_offers">
+      <h4>Job Offers </h4>
+    </a>
+    <a class="tabs" data-target="#uploaded_cvs">
+      <h4>Uploaded CVs</h4>
+    </a>
+    <a class="tabs" data-target="#blacklist">
+      <h4>Black List</h4>
+    </a>
+  </div>
+
+
 <div class="container">
   <ul>
     <% @candidates.each do |candidate| %>
@@ -18,4 +36,6 @@
       </li>
     <% end %>
   </ul>
+</div>
+
 </div>

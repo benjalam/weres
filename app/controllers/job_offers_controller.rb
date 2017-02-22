@@ -11,7 +11,6 @@ require 'matrix'
 
 
   def show
-    matching(@job_offer)
   end
 
   def new

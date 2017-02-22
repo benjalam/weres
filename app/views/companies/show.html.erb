@@ -117,12 +117,8 @@
 
         <div class="container">
           <div id="black_listed_companies">
-            <% if @company.black_listed_companies.blank? %>
-              Add a company to your blacklist
-            <% else %>
-                <% @company.black_listed_companies.each do |blacklist|%>
-                  <%= render 'company_companies/show', company: blacklist %>
-                <% end %>
+            <% @company.black_listed_companies.each do |blacklist|%>
+              <%= render 'company_companies/show', company: blacklist %>
             <% end %>
           </div>
         </div>

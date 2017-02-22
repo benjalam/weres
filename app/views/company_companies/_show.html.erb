@@ -1,28 +1,31 @@
 
+<div data-company-id="<%= company.id %>">
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="product">
+        <div class='product-body'>
+          <h4><strong><%= company.name %></strong></h4>
+          <p>Blacklisted on: <%= company.created_at.strftime("%b %d, %Y")%></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="product-candidates text-center">
+        <p class="productright">
 
-            <div class="row">
-              <div class="col-xs-8">
-                <div class="product">
-                  <div class='product-body'>
-                    <h4><strong><%= company.name %></strong></h4>
-                    <p>Blacklisted on: <%= company.created_at.strftime("%b %d, %Y")%></p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-4">
-                <div class="product-candidates text-center">
-                  <p class="productright">
+        <% if current_user.company_admin %>
+          <ul class="list-inline">
+            <% @black_listed = CompanyCompany.find_by(black_listed_company_id: company.id, company_id: @company.id) %>
+            <li>
+              <%= link_to company_company_path(@black_listed.id), method: :delete, remote: true, data: { confirm: "Are you sure?" } do %>
+                  <i class="fa fa-trash delete-offer"></i>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
+        </p>
+        </div>
+      </div>
+    </div>
 
-                  <% if current_user.company_admin %>
-                        <ul class="list-inline">
-                        <% @black_listed = CompanyCompany.find_by(black_listed_company_id: company.id, company_id: @company.id) %>
-                        <li><%= link_to company_company_path(@black_listed.id), method: :delete, data: { confirm: "Are you sure?" } do %>
-                            <i class="fa fa-trash delete-offer"></i>
-                        <% end %></li>
-                        </ul>
-                      <% end %>
-                  </p>
-                  </div>
-                </div>
-              </div>
-
+</div>

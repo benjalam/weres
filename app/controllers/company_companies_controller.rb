@@ -9,6 +9,7 @@ class CompanyCompaniesController < ApplicationController
     @company = Company.find(params[:company_id])
     @company_company.company = @company
     @company_company.black_listed_company = Company.find(params[:company_company][:company])
+    @append = @company_company.black_listed_company
     authorize @company_company
     if @company_company.save
       respond_to do |format|
@@ -26,7 +27,6 @@ class CompanyCompaniesController < ApplicationController
   def destroy
     @company_company = CompanyCompany.find(params[:id])
     authorize @company_company
-    @company_company.delete
-    redirect_to company_path(@company_company.company)
+    @company_company.destroy
   end
 end

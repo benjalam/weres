@@ -2,8 +2,18 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:edit, :show, :update]
   # skip_after_action :verify_policy_scoped, only: :show
 
+
+
   def show
-    @companies_not_black_listed = Company.all
+    companies = Company.all
+    black_listed_companies = @company.black_listed_companies
+    current_company = []
+    current_company << @company
+    if (companies - black_listed_companies) == []
+      @companies_not_black_listed = []
+    else
+      @companies_not_black_listed = companies - black_listed_companies - current_company
+    end
     @company_company = CompanyCompany.new
     @black_listed = CompanyCompany.new
   end

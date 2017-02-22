@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
 
-      <%= @candidate.position %>
-      <p>Recommendation: <%= @candidate.job_offer.user.company.name %></p>
+      <h1><%= @candidate.name %></h1>
+      <p> Current position: <%= @candidate.position %></p>
+      <p>Recommended by: <%= @candidate.job_offer.user.company.name %></p>
       <%= link_to 'Send inmail', candidate_path(@candidate), method: :post, class: 'btn btn-primary' %>
     </div>
 

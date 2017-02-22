@@ -1,12 +1,21 @@
-<% @candidates.each do |candidate| %>
-  <div class="search-wraper">
-    <div class="search-result-image"></div>
-    <div class="search-result-info">
-      <h3><%= candidate.name %></h3>
-      <p><strong><%= candidate.position %></strong></p>
-      <p>Recommended by <strong><%= candidate.reference%></strong></p>
-    </div>
-    <div class="search-result-action"></div>
-  </div>
-<% end %>
-
+<div class="container">
+  <ul>
+    <% @candidates.each do |candidate| %>
+    <li>
+    <div class="row">
+      <div class="color">
+        <div class="search-wrapper">
+          <div class="search-result-image"></div>
+            <div class="search-result-info">
+              <h3><%= candidate.name %></h3>
+              <p><strong><%= candidate.position %></strong></p>
+              <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>
+            </div>
+            <div class="search-result-action"></div>
+          </div>
+        </div>
+      </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

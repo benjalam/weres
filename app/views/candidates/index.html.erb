@@ -7,7 +7,7 @@
 <div class="page-content">
   <div class="background">
     <div class="title">
-      <h1 class="text-center index-title">List of candidates</h1>
+      <h1 class="text-center title">List of candidates</h1>
     </div>
 
     <div class="tab-content-width">
@@ -16,10 +16,12 @@
           <div class="tab-content-space">
             <div class="candidates">
               <% @candidates.each do |candidate| %>
-                <div class="col-xs-12">
-                    <h3><%= candidate.name %></h3>
-                    <p><strong><%= candidate.position %></strong></p>
-                    <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>
+                  <div class="col-xs-12">
+                    <%= link_to candidate_path(candidate) do %>
+                      <h3><%= candidate.name %></h3>
+                      <p><strong><%= candidate.position %></strong></p>
+                      <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>
+                   <% end %>
                 </div>
               <% end %>
             </div>

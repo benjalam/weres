@@ -17,6 +17,7 @@
 .product-body{
   flex: 1 1 auto;
   text-decoration: none;
+  color: $blue;
   &:hover {
   text-decoration: none;
   }
@@ -25,7 +26,7 @@
 
 .job_offer-title {
   padding-left : 30px;
-  color: $darkblue;
+  color: $blue;
 }
 
 .product-candidates {

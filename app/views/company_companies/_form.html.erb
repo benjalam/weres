@@ -1,0 +1,7 @@
+<%= simple_form_for([ company, company_company], remote: true) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :company, collection: @companies_not_black_listed, label: "Add a black-listed Company" %>
+  <%= f.submit 'Add', class: "btn btn-success"%>
+
+<% end %>

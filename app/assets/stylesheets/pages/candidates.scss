@@ -1,8 +1,8 @@
 .candidates {
-  padding: 30px;
   list-style: none;
-  background-color: $gray;
-  &:nth-child(odd) {
+  background-color: $gray !important;
+  border-bottom: 1px solid #E7E7E7;
+  &:nth-child(even) {
     background-color: white;
   }
 }

@@ -1,44 +1,42 @@
 
 
   <div id="sidebar">
-    <a class="tabs active" data-target="#company_profile">
-      <h4>Company profile</h4>
-    </a>
-    <a class="tabs" data-target="#job_offers">
-      <h4>Job Offers </h4>
-    </a>
-    <a class="tabs" data-target="#uploaded_cvs">
-      <h4>Uploaded CVs</h4>
-    </a>
-    <a class="tabs" data-target="#blacklist">
-      <h4>Black List</h4>
-    </a>
+
   </div>
 
-<div class="pagecontent"></div>
+<div class="page-content">
+  <div class="background">
+    <div class="title">
+      <h1 class="text-center index-title">Results</h1>
+    </div>
 
+    <div class="tab-content-width">
+      <div class="container">
+        <div class="row">
+          <div class="tab-content-space">
+            <% @candidates.each do |candidate| %>
+              <ul>
+                <div class="col-xs-12">
 
+                  <li>
+                    <h3><%= candidate.name %></h3>
+                    <p><strong><%= candidate.position %></strong></p>
+                    <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>
+                  </li>
 
-<div class="container">
-  <ul>
-    <% @candidates.each do |candidate| %>
-    <li class="candidates">
-    <div class="row">
-      <div class="color">
-        <div class="search-wrapper">
-          <div class="search-result-image"></div>
-            <div class="search-result-info">
-              <h3><%= candidate.name %></h3>
-              <p><strong><%= candidate.position %></strong></p>
-              <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>
-            </div>
-            <div class="search-result-action"></div>
+                </div>
+              </ul>
+            <% end %>
           </div>
         </div>
       </div>
-      </li>
-    <% end %>
-  </ul>
+    </div>
+  </div>
 </div>
+
+
+
+
+
 
 

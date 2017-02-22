@@ -20,91 +20,115 @@
       <h1 class="title"> <%= @company.name %>'s Profile</h1>
     </div>
 
+<div class="tab-content-width">
     <div class="tab-content" id="company_profile">
       <div class="container text-center">
         <div class="row">
-          <div class="col-xs-12 col-sm-6">
-            <div class="profile-about">
-              <h2 class="sous-titres">About <br><i class="fa fa-question profile-icon" aria-hidden="true"></i></h2>
-              <% website = @company.website  %>
-              <p><%= link_to "Website", "http://#{website}"%></p>
+          <div class="tab-content-space">
+            <div class="col-xs-12 col-sm-6">
+              <div class="profile-about">
+                <h2 class="sous-title">About <i class="fa fa-question profile-icon" aria-hidden="true"></i></h2>
+                <% website = @company.website  %>
+                <p><%= link_to "Website", "http://#{website}"%></p>
+              </div>
             </div>
-          </div>
 
-          <div class="col-xs-12 col-sm-6">
-            <h2 class="sous-titres">Description <br><i class="fa fa-file-text-o profile-icon" aria-hidden="true"></i></h2>
-              <p><%= @company.description %></p>
+            <div class="col-xs-12 col-sm-6">
+              <h2 class="sous-title">Description <i class="fa fa-file-text-o profile-icon" aria-hidden="true"></i></h2>
+                <p><%= @company.description %></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+</div>
 
+<div class="tab-content-width">
     <div class="tab-content hidden" id="job_offers">
-      <h2 class="skill-title"> My job_offers </h2>
-      <% @company.job_offers.each do |job_offer|%>
-          <%= link_to job_offer_path(job_offer) do %>
-            <div class="col-xs-9">
-               <div class="product">
-                  <div class='product-body'>
-                    <h3><strong><%= job_offer.title %></strong></h3>
-                    <p>Uploaded on: <%= job_offer.created_at.strftime("%b %d, %Y")%></p>
+      <div class="container">
+        <div class="row">
+          <div class="tab-content-space">
+            <h2 class="sous-title"> Job Offers </h2>
+            <% @company.job_offers.each do |job_offer|%>
+                <%= link_to job_offer_path(job_offer) do %>
+                  <div class="col-xs-9">
+                     <div class="product">
+                        <div class='product-body'>
+                          <h3><strong><%= job_offer.title %></strong></h3>
+                          <p>Uploaded on: <%= job_offer.created_at.strftime("%b %d, %Y")%></p>
+                        </div>
+                      </div>
                   </div>
-                </div>
-            </div>
-            <div class="col-xs-3">
-              <div class="product-candidates text-center">
-                <p class="productright"><i class="fa fa-user"></i>   2 contacted</p>
-              <% if current_user ==  @company.users.where(company_admin: true) %>
-                <ul class="list-inline">
-                <li><%= link_to edit_job_offer_path(job_offer) do %>
-                    <i class="fa fa-file-text-o"></i>
-                <% end %></li>
-                <li><%= link_to job_offer_path(job_offer), method: :delete, data: { confirm: "Are you sure?" } do %>
-                    <i class="fa fa-trash delete-offer"></i>
-                <% end %></li>
-                </ul>
-              <% end %>
+                  <div class="col-xs-3">
+                    <div class="product-candidates text-center">
+                      <p class="productright"><i class="fa fa-user"></i>   2 contacted</p>
+                    <% if current_user.company_admin %>
+                      <ul class="list-inline">
+                      <li><%= link_to edit_job_offer_path(job_offer) do %>
+                          <i class="fa fa-file-text-o"></i>
+                      <% end %></li>
+                      <li><%= link_to job_offer_path(job_offer), method: :delete, data: { confirm: "Are you sure?" } do %>
+                          <i class="fa fa-trash delete-offer"></i>
+                      <% end %></li>
+                      </ul>
+                    <% end %>
 
-              </div>
-            </div>
-          <% end %>
-      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
+</div>
 
+<div class="tab-content-width">
     <div class="tab-content hidden" id="uploaded_cvs">
-      <h2 class="skill-title"> My Uploaded CVs </h2>
-      <% @company.users.each do |user|%>
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12">
-              <p>user.name</p>
-              <% user.candidates.each do |candidate| %>
-                <div class="product">
-                  <div class='product-body'>
-                   <p><%= candidate.name %></p>
-                    <p><%= candidate.job_offer.title %></p>
+      <div class="container">
+        <div class="row">
+          <div class="tab-content-space">
+          <h2 class="sous-title"> Uploaded CVs </h2>
+          <% @company.users.each do |user|%>
+                <% user.candidates.each do |candidate| %>
+                  <div class="col-xs-12">
+                    <div class="product">
+                      <div class='product-body'>
+                      <%= link_to candidate_path(candidate) do %>
+                        <p><strong><%= candidate.name %></strong></p>
+                        <p><%= candidate.job_offer.title %></p>
+                        <% end %>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               <% end %>
             </div>
           </div>
         </div>
-      <% end %>
     </div>
+</div>
 
+<div class="tab-content-width">
     <div class="tab-content hidden" id="blacklist">
-      <h2 class="skill-title"> Company Black List </h2>
-      <% @company.black_listed_companies.each do |blacklist|%>
-          <div class="container">
-            <div class="row">
+      <div class="container">
+        <div class="row">
+          <div class="tab-content-space">
+          <h2 class="sous-title"> Company Black List </h2>
+            <% @company.black_listed_companies.each do |blacklist|%>
               <div class="col-xs-8">
-                <p><%= blacklist.name %></p>
+                <p class="product"><%= blacklist.name %></p>
               </div>
-            </div>
+            <% end %>
           </div>
-      <% end %>
+        </div>
+      </div>
     </div>
-  </div>
+</div>
+
+
+</div>
+
 </div>
 
 

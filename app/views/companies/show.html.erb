@@ -117,9 +117,43 @@
           <h2 class="sous-title"> Company Black List </h2>
             <% @company.black_listed_companies.each do |blacklist|%>
               <div class="col-xs-8">
-                <p class="product"><%= blacklist.name %></p>
+                <div class="product">
+                  <div class='product-body'>
+                    <h4><strong><%= blacklist.name %></strong></h4>
+                    <p>Blacklisted on: <%= blacklist.created_at.strftime("%b %d, %Y")%></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-4">
+              <div class="product-candidates text-center">
+                      <p class="productright">
+                <% if current_user.company_admin %>
+                      <ul class="list-inline">
+                      <li><%= link_to "#", method: :delete, data: { confirm: "Are you sure?" } do %>
+                          <i class="fa fa-trash delete-offer"></i>
+                      <% end %></li>
+                      </ul>
+                    <% end %>
+                </p>
+                </div>
               </div>
             <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="text-center">
+           <div class="formulaire">
+            <h3 class="text-center">Add companies to your Blacklist</h3>
+
+            <%= simple_form_for([@company, @company_company]) do |f| %>
+              <%= f.error_notification %>
+
+              <%= f.input :name %>
+              <%= f.submit 'Add', class: "btn btn-success"%>
+
+            <% end %>
+          </div>
+
           </div>
         </div>
       </div>

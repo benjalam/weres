@@ -3,6 +3,7 @@ class CompaniesController < ApplicationController
   # skip_after_action :verify_policy_scoped, only: :show
 
   def show
+    @company_company = CompanyCompany.new
   end
 
   def edit

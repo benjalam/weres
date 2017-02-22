@@ -58,4 +58,24 @@ private
   def job_offer_params
     params.require(:job_offer).permit(:title, :document)
   end
+
+  def matching
+    document1 = TfIdfSimilarity::Document.new("Benjamin Federico Julie")
+    document2 = TfIdfSimilarity::Document.new("Benjamin Federico Leslie")
+    document3 = TfIdfSimilarity::Document.new("Benjamin Federico Julie Jean")
+    document4 = TfIdfSimilarity::Document.new("Benjamin Federico Julie Jean")
+
+    @corpus = [document1, document2, document3, document4]
+    model = TfIdfSimilarity::TfIdfModel.new(@corpus)
+    matrix = model.similarity_matrix
+    matrix[model.document_index(document1), model.document_index(document2)]
+    matrix[model.document_index(document2), model.document_index(document3)]
+    matrix[model.document_index(document1), model.document_index(document3)]
+    tfidf_by_term = {}
+    document1.terms.each do |term|
+     tfidf_by_term[term] = model.tfidf(document1, term)
+    end
+    puts tfidf_by_term.sort_by{|_,tfidf| -tfidf}
+  end
+
 end

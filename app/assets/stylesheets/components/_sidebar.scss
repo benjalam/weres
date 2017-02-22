@@ -12,9 +12,21 @@
   margin-left: 200px;
 }
 
+.tab-content-width {
+  overflow-x: hidden;
+}
+
+.tab-content-space {
+  width: calc(100vw - 200px);
+  max-width: 100%;
+}
+
 .tabs {
   display: flex;
-  padding: 10px 10px 0 10px
+  padding: 10px 10px 0 10px;
+  h4 {
+    padding-bottom: 5px;
+  }
 }
 .tabs a {
   color: white;

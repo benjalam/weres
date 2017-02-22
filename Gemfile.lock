@@ -278,6 +278,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    yomu (0.1.5)
 
 PLATFORMS
   ruby
@@ -312,6 +313,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   tf-idf-similarity
   uglifier
+  yomu
 
 RUBY VERSION
    ruby 2.3.3p222

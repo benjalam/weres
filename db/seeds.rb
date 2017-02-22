@@ -16,10 +16,10 @@ puts "#{c.id}"
 d = Company.create!(name: "The Good Gift")
 puts "#{d.id}"
 
-u = User.create!(first_name: "Julie", last_name: "Ehrmann", email: "julie.ehrmann@weres.com", company_id: c.id, password: "julieweres", company_admin: true)
-u2 = User.create!(first_name: "Federico", last_name: "Volonteri", email: "federico.volonteri@weres.com", company_id: c.id, password: "federicoweres", company_admin: true)
-u3 = User.create!(first_name: "Leslie", last_name: "Maarek", email: "leslie.maarek@weres.com", company_id: c.id, password: "leslieweres", company_admin: true)
-u4 = User.create!(first_name: "Benjamin", last_name: "Lambrou", email: "benjamin.lambrou@weres.com", company_id: c.id, password: "benjaminweres", company_admin: true)
+u = User.create!(first_name: "Julie", last_name: "Ehrmann", email: "julie.ehrmann@weres.com", company_id: c.id, password: "julieweres", company_admin: true, admin: true)
+u2 = User.create!(first_name: "Federico", last_name: "Volonteri", email: "federico.volonteri@weres.com", company_id: c.id, password: "federicoweres", company_admin: true, admin: true)
+u3 = User.create!(first_name: "Leslie", last_name: "Maarek", email: "leslie.maarek@weres.com", company_id: c.id, password: "leslieweres", company_admin: true, admin: true)
+u4 = User.create!(first_name: "Benjamin", last_name: "Lambrou", email: "benjamin.lambrou@weres.com", company_id: c.id, password: "benjaminweres", company_admin: true, admin: true)
 
 u5 = User.create!(first_name: "Alexandre", last_name: "Guillot", email: "alexandre.guillot@thegoodgift.com", company_id: d.id, password: "alexandrethegoodgift", company_admin: true)
 u6 = User.create!(first_name: "Gauthier", last_name: "Levha", email: "gauthier.levha@thegoodgift.com", company_id: d.id, password: "gauthierthegoodgift", company_admin: false)

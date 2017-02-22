@@ -111,39 +111,24 @@
 
 <div class="tab-content-width">
     <div class="tab-content hidden" id="blacklist">
-      <div class="container">
-        <div class="row">
           <div class="tab-content-space">
           <h2 class="sous-title"> Company Black List </h2>
-            <% @company.black_listed_companies.each do |blacklist|%>
-              <div class="col-xs-8">
-                <div class="product">
-                  <div class='product-body'>
-                  <%= render 'company_companies/show', company_company: blacklist %>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-4">
-              <div class="product-candidates text-center">
-                      <p class="productright">
 
-                <% if current_user.company_admin %>
-                      <ul class="list-inline">
-                      <% @black_listed = CompanyCompany.find_by(black_listed_company_id: blacklist.id, company_id: @company.id) %>
-                      <li><%= link_to company_company_path(@black_listed.id), method: :delete, data: { confirm: "Are you sure?" } do %>
-                          <i class="fa fa-trash delete-offer"></i>
-                      <% end %></li>
-                      </ul>
-                    <% end %>
-                </p>
-                </div>
-              </div>
+
+        <div class="container">
+          <div id="black_listed_companies">
+            <% if @company.black_listed_companies.blank? %>
+              Add a company to your blacklist
+            <% else %>
+                <% @company.black_listed_companies.each do |blacklist|%>
+                  <%= render 'company_companies/show', company: blacklist %>
+                <% end %>
             <% end %>
           </div>
         </div>
         <div class="row">
           <div class="text-center">
-           <div class="formulaire" id="black_listed_companies">
+           <div class="formulaire">
             <%= render 'company_companies/form', company: @company, company_company: @company_company %>
           </div>
 

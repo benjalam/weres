@@ -14,19 +14,15 @@
       <div class="container">
         <div class="row">
           <div class="tab-content-space">
-            <% @candidates.each do |candidate| %>
-              <ul>
+            <div class="candidates">
+              <% @candidates.each do |candidate| %>
                 <div class="col-xs-12">
-
-                  <li>
                     <h3><%= candidate.name %></h3>
                     <p><strong><%= candidate.position %></strong></p>
                     <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>
-                  </li>
-
                 </div>
-              </ul>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+  $(".tabs").removeClass("active");
+  $(".tab-content").addClass("hidden");
+  id = window.location.hash ;
+  if ( id ) {
+    $( "a[data-target='" + id + "']" ).addClass("active") ;
+    $(id).removeClass("hidden");
+  }
+
+
   $(function(){
 
     $(".tabs").on("click", function(e){
@@ -11,18 +20,15 @@ $(document).ready(function() {
       id = $(this).data("target");
       $(id).removeClass("hidden");
 
-
-      $(function(){
-        var hash = window.location.hash;
-        hash && $('ul.nav a[data-target="' + hash + '"]').tab('show');
-
-        $('.tabs a').click(function (e) {
-          $(this).tab('show');
-          window.location.hash = this.hash;
-        });
-
       });
-  });
+
+
+    $('#sidebar .tabs').click(function (e) {
+      id = $(this).data("target") ;
+      window.location.hash = id
+
+    });
+
   });
 
 

@@ -9,7 +9,7 @@
 
   <ul class="list-inline">
   <%= link_to "Edit", edit_job_offer_path(@job_offer), class: "btn btn-primary back-button" %>
-  <%= link_to "Back", company_job_offers_path(@job_offer.user.company), class: "btn btn-primary back-button" %>
+  <a href="#" class="btn btn-primary back-button" onclick="window.history.back()">Back</a>
   </ul>
 
 </div>

@@ -1,0 +1,14 @@
+// Here you will write *javascript* that would be executed by the browser
+<% if @company_company.errors.any? %>
+  // Render new review form with errors
+  $('#new_black_listed_company').html("<%= j render 'reviews/form', restaurant: @restaurant, review: @review %>");
+<% else %>
+  // Create a paragraph for the new review. But hide it.
+  var new_review = $("<%= j render 'reviews/show', review: @review %>").hide();
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  $('#black_listed_companies').append(new_review);
+  // Show the new review with an animation!
+  new_review.slideDown();
+  // Reset the form
+  $('#new_black_listed_company').html("<%= j render 'reviews/form', restaurant: @restaurant, review: Review.new %>");
+<% end %>

@@ -11,9 +11,15 @@ class CompanyCompaniesController < ApplicationController
     @company_company.black_listed_company = Company.find(params[:company_company][:company])
     authorize @company_company
     if @company_company.save
-      redirect_to company_path(@company)
+      respond_to do |format|
+        format.html { redirect_to company_path(@company) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb
+      end
     else
-      render "companies/show"
+      respond_to do |format|
+        format.html { render "companies/show" }
+        format.js
+      end
     end
   end
 

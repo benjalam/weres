@@ -1,14 +1,17 @@
 class JobOffersController < ApplicationController
+require 'matrix'
   before_action :set_job_offer, only: [:show, :edit, :update, :destroy]
   before_action :set_company, only: [:index, :new, :create]
 
   def index
     @job_offers = JobOffer.all
     @job_offers = policy_scope(JobOffer)
+    # script_hacker
   end
 
 
   def show
+    matching(@job_offer)
   end
 
   def new
@@ -20,7 +23,9 @@ class JobOffersController < ApplicationController
     @job_offer = JobOffer.new(job_offer_params)
     authorize @job_offer
     @job_offer.user = current_user
+    @job_offer.tfidf = conversion(@job_offer)
     if @job_offer.save
+      matching(@job_offer)
       redirect_to job_offer_path(@job_offer)
     else
       render :new
@@ -59,23 +64,66 @@ private
     params.require(:job_offer).permit(:title, :document)
   end
 
-  def matching
-    document1 = TfIdfSimilarity::Document.new("Benjamin Federico Julie")
-    document2 = TfIdfSimilarity::Document.new("Benjamin Federico Leslie")
-    document3 = TfIdfSimilarity::Document.new("Benjamin Federico Julie Jean")
-    document4 = TfIdfSimilarity::Document.new("Benjamin Federico Julie Jean")
+  def print_time(start, step)
+    puts " TIME FOR #{step} ==> #{Time.now - start}"
+  end
 
-    @corpus = [document1, document2, document3, document4]
+  def conversion(offer)
+    yomu = Yomu.new offer.document.fullpath
+    offer = TfIdfSimilarity::Document.new(yomu.text)
+    new_doc = { text: offer.text,
+                term_counts: offer.term_counts,
+                size: offer.size
+              }
+  end
+
+  def script_hacker
+    JobOffer.all.each do |job_offer|
+      unless job_offer.document.nil?
+        job_offer.tfidf = conversion(job_offer)
+        job_offer.save
+      end
+    end
+
+  end
+
+  def matching(offer)
+    start = Time.now
+    # 1) Find last uploaded offer (TFIDF from database)
+    offer_tfidf = offer.to_tfidf
+
+    #2) Select all offers with CV associated => start_corpus
+    corpus = []
+    job_offers = JobOffer.all
+    # job_offers =  JobOffer.includes(:candidates).joins(:document_files).all
+    job_offers.each do |job_offer|
+      unless job_offer.document.nil?
+       corpus << {offer: job_offer, tfidf: job_offer.to_tfidf}
+      end
+    end
+    @corpus = corpus.map {|c| c[:tfidf]}
+
+
+    #3) Add our offer to start_corpus => corpus completed
+    @corpus << offer_tfidf
+    print_time(start, 'SET CORPUS')
+
+    # 4) Build model + matrix
     model = TfIdfSimilarity::TfIdfModel.new(@corpus)
     matrix = model.similarity_matrix
-    matrix[model.document_index(document1), model.document_index(document2)]
-    matrix[model.document_index(document2), model.document_index(document3)]
-    matrix[model.document_index(document1), model.document_index(document3)]
-    tfidf_by_term = {}
-    document1.terms.each do |term|
-     tfidf_by_term[term] = model.tfidf(document1, term)
+    print_time(start, 'SET MODEL')
+    #5 Iterate to get scores
+    @scores = []
+    corpus.each do |job_offer|
+      @scores << { job_offer: job_offer[:offer],
+                   score: matrix[model.document_index(job_offer[:tfidf]), model.document_index(offer_tfidf)]
+                 }
     end
-    puts tfidf_by_term.sort_by{|_,tfidf| -tfidf}
+    print_time(start, 'SCORE')
+    @scores = @scores.sort_by {|hash| hash[:score]}
+    print_time(start, 'SORT SCORE')
+    raise
   end
+
 
 end

@@ -3,7 +3,9 @@ class CompaniesController < ApplicationController
   # skip_after_action :verify_policy_scoped, only: :show
 
   def show
+    @companies_not_black_listed = Company.all
     @company_company = CompanyCompany.new
+    @black_listed = CompanyCompany.new
   end
 
   def edit

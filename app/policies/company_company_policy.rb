@@ -4,4 +4,11 @@ class CompanyCompanyPolicy < ApplicationPolicy
       scope
     end
   end
+
+  def create?
+    user.company_admin
+  end
+  def destroy?
+    user.company_admin
+  end
 end

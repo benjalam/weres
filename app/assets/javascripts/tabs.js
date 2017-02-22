@@ -1,25 +1,30 @@
-$(function(){
+$(document).ready(function() {
 
-  $(".tabs").on("click", function(e){
-    $(".tabs").removeClass("active");
-    $(this).addClass("active");
+  $(function(){
 
-    $(".tab-content").addClass("hidden");
+    $(".tabs").on("click", function(e){
+      $(".tabs").removeClass("active");
+      $(this).addClass("active");
 
-    id = $(this).data("target");
-    $(id).removeClass("hidden");
+      $(".tab-content").addClass("hidden");
+
+      id = $(this).data("target");
+      $(id).removeClass("hidden");
 
 
-    $(function(){
-      var hash = window.location.hash;
-      hash && $('ul.nav a[data-target="' + hash + '"]').tab('show');
+      $(function(){
+        var hash = window.location.hash;
+        hash && $('ul.nav a[data-target="' + hash + '"]').tab('show');
 
-      $('.tabs a').click(function (e) {
-        $(this).tab('show');
-        window.location.hash = this.hash;
+        $('.tabs a').click(function (e) {
+          $(this).tab('show');
+          window.location.hash = this.hash;
+        });
+
       });
+  });
+  });
 
-    });
-});
-});
+
+})
 

@@ -1,0 +1,12 @@
+.candidates {
+  div:nth-child(even) {
+    list-style: none;
+    background-color: white;
+    border-bottom: 1px solid #E7E7E7;
+  }
+  div:nth-child(odd) {
+    list-style: none;
+    background-color: $gray;
+    border-bottom: 1px solid #E7E7E7;
+  }
+}

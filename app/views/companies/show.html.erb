@@ -59,6 +59,7 @@
             </div>
 
             <% @company.job_offers.each do |job_offer|%>
+              <% if job_offer.candidates == [] %>
                 <%= link_to job_offer_path(job_offer) do %>
                   <div class="col-xs-9">
                      <div class="product">
@@ -85,6 +86,7 @@
                     </div>
                   </div>
                 <% end %>
+              <% end %>
             <% end %>
           </div>
         </div>

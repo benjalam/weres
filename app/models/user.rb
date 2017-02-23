@@ -9,4 +9,5 @@ class User < ApplicationRecord
   belongs_to :company
   has_many :job_offers, dependent: :nullify
   has_many :candidates, dependent: :nullify
+
 end

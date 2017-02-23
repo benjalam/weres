@@ -4,4 +4,5 @@ class Candidate < ApplicationRecord
   validates :name, presence: true
   has_many :contacted_candidates, dependent: :destroy
   has_attachment :document
+
 end

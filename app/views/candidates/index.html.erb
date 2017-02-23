@@ -5,7 +5,7 @@
   </div>
     <% @company.job_offers.each do |jb|%>
       <a class="tabs" data-target="#job_offer_<%=jb.id %>">
-        <h4><%= jb.title %></h4>
+        <h5><%= jb.title %></h5>
       </a>
     <% end  %>
 </div>

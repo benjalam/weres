@@ -5,7 +5,10 @@
       <h1><%= @candidate.name %></h1>
       <p> Current position: <%= @candidate.position %></p>
       <p>Recommended by: <%= @candidate.job_offer.user.company.name %></p>
+      <%= @candidate.job_offer.title %>
+      <p>
       <%= link_to 'Send inmail', company_candidate_path(@candidate), method: :post, class: 'btn btn-primary' %>
+      </p>
     </div>
 
     <% if current_user.company == @candidate.job_offer.user.company %>

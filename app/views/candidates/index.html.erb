@@ -24,7 +24,7 @@
                    <div class="candidates">
                     <% @candidates.each do |candidate| %>
                         <div class="col-xs-12">
-                          <%= link_to company_candidates_path(candidate) do %>
+                          <%= link_to company_candidate_path(@company, candidate) do %>
                             <h3><%= candidate.name %></h3>
                             <p><strong><%= candidate.position %></strong></p>
                             <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>

@@ -1,2 +1,118 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <div class="banner-content">
+    <h1>Find the best candidates</h1>
+    <p>Selected by top recruiters from top companies</p>
+    <%= link_to "Find a candidate", "", class: "btn btn-primary btn-banner" %>
+  </div>
+</div>
+
+<div class="container text-center" id="how-it-works">
+  <div class="big-title">
+    <div><span class="">WHY WERES?</span></div>
+  </div>
+  <div class="title-description">
+    <div>WeRes is the first intelligent platform created to share candidates between recruiters.  </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <%= image_tag "three-candidates.svg" %>
+      <p>For each job there is more than one good candidate </p>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= image_tag "resume.svg" %>
+      <p>Our candidates are selected by the best recruiters </p>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= image_tag "percentage.svg" %>
+      <p>Our matching algorithm only present you the best fitted candidates</p>
+    </div>
+  </div>
+</div>
+
+<div class="row row-lighten">
+  <div class="col-xs-12 col-md-7 full-height">
+    <div class="mockup-text">
+      <h2>1. Créez vos plannings de la semaine en quelques minutes</h2>
+      <p class="under-title">grâce à une interface simple et intuitive</p>
+      <p class="content">
+        Skello vous permet de créer rapidement un planning optimal qui prend en compte vos indicateurs de gestion salariale.<br>Maitrisez vos coûts de personnel.
+      </p>
+      <a class="btn mockup-call-to-action" href="/contact">CRÉEZ VOTRE PREMIER PLANNING</a>
+    </div>
+  </div>
+  <div class="hidden-xs hidden-sm col-md-5 full-height">
+    <div class="home-images">
+      <%= image_tag "three-candidates.svg", height: "200px" %>
+    </div>
+  </div>
+</div>
+<div class="row row-white">
+  <div class="hidden-xs hidden-sm col-md-5 full-height">
+    <div class="home-images">
+      <%= image_tag "three-candidates.svg", height: "200px" %>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-7 full-height">
+    <div class="mockup-text">
+      <h2>1. Créez vos plannings de la semaine en quelques minutes</h2>
+      <p class="under-title">grâce à une interface simple et intuitive</p>
+      <p class="content">
+        Skello vous permet de créer rapidement un planning optimal qui prend en compte vos indicateurs de gestion salariale.<br>Maitrisez vos coûts de personnel.
+      </p>
+      <a class="btn mockup-call-to-action" href="/contact">CRÉEZ VOTRE PREMIER PLANNING</a>
+    </div>
+  </div>
+</div>
+<div class="row row-lighten">
+  <div class="col-xs-12 col-md-7 full-height">
+    <div class="mockup-text">
+      <h2>1. Créez vos plannings de la semaine en quelques minutes</h2>
+      <p class="under-title">grâce à une interface simple et intuitive</p>
+      <p class="content">
+        Skello vous permet de créer rapidement un planning optimal qui prend en compte vos indicateurs de gestion salariale.<br>Maitrisez vos coûts de personnel.
+      </p>
+      <a class="btn mockup-call-to-action" href="/contact">CRÉEZ VOTRE PREMIER PLANNING</a>
+    </div>
+  </div>
+  <div class="hidden-xs hidden-sm col-md-5 full-height">
+    <div class="home-images">
+      <%= image_tag "three-candidates.svg", height: "200px" %>
+    </div>
+  </div>
+</div>
+
+<div class="full-width references-list">
+  <h2 class="text-center">Ils nous font confiance</h2>
+  <ul class="list-unstyled list-inline text-center responsive">
+    <li><h2>The good gift</h2></li>
+    <li><h2>Planisphere</h2></li>
+    <li><h2>Archivum</h2></li>
+    <li><h2>WKTP</h2></li>
+    <li><h2>Rythm'n Soul</h2></li>
+  </ul>
+</div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    document.querySelector('#how').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#how-it-works').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.querySelector('#ideas').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#our-ideas').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.querySelector('#last').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#last-gifts').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.querySelector('#reviews').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#temoignages').scrollIntoView({ behavior: 'smooth' });
+    });
+  <% end %>
+<% end %>
+
+

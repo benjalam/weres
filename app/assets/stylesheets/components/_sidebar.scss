@@ -23,7 +23,7 @@
 
 .tabs {
   display: flex;
-  padding: 10px 10px 0 10px;
+  padding: 5px 10px 5px 10px;
   h4 {
     padding-bottom: 5px;
   }
@@ -53,7 +53,17 @@
   margin-top: 100px;
 }
 
-.button {
+.back-button-sidebar {
   bottom: 0;
-  margin-left: 6px;
+  padding: 0 10px 0 10px;
+  margin-left: 38px;
+  margin-right: 40px;
+  &:hover {
+    background-color: $darkblue;
+  }
 }
+.back-button-sidebar.active {
+  background-color: $blue;
+}
+
+

@@ -1,3 +1,4 @@
+
 <% if policy(@company).show? %>
 <div id="sidebar">
       <a class="tabs active" data-target="#company_profile">
@@ -12,11 +13,7 @@
       <a class="tabs" data-target="#blacklist">
         <h4>Black List</h4>
       </a>
-      <div class="button">
-        <% if current_user.company_admin %>
-          <%= link_to "Add a Job Offer", new_company_job_offer_path(@company, @job_offer), class: "btn btn-primary text-center add-job-offer" %>
-        <% end %>
-      </div>
+      <a class="tabs btn btn-primary back-button-sidebar text-center" data-target="#top-tab"><h5>Add job offer</h5></a>
 </div>
 
 
@@ -71,7 +68,11 @@
                   </div>
                   <div class="col-xs-3">
                     <div class="product-candidates text-center">
-                      <p class="productright"><i class="fa fa-user"></i>   See Candidates</p>
+
+                    <p class="productright">
+                      <a href="<%= @company.id %>/candidates#job_offer_<%= job_offer.id %>"><i class="fa fa-user"></i>   See Candidates</a>
+                    </p>
+
                     <% if current_user.company_admin %>
                       <ul class="list-inline">
                       <li><%= link_to edit_job_offer_path(job_offer) do %>
@@ -144,6 +145,62 @@
       </div>
     </div>
 </div>
+
+    <div class="tab-content-width">
+      <div class="tab-content" id="top-tab">
+        <div class="container">
+          <div class="row">
+            <div class="tab-content-space">
+              <div class="text-center title">
+                <h1>Add your Job Offer</h1>
+              </div>
+
+              <div class="add-card">
+                  <h1 class="text-center title"></h1>
+
+                <div class="formulaire">
+
+                <%= render 'job_offers/form', job_offer: JobOffer.new %>
+                <div class="text-center">
+                <%= link_to "Cancel", company_path(@company, anchor: "job_offers"), class: "btn btn-danger back-button" %>
+                </div>
+              </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content-width">
+        <div class="tab-content" id="top-tab">
+          <div class="container">
+            <div class="row">
+              <div class="tab-content-space">
+                <div class="text-center title">
+                  <h1>Add your Job Offer</h1>
+                </div>
+
+                <div class="add-card">
+                    <h1 class="text-center title"></h1>
+
+                  <div class="formulaire">
+
+                  <%= render 'job_offers/form', job_offer: JobOffer.new %>
+                  <div class="text-center">
+                  <%= link_to "Cancel", company_path(@company, anchor: "job_offers"), class: "btn btn-danger back-button" %>
+                  </div>
+                </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
 </div>

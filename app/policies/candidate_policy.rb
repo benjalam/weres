@@ -12,4 +12,7 @@ class CandidatePolicy < ApplicationPolicy
   def show?
     true
   end
+  def upvote?
+    true
+  end
 end

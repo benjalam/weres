@@ -1,5 +1,6 @@
  $(document).ready(function() {
-   $(".favourite").click(function(){
-     $(this).toggleClass("favorited")
+   $(".favourite, .favourited").click(function(){
+     $(this).toggleClass("favourited")
    });
   });
+

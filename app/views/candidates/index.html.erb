@@ -33,8 +33,13 @@
                             <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>
                          <% end %>
 
-                          <i class="fa fa-star favourite" aria-hidden="true"></i>
-
+                          <%= link_to upvote_candidate_path(candidate), method: :post do %>
+                            <% if current_user.voted_for? candidate %>
+                              <i class="fa fa-star favourite" aria-hidden="true"></i>
+                            <% else %>
+                              <i class="fa fa-star favourited" aria-hidden="true"></i>
+                            <% end %>
+                          <% end  %>
                         </div>
                       <% end %>
                     </div>

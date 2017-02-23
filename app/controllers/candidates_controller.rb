@@ -18,6 +18,7 @@ class CandidatesController < ApplicationController
     else
       current_user.up_votes @candidate
     end
+
   end
 
 end

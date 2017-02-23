@@ -10,7 +10,7 @@
       </a>
       <% end  %>
     <% end  %>
-      <a class="tabs btn btn-primary back-button-sidebar text-center" data-target="#top-tab"><h5>Add job offer</h5></a>
+      <a class="tabs btn btn-primary back-button-sidebar" data-target="#top-tab"><h5>Add job offer</h5></a>
 </div>
 
   <div class="page-content">
@@ -30,9 +30,6 @@
                       <div class="formulaire">
 
                       <%= render 'job_offers/form', job_offer: JobOffer.new %>
-                      <div class="text-center">
-                      <%= link_to "Cancel", company_path(@company, anchor: "job_offers"), class: "btn btn-danger back-button" %>
-                      </div>
                     </div>
 
                     </div>

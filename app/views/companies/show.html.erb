@@ -13,7 +13,7 @@
       <a class="tabs" data-target="#blacklist">
         <h4>Black List</h4>
       </a>
-      <a class="tabs btn btn-primary back-button-sidebar text-center" data-target="#top-tab"><h5>Add job offer</h5></a>
+      <a class="tabs btn btn-primary back-button-sidebar" data-target="#top-tab"><h5>Add job offer</h5></a>
 </div>
 
 
@@ -161,9 +161,7 @@
                 <div class="formulaire">
 
                 <%= render 'job_offers/form', job_offer: JobOffer.new %>
-                <div class="text-center">
-                <%= link_to "Cancel", company_path(@company, anchor: "job_offers"), class: "btn btn-danger back-button" %>
-                </div>
+
               </div>
 
               </div>
@@ -174,33 +172,7 @@
       </div>
     </div>
 
-    <div class="tab-content-width">
-        <div class="tab-content" id="top-tab">
-          <div class="container">
-            <div class="row">
-              <div class="tab-content-space">
-                <div class="text-center title">
-                  <h1>Add your Job Offer</h1>
-                </div>
 
-                <div class="add-card">
-                    <h1 class="text-center title"></h1>
-
-                  <div class="formulaire">
-
-                  <%= render 'job_offers/form', job_offer: JobOffer.new %>
-                  <div class="text-center">
-                  <%= link_to "Cancel", company_path(@company, anchor: "job_offers"), class: "btn btn-danger back-button" %>
-                  </div>
-                </div>
-
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
 
 </div>

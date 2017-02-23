@@ -103,7 +103,7 @@
                   <div class="col-xs-12">
                     <div class="product">
                       <div class='product-body'>
-                      <%= link_to candidate_path(candidate) do %>
+                      <%= link_to company_candidate_path(@company, candidate) do %>
                         <p><strong><%= candidate.name %></strong></p>
                         <p><%= candidate.job_offer.title %></p>
                         <% end %>

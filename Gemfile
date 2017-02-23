@@ -27,6 +27,7 @@ gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 gem "tf-idf-similarity"
+gem 'acts_as_votable', '~> 0.10.0'
 
 
 group :development, :test do

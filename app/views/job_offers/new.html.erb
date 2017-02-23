@@ -2,8 +2,9 @@
 
   <div class="formulaire">
 
-  <%= render 'form' %>
+  <%= render 'form', job_offer: @job_offer %>
   <div class="text-center">
   <%= link_to "Cancel", company_path(@company, anchor: "job_offers"), class: "btn btn-danger back-button" %>
+
   </div>
 </div>

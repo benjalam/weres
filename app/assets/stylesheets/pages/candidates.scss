@@ -11,7 +11,11 @@
   }
 }
 
-.blue {
-  color: $blue;
-  padding-top: 15px;
+
+.favourite {
+  color: black;
 }
+.favourited {
+  color: yellow !important;
+}
+

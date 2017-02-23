@@ -1,0 +1,89 @@
+<div class="navbar-wagon-fixed navbar-home">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo.png" %>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs">
+
+    <!-- Different navigation if login or not -->
+    <% if user_signed_in? %>
+
+      <!-- Sign OUT -->
+      <%= link_to t(".profile", default: "My profile"), company_path(current_user.company), class:"navbar-wagon-item navbar-wagon-button btn-primary"%>
+      <%= link_to t(".sign_out", default: "Log out"), destroy_user_session_path, method: :delete, class:"navbar-wagon-item navbar-wagon-button-bis btn"%>
+
+    <% else %>
+
+      <!-- Login text link -->
+      <%= link_to t(".profile", default: "Contact us"), "", class:"navbar-wagon-item navbar-wagon-button btn-primary"%>
+      <%= link_to t(".sign_in", default: "Sign up"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-button-bis btn" %>
+
+    <% end %>
+
+  </div>
+
+  <!-- Dropdown list appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg hidden-sm">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to company_path(current_user.company) do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Company Profile") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to root_path do %>
+            <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
+      <% else %>
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+  $(document).ready(function() {
+    // navbar transition jQuery script
+    $(window).scroll(function(e){
+      if ($(this).scrollTop() > 10) {
+        // $(".navbar-home").css({
+        //   "background": "white"
+        // });
+        // $(".navbar-white-link").css({
+        //   "color": "#222222", "opacity": 0.65
+        // });
+        $('.navbar-home').addClass('navbar-wagon');
+        $('.navbar-wagon').removeClass('navbar-home');
+        $('.navbar-white-link').addClass('navbar-black-link');
+        $('.navbar-black-link').removeClass('navbar-white-link');
+      }
+      else {
+        // $(".navbar-home").css({
+        //   background: "transparent",
+        // });
+        // $(".navbar-home .navbar-white-link").css({
+        //   "color": "white"
+        // });
+        $('.navbar-wagon').addClass('navbar-home');
+        $('.navbar-home').removeClass('navbar-wagon');
+        $('.navbar-black-link').addClass('navbar-white-link');
+        $('.navbar-white-link').removeClass('navbar-black-link');
+      }
+    });
+  });
+  <% end %>
+<% end %>

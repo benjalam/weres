@@ -2,7 +2,11 @@
   <div class="banner-content">
     <h1>Find the best candidates</h1>
     <p>Selected by top recruiters from top companies</p>
-    <%= link_to "Find a candidate", "", class: "btn btn-primary btn-banner" %>
+    <% if user_signed_in? %>
+      <a href="companies/<%= current_user.company.id %>/candidates#top-tab", class="btn btn-primary btn-banner">Find a Candidate</a>
+    <% else %>
+       <a href="", class="btn btn-primary btn-banner">Contact us</a>
+       <% end %>
   </div>
 </div>
 

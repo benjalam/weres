@@ -1,16 +1,22 @@
 <% if policy(@candidates).show? %>
 <div id="sidebar">
-  <div class="blue text-center">
-    <h4> <strong>YOUR JOB OFFERS</strong></h4>
+  <div class="text-center">
+    <h4><strong>YOUR JOB OFFERS</strong></h4>
   </div>
-    <% @company.job_offers.each do |jb|%>
-    <% if jb.candidates == [] %>
-      <a class="tabs" data-target="#job_offer_<%=jb.id %>">
-        <h5><%= jb.title %></h5>
-      </a>
+  <div class="all-tabs">
+    <div class="tab-block">
+      <% @company.job_offers.each do |jb|%>
+      <% if jb.candidates == [] %>
+        <a class="tabs" data-target="#job_offer_<%=jb.id %>">
+          <h5><%= jb.title %></h5>
+        </a>
+        <% end  %>
       <% end  %>
-    <% end  %>
+    </div>
+    <div class="tab-button-add">
       <a class="tabs btn btn-primary back-button-sidebar" data-target="#top-tab"><h5>Add job offer</h5></a>
+    </div>
+  </div>
 </div>
 
   <div class="page-content">
@@ -41,7 +47,9 @@
     </div>
 
       <% @company.job_offers.each do |jb|%>
+
       <% if jb.candidates == [] %>
+        <% score = Matching.new.matching(jb) %>
         <div class="tab-content-width">
             <div class="tab-content" id="job_offer_<%=jb.id %>">
               <div class="container">
@@ -53,16 +61,28 @@
                     </div>
 
                    <div class="candidates">
-                    <% @candidates.each do |candidate| %>
-                        <div class="col-xs-12">
-                          <%= link_to company_candidate_path(@company, candidate) do %>
-                            <h3><%= candidate.name %></h3>
-                            <p><strong><%= candidate.position %></strong></p>
-                            <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>
-                         <% end %>
-                        </div>
+
+                    <% score.each do |result| %>
+                      <% unless result[:job_offer].user.company == current_user.company %>
+
+                            <% result[:job_offer].candidates.each do |candidate| %>
+                              <div class="col-xs-9">
+                                <%= link_to company_candidate_path(@company, candidate) do %>
+                                  <h3><%= candidate.name %></h3>
+                                  <p><strong><%= candidate.position %></strong></p>
+                                  <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>
+                               <% end %>
+                              </div>
+                          <div class="col-xs-3">
+                            <p><%= (result[:score].round(2) * 100).truncate %> %</p>
+                          </div>
+                        <% end %>
                       <% end %>
+                    <% end %>
                     </div>
+
+
+
                   </div>
                 </div>
               </div>

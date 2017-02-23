@@ -121,7 +121,6 @@ private
     print_time(start, 'SCORE')
     @scores = @scores.sort_by {|hash| hash[:score]}
     print_time(start, 'SORT SCORE')
-    raise
   end
 
 

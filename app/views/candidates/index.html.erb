@@ -1,6 +1,8 @@
 <% if policy(@candidates).show? %>
 <div id="sidebar">
-  <h3>Your Job Offers</h3>
+  <div class="blue text-center">
+    <h4> <strong>YOUR JOB OFFERS</strong></h4>
+  </div>
     <% @company.job_offers.each do |jb|%>
       <a class="tabs" data-target="#job_offer_<%=jb.id %>">
         <h4><%= jb.title %></h4>

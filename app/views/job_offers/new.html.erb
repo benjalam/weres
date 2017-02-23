@@ -1,6 +1,9 @@
 <h1 class="text-center title">Add your new job offer</h1>
 
-<div class="formulaire">
+  <div class="formulaire">
+
   <%= render 'form' %>
-  <%= link_to "Cancel", company_job_offers_path, class: "btn btn-danger" %>
+  <div class="text-center">
+  <%= link_to "Cancel", company_path(@company, anchor: "job_offers"), class: "btn btn-danger back-button" %>
+  </div>
 </div>

@@ -10,4 +10,15 @@ class Company < ApplicationRecord
   def companies_who_blacklisted_me
     CompanyCompany.where(black_listed_company: self)
   end
+
+  def not_black_listed_companies
+    companies = Company.all
+    black_listed_companies = self.black_listed_companies
+
+    if (companies - black_listed_companies) == []
+      []
+    else
+      companies - black_listed_companies - [self]
+    end
+  end
 end

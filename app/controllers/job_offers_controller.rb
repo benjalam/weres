@@ -36,16 +36,13 @@ require 'matrix'
 
   def update
     @job_offer.user = current_user
-    if @job_offer.save
-      redirect_to job_offer_path(@job_offer)
-    else
-      render :new
-    end
+    @job_offer.update(job_offer_params)
+    redirect_to company_path(current_user.company, anchor: "job_offers")
   end
 
   def destroy
     @job_offer.delete
-    redirect_to company_job_offers_path(@job_offer.user.company)
+    redirect_to company_path(@job_offer.user.company)
   end
 
 private

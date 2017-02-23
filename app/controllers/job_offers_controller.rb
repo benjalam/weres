@@ -41,8 +41,9 @@ require 'matrix'
   end
 
   def destroy
+    @company = @job_offer.user.company
     @job_offer.delete
-    redirect_to company_path(@job_offer.user.company)
+    redirect_to company_path(current_user.company)
   end
 
 private

@@ -48,7 +48,18 @@
       <div class="container">
         <div class="row">
           <div class="tab-content-space">
-            <h2 class="sous-title"> Job Offers </h2>
+            <div class="header text-center">
+              <div class="col-xs-6">
+                <h2 class="sous-title"> Job Offers </h2>
+              </div>
+              <div class="col-xs-6">
+                  <% if current_user.company_admin %>
+                    <%= link_to "Add a Job Offer", new_company_job_offer_path(@company, @job_offer), class: "btn btn-primary text-center add-job-offer" %>
+                  <% end %>
+              </div>
+            </div>
+          </div>
+        <div class="row">
             <% @company.job_offers.each do |job_offer|%>
                 <%= link_to job_offer_path(job_offer) do %>
                   <div class="col-xs-9">

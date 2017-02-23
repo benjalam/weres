@@ -9,6 +9,7 @@ class CompaniesController < ApplicationController
     black_listed_companies = @company.black_listed_companies
     current_company = []
     current_company << @company
+    @job_offer = JobOffer.new
     if (companies - black_listed_companies) == []
       @companies_not_black_listed = []
     else

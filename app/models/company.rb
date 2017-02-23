@@ -6,6 +6,7 @@ class Company < ApplicationRecord
   has_many :candidates, through: :users
   has_many :job_offers, through: :users
   has_many :contacted_candidates, dependent: :destroy
+  acts_as_voter
 
   def companies_who_blacklisted_me
     CompanyCompany.where(black_listed_company: self)

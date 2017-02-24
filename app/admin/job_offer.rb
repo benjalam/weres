@@ -13,6 +13,13 @@ permit_params :title, :user_id
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-
+   form do |f|
+    inputs do
+        f.input :title
+        f.input :user, as: :select, collection: User.all.map {|user| "#{user.first_name} #{user.company.name}" }
+        f.input :tfidf, as: :text
+    end
+    actions
+  end
 
 end

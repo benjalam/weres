@@ -3,12 +3,13 @@
     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
 
       <h1><%= @candidate.name %></h1>
-      <p> Current position: <%= @candidate.position %></p>
-      <p>Recommended by: <%= @candidate.job_offer.user.company.name %></p>
-      <%= @candidate.job_offer.title %>
-      <p>
-      <%= link_to 'Send inmail', company_candidate_path(@candidate), method: :post, class: 'btn btn-primary' %>
-      </p>
+      <br>
+      <h4><strong>Current position:</strong> <%= @candidate.position %></h4>
+      <h4><strong>Recommended by:</strong> <%= @candidate.job_offer.user.company.name %></h4>
+      <h4><strong>For a position as </strong><%= @candidate.job_offer.title %></h4>
+      <h4>
+      <%= link_to 'Send inmail', company_candidate_path(@candidate), method: :post, class: 'btn btn-primary send-inmail' %>
+      </h4>
     </div>
 
         <a href="#" class="btn btn-primary back-button" onclick="window.history.back()">Back</a>

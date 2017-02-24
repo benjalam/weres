@@ -58,30 +58,35 @@
                     <h1 class="text-center title">List of candidates</h1>
                     <h4 class="text-center sous-title"><%= jb.title %></h4>
                   </div>
-                    <% score.each do |result| %>
+                    <% score.reverse.each do |result| %>
                       <% unless result[:job_offer].user.company == current_user.company %>
 
                             <% result[:job_offer].candidates.each do |candidate| %>
-                              <div class="candidates">
+                            <div class="container">
+                              <div class="row">
                               <div class="col-xs-9">
-                                <%= link_to company_candidate_path(@company, candidate) do %>
-                                  <h3><%= candidate.name %></h3>
-                                  <p><strong><%= candidate.position %></strong></p>
-                                  <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>
-                               <% end %>
+                              <div class="candidates">
+                                  <%= link_to company_candidate_path(@company, candidate) do %>
+                                    <h3><%= candidate.name %></h3>
+                                    <p><strong>Current Position:</strong><%= candidate.position %></p>
+                                    <p><strong>Recommended by</strong><%= candidate.job_offer.user.company.name%></p>
+                                 <% end %>
+                                 </div>
+                                </div>
+                                <div class="col-xs-3">
+                                <div class="candidates">
+                                  <%= link_to upvote_candidate_path(candidate), method: :post do %>
+                                      <% if current_user.voted_for? candidate %>
+                                        <i class="fa fa-star favourited" aria-hidden="true"></i>
+                                      <% else %>
+                                        <i class="fa fa-star favourite" aria-hidden="true"></i>
+                                      <% end %>
+                                    <% end  %>
+                                  <p><%= (result[:score] * 100).round(1) %> %</p>
+                                </div>
                               </div>
-                              <div class="col-xs-3">
-                                <%= link_to upvote_candidate_path(candidate), method: :post do %>
-                                    <% if current_user.voted_for? candidate %>
-                                      <i class="fa fa-star favourited" aria-hidden="true"></i>
-                                    <% else %>
-                                      <i class="fa fa-star favourite" aria-hidden="true"></i>
-                                    <% end %>
-                                  <% end  %>
-                                <p><%= (result[:score].round(2) * 100).round(5) %> %</p>
-
                               </div>
-                              </div>
+                            </div>
                             <% end %>
                       <% end %>
                     <% end %>

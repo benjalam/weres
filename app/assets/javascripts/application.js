@@ -7,3 +7,4 @@
 //= require cable.js
 //= require tabs.js
 //= require init_attachinary.js
+//= require fav.js

@@ -14,4 +14,9 @@ Rails.application.routes.draw do
   end
   resources :job_offers, only: [:show, :edit, :update, :destroy]
   resources :company_companies, only: [:destroy]
+  resources :candidates, only: [] do
+    member do
+      post :upvote
+    end
+  end
 end

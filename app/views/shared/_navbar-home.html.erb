@@ -6,7 +6,6 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs">
-
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
@@ -14,9 +13,11 @@
       <%= link_to t(".profile", default: "My profile"), company_path(current_user.company), class:"navbar-wagon-item navbar-wagon-button btn-primary"%>
       <%= link_to t(".sign_out", default: "Log out"), destroy_user_session_path, method: :delete, class:"navbar-wagon-item navbar-wagon-button-bis btn"%>
 
+
     <% else %>
 
       <!-- Login text link -->
+
       <%= link_to t(".profile", default: "Contact us"), "", class:"navbar-wagon-item navbar-wagon-button btn-primary"%>
       <%= link_to t(".sign_in", default: "Sign up"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-button-bis btn" %>
 

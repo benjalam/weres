@@ -20,52 +20,49 @@
 </div>
 
   <div class="page-content">
-    <div class="background">
-    <div class="tab-content-width">
-            <div class="tab-content" id="top-tab">
-              <div class="container">
-                <div class="row">
-                  <div class="tab-content-space">
-                    <div class="text-center title">
-                      <h1>Add your Job Offer</h1>
+      <div class="tab-content-width">
+              <div class="tab-content" id="top-tab">
+                <div class="container">
+                  <div class="row">
+                    <div class="tab-content-space">
+                      <div class="text-center title">
+                        <h1>Add your Job Offer</h1>
+                      </div>
+
+                      <div class="add-card">
+                          <h1 class="text-center title"></h1>
+
+                        <div class="formulaire">
+
+                        <%= render 'job_offers/form', job_offer: JobOffer.new %>
+                      </div>
+
+                      </div>
+
                     </div>
-
-                    <div class="add-card">
-                        <h1 class="text-center title"></h1>
-
-                      <div class="formulaire">
-
-                      <%= render 'job_offers/form', job_offer: JobOffer.new %>
-                    </div>
-
-                    </div>
-
                   </div>
                 </div>
               </div>
-            </div>
-    </div>
+      </div>
 
       <% @company.job_offers.each do |jb|%>
 
       <% if jb.candidates == [] %>
         <% score = Matching.new.matching(jb) %>
         <div class="tab-content-width">
-            <div class="tab-content" id="job_offer_<%=jb.id %>">
-              <div class="container">
-                <div class="row">
-                  <div class="tab-content-space">
-                    <div class="title">
-                      <h1 class="text-center title">List of candidates</h1>
-                      <h4 class="text-center sous-title"><%= jb.title %></h4>
-                    </div>
-
-                   <div class="candidates">
-
+          <div class="tab-content" id="job_offer_<%=jb.id %>">
+            <div class="container">
+              <div class="row">
+                <div class="tab-content-space">
+                  <div class="title">
+                    <h1 class="text-center title">List of candidates</h1>
+                    <h4 class="text-center sous-title"><%= jb.title %></h4>
+                  </div>
                     <% score.each do |result| %>
                       <% unless result[:job_offer].user.company == current_user.company %>
 
                             <% result[:job_offer].candidates.each do |candidate| %>
+                              <div class="candidates">
                               <div class="col-xs-9">
                                 <%= link_to company_candidate_path(@company, candidate) do %>
                                   <h3><%= candidate.name %></h3>
@@ -73,24 +70,28 @@
                                   <p>Recommended by <strong><%= candidate.job_offer.user.company.name%></strong></p>
                                <% end %>
                               </div>
-                          <div class="col-xs-3">
-                            <p><%= (result[:score].round(2) * 100).truncate %> %</p>
-                          </div>
-                        <% end %>
+                              <div class="col-xs-3">
+                                <%= link_to upvote_candidate_path(candidate), method: :post do %>
+                                    <% if current_user.voted_for? candidate %>
+                                      <i class="fa fa-star favourited" aria-hidden="true"></i>
+                                    <% else %>
+                                      <i class="fa fa-star favourite" aria-hidden="true"></i>
+                                    <% end %>
+                                  <% end  %>
+                                <p><%= (result[:score].round(2) * 100).round(5) %> %</p>
+
+                              </div>
+                              </div>
+                            <% end %>
                       <% end %>
                     <% end %>
-                    </div>
-
-
-
+                  <% end %>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        <% end %>
       <% end %>
-    </div>
   </div>
 <% end %>
 

@@ -1,6 +1,8 @@
 
 <% if policy(@company).show? %>
 <div id="sidebar">
+<div class="all-tabs-profile">
+    <div class="tab-block">
       <a class="tabs active" data-target="#company_profile">
         <h4>Company profile</h4>
       </a>
@@ -13,7 +15,11 @@
       <a class="tabs" data-target="#blacklist">
         <h4>Black List</h4>
       </a>
+    </div>
+    <div class="tab-button-add">
       <a class="tabs btn btn-primary back-button-sidebar" data-target="#top-tab"><h5>Add job offer</h5></a>
+    </div>
+  </div>
 </div>
 
 

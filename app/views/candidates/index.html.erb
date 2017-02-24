@@ -69,7 +69,7 @@
                                   <%= link_to company_candidate_path(@company, candidate) do %>
                                     <h3><%= candidate.name %></h3>
                                     <p><strong>Current Position:</strong><%= candidate.position %></p>
-                                    <p><strong>Recommended by</strong><%= candidate.job_offer.user.company.name%></p>
+                                    <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
                                  <% end %>
                                  </div>
                                 </div>

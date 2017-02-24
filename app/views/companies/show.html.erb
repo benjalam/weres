@@ -156,23 +156,27 @@
       <div class="tab-content" id="top-tab">
         <div class="container">
           <div class="row">
-            <div class="tab-content-space">
-              <div class="text-center title">
-                <h1>Add your Job Offer</h1>
+            <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+              <div class="tab-content-space">
+                <div class="text-center title-form">
+                  <h1>Add your Job Offer</h1>
+                </div>
+
+                <div class="add-card">
+                    <h1 class="text-center title"></h1>
+
+                  <div class="formulaire">
+
+                  <%= render 'job_offers/form', job_offer: JobOffer.new %>
+
+                </div>
+
+                </div>
+
               </div>
-
-              <div class="add-card">
-                  <h1 class="text-center title"></h1>
-
-                <div class="formulaire">
-
-                <%= render 'job_offers/form', job_offer: JobOffer.new %>
-
-              </div>
-
-              </div>
-
             </div>
+
+
           </div>
         </div>
       </div>

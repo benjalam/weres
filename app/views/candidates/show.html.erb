@@ -11,10 +11,7 @@
       </p>
     </div>
 
-    <% if current_user.company == @candidate.job_offer.user.company %>
         <a href="#" class="btn btn-primary back-button" onclick="window.history.back()">Back</a>
-    <% else %>
-        <%= link_to "Back", candidates_path, class: "btn btn-primary back-button" %>
-    <% end %>
+
   </div>
 </div>

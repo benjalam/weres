@@ -9,6 +9,21 @@ class CandidatesController < ApplicationController
     authorize @candidate
   end
 
+  def new
+    @candidate = Candidate.new
+    authorize @candidate
+  end
+
+  def create
+    @candidate = Candidate.new(candidate_params)
+    authorize @candidate
+    if @candidate.save
+      redirect_to :root
+    else
+      render :new
+    end
+  end
+
   def upvote
     @candidate = Candidate.find(params[:id])
     authorize @candidate
@@ -17,7 +32,17 @@ class CandidatesController < ApplicationController
     else
       current_user.up_votes @candidate
     end
-
   end
+
+  private
+
+  def candidate_params
+    params.require(:candidate).permit(:name, :position)
+  end
+
+  def set_user
+    @user = User.find(params[:company_id])
+  end
+
 
 end

@@ -1,0 +1,8 @@
+<%= simple_form_for ([@user, @candidate]) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :name %>
+  <%= f.input :position %>
+  <%= f.input :document, as: :attachinary, class: "drag-drop-box" %>
+  <%= f.button :submit, class: "btn btn-primary"%>
+<% end %>

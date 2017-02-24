@@ -16,6 +16,7 @@ class CandidatesController < ApplicationController
 
   def create
     @candidate = Candidate.new(candidate_params)
+    @candidate.user = current_user
     authorize @candidate
     if @candidate.save
       redirect_to :root
@@ -39,10 +40,5 @@ class CandidatesController < ApplicationController
   def candidate_params
     params.require(:candidate).permit(:name, :position)
   end
-
-  def set_user
-    @user = User.find(params[:company_id])
-  end
-
 
 end

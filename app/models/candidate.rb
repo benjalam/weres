@@ -5,5 +5,4 @@ class Candidate < ApplicationRecord
   has_many :contacted_candidates, dependent: :destroy
   has_attachment :document
   acts_as_votable
-
 end

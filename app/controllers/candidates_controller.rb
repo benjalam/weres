@@ -2,9 +2,10 @@ class CandidatesController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @candidates = policy_scope(Candidate)
-    @company.job_offers.each do |job_offer|
-
-
+    @job_offers = {}
+    @company.job_offers.each do |job_offer|
+      @job_offers[job_offer] = Matching.new.matching(job_offer) if job_offer.candidates == []
+    end
   end
 
   def show

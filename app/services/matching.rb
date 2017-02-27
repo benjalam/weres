@@ -12,7 +12,10 @@ require 'matrix'
     # job_offers =  JobOffer.includes(:candidates).joins(:document_files).all
     job_offers.each do |job_offer|
       unless job_offer.document.nil?
+        unless offer.user.company == job_offer.user.company.company_companies
+
        corpus << {offer: job_offer, tfidf: job_offer.to_tfidf}
+        end
       end
     end
     @corpus = corpus.map {|c| c[:tfidf]}
@@ -29,9 +32,11 @@ require 'matrix'
     #5 Iterate to get scores
     @scores = []
     corpus.each do |job_offer|
-      @scores << { job_offer: job_offer[:offer],
-                   score: matrix[model.document_index(job_offer[:tfidf]), model.document_index(offer_tfidf)]
-                 }
+      if job_offer[:offer].user.company.black_listed_companies.where(name: offer.user.company.name).empty?
+            @scores << { job_offer: job_offer[:offer],
+                         score: matrix[model.document_index(job_offer[:tfidf]), model.document_index(offer_tfidf)]
+                       }
+      end
     end
     print_time(start, 'SCORE')
     @scores = @scores.sort_by {|hash| hash[:score]}

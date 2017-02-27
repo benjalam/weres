@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
   ActiveAdmin.routes(self)
   mount Attachinary::Engine => "/attachinary"
   devise_for :users
   root to: 'pages#home'
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :companies, only: [:show, :edit, :update] do

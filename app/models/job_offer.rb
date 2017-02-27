@@ -4,6 +4,8 @@ class JobOffer < ApplicationRecord
   validates :title, presence: true
   has_many :contacted_candidates, dependent: :destroy
   has_attachment :document
+  acts_as_voter
+
 
 
   def to_tfidf

@@ -1,0 +1,15 @@
+.progress-bar {
+  width: 100px;
+  height: 25px;
+  background-color: white;
+  border: 1px solid $darkblue;
+  display: flex;
+}
+
+.progress-so-far {
+  background-color: $green;
+}
+
+.progress-total {
+  width: 100%;
+}

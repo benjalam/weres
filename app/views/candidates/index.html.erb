@@ -5,7 +5,7 @@
             <% @company.job_offers.each do |jb|%>
             <% if jb.candidates == [] %>
               <a class="tabs" data-target="#job_offer_<%=jb.id %>">
-                <h5><i class="fa fa-file-text"></i>    <%= jb.title.upcase %></h5>
+                <h5><i class="fa fa-file-text"></i>   <%=     jb.title.upcase %></h5>
               </a>
               <% end  %>
             <% end  %>
@@ -44,8 +44,9 @@
         </div>
 
     <% @job_offers.each do |jb, score|%>
-        <div class="tab-content-width tab-content-width-index">
-          <div class="tab-content" id="job_offer_<%=jb.id %>">
+      <div class="tab-content-width tab-content-width-index">
+        <div class="tab-content" id="job_offer_<%=jb.id %>">
+          <h1 class="title text-center"><%= jb.title %></h1>
             <div class="menu-tabs">
                 <a class="menu-tab active" href="#" data-target="#candidates-list" >
                   <h3>Candidates</h3>
@@ -84,7 +85,12 @@
                                                 <i class="fa fa-star favourite" aria-hidden="true"></i>
                                               <% end %>
                                             <% end  %>
-                                          <p><%= (result[:score] * 100).round(1) %> %</p>
+                                          <div class="progress-bar">
+                                            <div class="progress-so-far">
+                                              <p><%= (result[:score] * 100).round(1) %> %</p>
+                                            </div>
+                                            <div class="progress-total"></div>
+                                          </div>
                                         </div>
                                       </div>
                                   </div>

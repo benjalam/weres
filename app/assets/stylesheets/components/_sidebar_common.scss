@@ -14,6 +14,7 @@
     color: white;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-left: none;
   }
 }
 
@@ -49,9 +50,9 @@
   padding-bottom: 5px;
 }
 .sidebar-top {
-  border-bottom: 2px solid $green;
+  border-bottom: 2px solid $lightblue;
   margin-right: 6px;
   p {
-    margin-left: 2px;
+    margin-left: 6px;
   }
 }

@@ -1,24 +1,23 @@
-
 <% if policy(@company).show? %>
 <div id="sidebar">
-<div class="all-tabs-profile">
+  <div class="all-tabs-profile">
     <div class="tab-block">
       <a class="tabs active" data-target="#company_profile">
-        <h4>Company profile</h4>
+        <h4><i class="fa fa-user"></i> Company profile</h4>
       </a>
       <a class="tabs" data-target="#job_offers">
-        <h4>Job Offers </h4>
+        <h4><i class="fa fa-file-text"></i>  Job Offers </h4>
       </a>
       <a class="tabs" data-target="#uploaded_cvs">
-        <h4>Uploaded CVs</h4>
+        <h4><i class="fa fa-users"></i> Uploaded CVs</h4>
       </a>
       <a class="tabs" data-target="#blacklist">
-        <h4>Black List</h4>
+        <h4><i class="fa fa-list-ul"></i>  Black List</h4>
       </a>
     </div>
-    <div class="tab-button-add">
-      <a class="tabs btn btn-primary back-button-sidebar" data-target="#top-tab"><h5>Add job offer</h5></a>
-    </div>
+
+      <a class="tabs" data-target="#top-tab"><h5></h5></a>
+
   </div>
 </div>
 
@@ -36,7 +35,7 @@
           <div class="tab-content-space">
             <div class="col-xs-12 col-sm-6">
               <div class="profile-about">
-                <h2 class="sous-title">About <i class="fa fa-question profile-icon" aria-hidden="true"></i></h2>
+                <h2 class="sous-title text-center">About <i class="fa fa-question profile-icon" aria-hidden="true"></i></h2>
                 <% website = @company.website  %>
                 <p><%= link_to "Website", "http://#{website}"%></p>
               </div>
@@ -58,7 +57,7 @@
         <div class="row">
           <div class="tab-content-space">
             <div class="header text-center">
-                <h2 class="sous-title"> Job Offers</h2>
+                <h2 class="sous-title text-center"> Job Offers</h2>
             </div>
 
             <% @company.job_offers.each do |job_offer|%>
@@ -76,7 +75,7 @@
                     <div class="product-candidates text-center">
 
                     <p class="productright">
-                      <a href="<%= @company.id %>/candidates#job_offer_<%= job_offer.id %>"><i class="fa fa-user"></i>   See Candidates</a>
+                      <a href="<%= @company.id %>/candidates#job_offer_<%= job_offer.id %>"><i class="fa fa-users"></i>   See Candidates</a>
                     </p>
 
                     <% if current_user.company_admin %>
@@ -106,13 +105,13 @@
       <div class="container">
         <div class="row">
           <div class="tab-content-space">
-          <h2 class="sous-title"> Uploaded CVs </h2>
+          <h2 class="sous-title text-center"> Uploaded CVs </h2>
           <% @company.users.each do |user|%>
                 <% user.candidates.each do |candidate| %>
                   <div class="col-xs-12">
                     <div class="product">
                       <div class='product-body'>
-                      <%= link_to company_candidate_path(@company, candidate) do %>
+                      <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
                         <p><strong><%= candidate.name %></strong></p>
                         <p><%= candidate.position %></p>
                         <% end %>
@@ -130,7 +129,7 @@
 <div class="tab-content-width">
     <div class="tab-content hidden" id="blacklist">
           <div class="tab-content-space">
-          <h2 class="sous-title"> Company Black List </h2>
+          <h2 class="sous-title text-center"> Company Black List </h2>
 
 
         <div class="container">

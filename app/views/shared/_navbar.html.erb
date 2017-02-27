@@ -60,7 +60,7 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
       <% if user_signed_in? %>
         <li>
-          <%= link_to company_path(current_user.company) do %>
+          <%= link_to company_path(current_user.company, anchor: "company_profile") do %>
             <i class="fa fa-user"></i> <%= t(".profile", default: "Company Profile") %>
           <% end %>
         </li>

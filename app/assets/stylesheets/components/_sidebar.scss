@@ -4,14 +4,21 @@
   left: 0;
   top: 0;
   bottom: 0;
-  background-color:#CBD7DC;
-  margin-top: 70px;
+  margin-top: 180px;
+  margin-bottom: 200px;
+  background-color: $darkblue;
   h4 {
-    color: $blue;
+    color: white;
     padding-top: 5px;
     padding-bottom: 5px;
   }
 }
+
+.sidebar-logo {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
 .page-content {
   margin-left: 200px;
 }
@@ -30,11 +37,18 @@
   display: flex;
   padding: 5px 10px 5px 10px;
   h4 {
+    font-size: 14px;
     padding-bottom: 5px;
+    margin-left: 5px;
   }
 }
+
 .tabs a {
   color: white;
+}
+
+h5 {
+  font-size: 14px;
 }
 .tabs:hover {
   cursor: pointer;
@@ -43,7 +57,7 @@
 }
 
 .tabs.active {
-  background: #7293A0;
+  background: #2C3E50;
   color:white;
 }
 
@@ -74,12 +88,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 145px);
 }
 
 .all-tabs-profile {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 90px);
 }

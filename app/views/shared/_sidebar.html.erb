@@ -1,0 +1,26 @@
+<div class="sidebar-common">
+
+    <div class="sidebar-top">
+      <div class="sidebar-logo text-center">
+        <%= link_to root_path do %>
+          <%= image_tag "logo-provisoire" %>
+        <% end %>
+      </div>
+      <div class="tools">
+          <% if user_signed_in? %>
+            <p><%= link_to company_path(current_user.company, anchor: "company_profile") do %>
+            <i class="fa fa-cog"></i><%= "   Mon compte" %></p>
+            <% end %>
+          <% end %>
+      </div>
+        <div class="tab-button-add">
+          <a class="tabs" data-target="#top-tab"><h4><i class="fa fa-plus-circle"></i> Add a Job Offer </h4></a>
+        </div>
+    </div>
+
+    <div class="logout-button">
+      <p><i class="fa fa-sign-out"></i><%= link_to "  LOGOUT", destroy_user_session_path, method: :delete %></p>
+    </div>
+
+
+</div>

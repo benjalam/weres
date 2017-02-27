@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-      <% if @job_offer.document? %>
-        <%= cl_image_tag @candidate.document.path, width: 200, height: 300, crop: :fill %>
+      <% if @candidate.document? %>
+        <%= cl_image_tag "#{@candidate.document.public_id}.png", width: 200, height: 300, crop: :fill %>
       <% end %>
       <h1 class="text-center"><%= @candidate.name %></h1>
       <br>

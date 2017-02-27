@@ -69,8 +69,6 @@
                     <div class="row">
                       <% score.reverse.each do |result| %>
                         <% unless result[:job_offer].user.company == current_user.company %>
-
-
                           <% result[:job_offer].candidates.each do |candidate| %>
                             <div class="candidates">
                                 <div class="candidates-info">

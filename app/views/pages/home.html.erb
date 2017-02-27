@@ -76,7 +76,11 @@
       <p class="content">
         Monetize the time you spent sorting candidates by selling your best profile on WeRes
       </p>
-      <a class="btn btn-primary btn-banner" href="/contact">PUSH CANDIDATES</a>
+      <% if user_signed_in? %>
+        <%= link_to "PUSH CANDIDATES", new_candidate_path(@candidate), class: 'btn btn-primary btn-banner' %>
+      <% else %>
+        <a class="btn btn-primary btn-banner" href="/contact">PUSH CANDIDATES</a>
+      <% end %>
     </div>
   </div>
   <div class="hidden-xs hidden-sm col-md-5 full-height">

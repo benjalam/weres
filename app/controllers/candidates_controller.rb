@@ -8,6 +8,8 @@ class CandidatesController < ApplicationController
   end
 
   def show
+    @company = Company.find(params[:company_id])
+    @job_offer = JobOffer.find(params[:job_offer_id])
     @candidate = Candidate.find(params[:id])
     authorize @candidate
   end
@@ -41,7 +43,7 @@ class CandidatesController < ApplicationController
   private
 
   def candidate_params
-    params.require(:candidate).permit(:name, :position)
+    params.require(:candidate).permit(:name, :position, :email)
   end
 
 end

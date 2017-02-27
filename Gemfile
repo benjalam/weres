@@ -10,6 +10,8 @@ gem 'devise'
 gem 'redis'
 gem 'pundit'
 gem 'yomu'
+gem 'sidekiq'
+gem 'sidekiq-failures'
 
 gem 'sass-rails'
 gem 'jquery-rails'

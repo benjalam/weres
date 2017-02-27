@@ -43,9 +43,7 @@
       </div>
     </div>
 
-    <% @company.job_offers.each do |jb|%>
-      <% if jb.candidates == [] %>
-        <% score = Matching.new.matching(jb) %>
+    <% @job_offers.each do |jb, score|%>
         <div class="tab-content-width tab-content-width-index">
           <div class="tab-content" id="job_offer_<%=jb.id %>">
             <div class="menu-tabs">
@@ -102,10 +100,9 @@
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
-  </div>
-<% end %>
+</div>
 
 
 

@@ -23,18 +23,17 @@
 
 
 <div class="page-content">
-  <div class="background">
     <div class="text-center index-title">
       <h1 class="title"> <%= @company.name %>'s Profile</h1>
     </div>
 
 <div class="tab-content-width">
     <div class="tab-content" id="company_profile">
-      <div class="container text-center">
+      <div class="container">
         <div class="row">
           <div class="tab-content-space">
             <div class="col-xs-12 col-sm-6">
-              <div class="profile-about">
+              <div class="profile-about text-center">
                 <h2 class="sous-title text-center">About <i class="fa fa-question profile-icon" aria-hidden="true"></i></h2>
                 <% website = @company.website  %>
                 <p><%= link_to "Website", "http://#{website}"%></p>
@@ -42,8 +41,8 @@
             </div>
 
             <div class="col-xs-12 col-sm-6">
-              <h2 class="sous-title">Description <i class="fa fa-file-text-o profile-icon" aria-hidden="true"></i></h2>
-                <p><%= @company.description %></p>
+              <h2 class="sous-title text-center">Description <i class="fa fa-file-text-o profile-icon" aria-hidden="true"></i></h2>
+                <p class="text-center"><%= @company.description %></p>
             </div>
           </div>
         </div>
@@ -155,42 +154,39 @@
     </div>
 </div>
 
-    <div class="tab-content-width">
-      <div class="tab-content" id="top-tab">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-              <div class="tab-content-space">
-                <div class="text-center title-form">
-                  <h1>Add your Job Offer</h1>
-                </div>
-
-                <div class="add-card">
-                    <h1 class="text-center title"></h1>
-
-                  <div class="formulaire">
-
-                  <%= render 'job_offers/form', job_offer: JobOffer.new %>
-
-                </div>
-
-                </div>
-
-              </div>
+<div class="tab-content-width">
+  <div class="tab-content" id="top-tab">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+          <div class="tab-content-space">
+            <div class="text-center title-form">
+              <h1>Add your Job Offer</h1>
             </div>
 
+            <div class="add-card">
+                <h1 class="text-center title"></h1>
+
+              <div class="formulaire">
+
+              <%= render 'job_offers/form', job_offer: JobOffer.new %>
+
+            </div>
+
+            </div>
 
           </div>
         </div>
+
+
       </div>
     </div>
+  </div>
+</div>
 
 
 
 
 </div>
-
-</div>
-
 
 <% end %>

@@ -1,0 +1,57 @@
+.sidebar-common {
+  position: fixed;
+  width: 200px;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $darkblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh);
+  h4 {
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+.sidebar-logo {
+  img {
+    height: 50px;
+    border-radius: 50%;
+  }
+}
+
+.tools {
+  margin-top: 20px;
+  margin-left: 10px;
+  left: 100px;
+  font-size: 14px;
+  padding: none;
+  a {
+  color: white;
+  }
+}
+
+.logout-button {
+  margin-left: 50px;
+  z-index: 1;
+  color: white;
+  a {
+    color: white
+  }
+
+}
+
+.tab-button-add {
+  padding-bottom: 5px;
+}
+.sidebar-top {
+  border-bottom: 2px solid $green;
+  margin-right: 6px;
+  p {
+    margin-left: 2px;
+  }
+}

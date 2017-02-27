@@ -5,7 +5,6 @@
 
   <% if @job_offer.document? %>
     <%= cl_image_tag "#{@job_offer.document.public_id}.png", width: 200, height: 300, crop: :fill %>
-    <% raise %>
   <% end %>
 
   <ul class="list-inline">

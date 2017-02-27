@@ -24,6 +24,10 @@
 }
 
 .tab-content-width {
+  overflow-x: hidden;
+}
+
+.tab-content-width-index {
   width: 80%;
   margin: auto;
 }
@@ -45,10 +49,13 @@
 
 .tabs a {
   color: white;
+  text-decoration: none;
 }
 
 h5 {
   font-size: 14px;
+  color: white;
+  text-decoration: none;
 }
 .tabs:hover {
   cursor: pointer;

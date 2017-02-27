@@ -13,7 +13,6 @@ class JobOffersController < ApplicationController
   end
 
   def new
-    script_hacker
     @job_offer = JobOffer.new
     authorize @job_offer
   end
@@ -24,8 +23,7 @@ class JobOffersController < ApplicationController
     @job_offer.user = current_user
     @job_offer.tfidf = conversion(@job_offer)
     if @job_offer.save
-      Matching.new.matching(@job_offer)
-      redirect_to  "/companies/#{@company.id}/candidates#job_offer_#{@job_offer.id}"
+        redirect_to  "/companies/#{@company.id}/candidates#job_offer_#{@job_offer.id}"
     else
       render :new
     end

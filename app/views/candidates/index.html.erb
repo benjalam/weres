@@ -19,6 +19,13 @@
     </div>
   </div>
 
+  <div id="options-candidates">
+
+
+
+
+  </div>
+
   <div class="page-content">
 
     <div class="tab-content-width">
@@ -69,14 +76,16 @@
                                 <div class="candidates-info">
                                   <%= link_to company_candidate_path(@company, candidate) do %>
                                     <h3><%= candidate.name %></h3>
-                                    <p><strong>Current Position:</strong><%= candidate.position %></p>
+                                    <p><strong>Current Position: </strong><%= candidate.position %></p>
                                     <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
                                   <% end %>
                                 </div>
                                 <div class="candidates-rating">
                                   <div class="text-center rating">
-                                    <%= link_to upvote_candidate_path(candidate), method: :post do %>
-                                        <% if current_user.voted_for? candidate %>
+
+                                    <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
+                                        <% if jb.voted_for? candidate %>
+
                                           <i class="fa fa-star favourited" aria-hidden="true"></i>
                                         <% else %>
                                           <i class="fa fa-star favourite" aria-hidden="true"></i>
@@ -87,13 +96,10 @@
                                 </div>
                             </div>
                           <% end %>
-
-
                         <% end %>
                       <% end %>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>

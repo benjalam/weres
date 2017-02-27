@@ -30,10 +30,11 @@ class CandidatesController < ApplicationController
   def upvote
     @candidate = Candidate.find(params[:id])
     authorize @candidate
-    if current_user.voted_for? @candidate
-      current_user.unvote_for @candidate
+    job_offer = JobOffer.find(params[:job_offer_id])
+    if job_offer.voted_for? @candidate
+       job_offer.unvote_for @candidate
     else
-      current_user.up_votes @candidate
+      job_offer.up_votes @candidate
     end
   end
 

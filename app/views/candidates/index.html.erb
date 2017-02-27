@@ -19,11 +19,18 @@
     </div>
   </div>
 
+  <div id="options-candidates">
+
+
+
+
+  </div>
+
   <div class="page-content">
 
     <div class="tab-content-width">
       <div class="tab-content" id="top-tab">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
             <div class="tab-content-space">
               <div class="col-xs-12 col-sm-4 col-sm-offset-4">
@@ -58,38 +65,39 @@
                     <h1 class="text-center title">List of candidates</h1>
                     <h4 class="text-center sous-title"><%= jb.title %></h4>
                   </div>
-                  <% score.reverse.each do |result| %>
-                    <% unless result[:job_offer].user.company == current_user.company %>
+                  <div class="container-fluid">
+                    <div class="row">
+                      <% score.reverse.each do |result| %>
+                        <% unless result[:job_offer].user.company == current_user.company %>
+                          <% result[:job_offer].candidates.each do |candidate| %>
+                            <div class="candidates">
+                                <div class="candidates-info">
+                                  <%= link_to company_candidate_path(@company, candidate) do %>
+                                    <h3><%= candidate.name %></h3>
+                                    <p><strong>Current Position: </strong><%= candidate.position %></p>
+                                    <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                  <% end %>
+                                </div>
+                                <div class="candidates-rating">
+                                  <div class="text-center rating">
 
-                      <% result[:job_offer].candidates.each do |candidate| %>
-                        <div class="container">
-                          <div class="row">
-                            <div class="col-xs-9">
-                              <div class="candidates">
-                                <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
-                                  <h3><%= candidate.name %></h3>
-                                  <p><strong>Current Position:</strong><%= candidate.position %></p>
-                                  <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
-                                <% end %>
-                              </div>
+                                    <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
+                                        <% if jb.voted_for? candidate %>
+
+                                          <i class="fa fa-star favourited" aria-hidden="true"></i>
+                                        <% else %>
+                                          <i class="fa fa-star favourite" aria-hidden="true"></i>
+                                        <% end %>
+                                      <% end  %>
+                                    <p><%= (result[:score] * 100).round(1) %> %</p>
+                                  </div>
+                                </div>
                             </div>
-                            <div class="col-xs-3">
-                              <div class="candidates text-center rating">
-                                <%= link_to upvote_candidate_path(candidate), method: :post do %>
-                                    <% if current_user.voted_for? candidate %>
-                                      <i class="fa fa-star favourited" aria-hidden="true"></i>
-                                    <% else %>
-                                      <i class="fa fa-star favourite" aria-hidden="true"></i>
-                                    <% end %>
-                                  <% end  %>
-                                <p><%= (result[:score] * 100).round(1) %> %</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                          <% end %>
+                        <% end %>
                       <% end %>
-                    <% end %>
-                  <% end %>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

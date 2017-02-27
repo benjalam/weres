@@ -3,7 +3,7 @@ class Candidate < ApplicationRecord
   belongs_to :job_offer
   validates :name, presence: true
   has_many :contacted_candidates, dependent: :destroy
-  has_attachment :document
+  has_attachment :document, accept: [:pdf]
   acts_as_votable
 
 end

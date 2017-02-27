@@ -76,7 +76,7 @@
                                     <% end %>
                                   </div>
                                   <div class="candidates-rating">
-                                    <div class="text-center rating">
+                                    <div class="text-center">
                                           <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
                                               <% if jb.voted_for? candidate %>
 
@@ -86,10 +86,7 @@
                                               <% end %>
                                             <% end  %>
                                           <div class="progress-bar">
-                                            <div class="progress-so-far">
-                                              <p><%= (result[:score] * 100).round(1) %> %</p>
-                                            </div>
-                                            <div class="progress-total"></div>
+                                              <p><progress value="<%= (result[:score] * 100).round(1) %>" max="100"></progress></p>
                                           </div>
                                         </div>
                                       </div>

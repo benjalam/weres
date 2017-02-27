@@ -10,8 +10,9 @@
       <h4 class="text-center"><strong>Recommended by:</strong> <%= @candidate.job_offer.user.company.name %></h4>
       <h4 class="text-center"><strong>For a position as </strong><%= @candidate.job_offer.title %></h4>
       <h4>
-      <%= link_to 'Send inmail', company_candidate_path(@candidate), method: :post, class: 'btn btn-primary send-inmail' %>
-      </h4>
+<p class="text-center">
+  <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, @job_offer, candidate_id: @candidate.id), method: :post, class: 'btn btn-primary send-inmail' %>
+</p>
     </div>
 
         <a href="#" class="btn btn-primary back-button" onclick="window.history.back()">Back</a>

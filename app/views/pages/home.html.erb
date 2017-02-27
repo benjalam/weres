@@ -15,21 +15,21 @@
     <div><span class="">WHY WERES?</span></div>
   </div>
   <div class="title-description">
-    <div>WeRes is the first intelligent platform created to share candidates between recruiters.  </div>
+    <div>WeRes is the first intelligent platform created to <strong>share candidates between recruiters.</strong></div>
   </div>
   <br>
   <div class="row">
     <div class="col-xs-12 col-sm-4">
       <%= image_tag "three-candidates.svg" %>
-      <p>For each job there is more than one good candidate </p>
+      <p>For each job there is <strong>more than one good candidate</strong></p>
     </div>
     <div class="col-xs-12 col-sm-4">
       <%= image_tag "resume.svg" %>
-      <p>Our candidates are selected by the best recruiters </p>
+      <p>Our candidates are <strong>selected by the best recruiters</strong></p>
     </div>
     <div class="col-xs-12 col-sm-4">
       <%= image_tag "percentage.svg" %>
-      <p>Our matching algorithm only present you the best fitted candidates</p>
+      <p>Our matching algorithm only present you the <strong>best fitted candidates</strong></p>
     </div>
   </div>
 </div>
@@ -76,7 +76,11 @@
       <p class="content">
         Monetize the time you spent sorting candidates by selling your best profile on WeRes
       </p>
-      <a class="btn btn-primary btn-banner" href="/contact">PUSH CANDIDATES</a>
+      <% if user_signed_in? %>
+        <%= link_to "PUSH CANDIDATES", new_candidate_path(@candidate), class: 'btn btn-primary btn-banner' %>
+      <% else %>
+        <a class="btn btn-primary btn-banner" href="/contact">PUSH CANDIDATES</a>
+      <% end %>
     </div>
   </div>
   <div class="hidden-xs hidden-sm col-md-5 full-height">
@@ -87,14 +91,16 @@
 </div>
 
 <div class="full-width references-list">
-  <h2 class="text-center">Ils nous font confiance</h2>
+  <div class="big-title">
+    <div><span class="">THEY TRUST US</span></div>
+  </div>
   <ul class="list-unstyled list-inline text-center responsive">
-    <li><%= image_tag "om.png", height: "90px" %></li>
-    <li><%= image_tag "timzy.png", height: "90px" %></li>
-    <li><%= image_tag "rhythm.png", height: "90px" %></li>
-    <li><%= image_tag "thegoodgift.png", height: "90px" %></li>
-    <li><%= image_tag "wktp.png", height: "90px" %></li>
-    <li><%= image_tag "google.jpg", height: "90px" %></li>
+    <li><%= image_tag "om.png", height: "80px" %></li>
+    <li><%= image_tag "timzy.png", height: "80px" %></li>
+    <li><%= image_tag "rhythm.png", height: "80px" %></li>
+    <li><%= image_tag "thegoodgift.png", height: "80px" %></li>
+    <li><%= image_tag "wktp.png", height: "80px" %></li>
+    <li><%= image_tag "google.jpg", height: "80px" %></li>
 
   </ul>
 </div>

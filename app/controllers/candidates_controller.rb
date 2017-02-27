@@ -5,6 +5,8 @@ class CandidatesController < ApplicationController
   end
 
   def show
+    @company = Company.find(params[:company_id])
+    @job_offer = JobOffer.find(params[:job_offer_id])
     @candidate = Candidate.find(params[:id])
     authorize @candidate
   end
@@ -28,17 +30,18 @@ class CandidatesController < ApplicationController
   def upvote
     @candidate = Candidate.find(params[:id])
     authorize @candidate
-    if current_user.voted_for? @candidate
-      current_user.unvote_for @candidate
+    job_offer = JobOffer.find(params[:job_offer_id])
+    if job_offer.voted_for? @candidate
+       job_offer.unvote_for @candidate
     else
-      current_user.up_votes @candidate
+      job_offer.up_votes @candidate
     end
   end
 
   private
 
   def candidate_params
-    params.require(:candidate).permit(:name, :position, :document)
+    params.require(:candidate).permit(:name, :position, :document, :email)
   end
 
 end

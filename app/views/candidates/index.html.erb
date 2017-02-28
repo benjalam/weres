@@ -20,100 +20,87 @@
 
 
   <div class="page-content">
-    <div class="tab-content-width">
-      <div class="tab-content" id="top-tab">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="tab-content-space">
-              <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-                <div class="text-center title-form">
-                  <h1>Add your Job Offer</h1>
-                </div>
-
-                <div class="add-card">
-                    <h1 class="text-center title"></h1>
-
-                  <div class="formulaire">
-                    <%= render 'job_offers/form', job_offer: JobOffer.new %>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
+    <div class="loader">
+      <div class="container">
+       <div class="row">
+       <div class="col-xs-12">
+         <h2>Our intelligent matching is finding the best candidates for you...</h2>
+       </div>
+       <div class="col-xs-12">
+        <div class="spinner">
+          <div class="ball ball-1"></div>
+          <div class="ball ball-2"></div>
+          <div class="ball ball-3"></div>
+          <div class="ball ball-4"></div>
+        </div>
+        </div>
         </div>
       </div>
     </div>
-
-<% @job_offers.each do |jb, score|%>
-  <div class="tab-content-width tab-content-width-index">
-    <div class="tab-content" id="job_offer_<%=jb.id %>">
-      <h1 class="title text-center"><%= jb.title %></h1>
-        <div class="menu-tabs">
-            <a class="menu-tab active" href="#" data-target="#candidates-list" >
-              <h3>Candidates</h3>
-            </a>
-            <a class="menu-tab" href="#" data-target="#favourites">
-              <h3>Favourites</h3>
-            </a>
-            <a class="menu-tab" href="#" data-target="#contacted">
-              <h3>Contacted</h3>
-            </a>
-        </div>
-        <div id="candidates-list">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="tab-content-space">
-                <div class="container-fluid">
-                  <div class="row">
-                    <% score.reverse.each do |result| %>
-                      <% unless result[:job_offer].user.company == current_user.company %>
-                        <% result[:job_offer].candidates.each do |candidate| %>
-                          <div class="candidates">
-                              <div class="candidates-info">
-                                <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
-                                  <h3><%= candidate.name %></h3>
-                                  <p><strong>Current Position: </strong><%= candidate.position %></p>
-                                  <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
-                                <% end %>
-                                <p class="text-center">
-                                  <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index' %>
-                                </p>
-                              </div>
-                              <div class="candidates-rating">
-                                <div class="text-center">
-                                  <p class="rating"><%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
-                                      <% if jb.voted_for? candidate %>
-
-                                        <i class="fa fa-star favourited" aria-hidden="true"></i>
-                                      <% else %>
-                                        <i class="fa fa-star favourite" aria-hidden="true"></i>
-                                      <% end %>
-                                    <% end  %>
-                                  </p>
-                                  <p>
-                                  <div class="progress-bar-home">
-                                      <figure data-skill="<%= (result[:score] * 100).round(1) %> " data-skill-size="<%= (result[:score] * 100).round(1) %>"></figure>
-                                   </div>
-                                </div>
-                              </div>
-                            </div>
-                          <% end %>
-                        <% end %>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
   </div>
 <% end %>
 
+<% content_for(:after_js) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.ajax({
+        type: "GET",
+        url: "<%= matching_company_candidates_path(@company) %>",
+        success: function(data) {
+          var tab_anchor = window.location.hash;
+          $(".page-content").hide();
+          $(".page-content").html(data);
+          $("a[data-target='" + tab_anchor + "']").trigger("click")
+          $(".page-content").slideDown();
 
+
+          $('[data-skill]').each(function(){
+          var item = $(this),
+            skill = item.data('skill'),
+            size = item.data('skill-size'),
+            border = 5,
+            radius = 50,
+            circumference = 2 * Math.PI * radius,
+            progress = circumference - ((circumference / 100) * skill),
+            speed = 1000;
+          item.append('<h3>0</h3><svg><circle class="back" /><circle class="front" /></svg>');
+          $({Counter: 0}).animate({
+              Counter: skill
+            }, {
+              duration: speed,
+              easing: 'swing',
+              step: function () {
+              item.find('h3').text(Math.ceil(this.Counter) + '%');
+            }
+          });
+          item.find('svg').width(200).height(200);
+          item.find('circle').attr({
+            'r' : radius,
+            'cy' : radius + border,
+            'cx' : radius + border
+          });
+          item.find('.front').css({
+            'stroke-dasharray' : circumference,
+            'stroke-dashoffset' : circumference
+          }).animate({
+            'stroke-dashoffset' : progress
+          }, speed);
+          });
+
+
+          $(".favourite, .favourited").click(function(){
+            $(this).toggleClass("favourited")
+          });
+
+        },
+        error: function(jqXHR) {
+          console.error(jqXHR.responseText);
+        }
+      });
+
+    });
+  </script>
+ <% end %>
 
 
 

@@ -8,5 +8,4 @@
 //= require tabs.js
 //= require init_attachinary.js
 //= require fav.js
-//= require progressbar.js
 //= require smoothscroll.js

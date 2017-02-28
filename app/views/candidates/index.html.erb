@@ -88,8 +88,8 @@
           });
 
           $(".favourite, .favourited").click(function(){
-            $(this).toggleClass("favourited")
-          });
+             $(this).toggleClass("favourited")
+           });
 
           $(".menu-tab").removeClass("active");
           $(".menu-tab-content").addClass("hidden");
@@ -100,7 +100,6 @@
           }
 
 
-          $(function(){
 
             $(".menu-tab").on("click", function(e){
               $(".menu-tab").removeClass("active");
@@ -120,11 +119,10 @@
 
             });
 
-          });
-
-          $('[data-toggle="tooltip"]').tooltip()
+          $('[data-toggle="tooltip"]').tooltip() ;
 
         },
+
         error: function(jqXHR) {
           console.error(jqXHR.responseText);
         }

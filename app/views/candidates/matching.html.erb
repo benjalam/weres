@@ -56,6 +56,9 @@
                                       <p><strong>Current Position: </strong><%= candidate.position %></p>
                                       <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
                                     <% end %>
+                                    <p class="text-center">
+                                            <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index' %>
+                                          </p>
                                   </div>
                                   <div class="candidates-rating">
                                     <div class="text-center">
@@ -100,6 +103,9 @@
                                             <p><strong>Current Position: </strong><%= candidate.position %></p>
                                             <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
                                           <% end %>
+                                          <p class="text-center">
+                                            <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index' %>
+                                          </p>
                                         </div>
                                         <div class="candidates-rating">
                                           <div class="text-center">

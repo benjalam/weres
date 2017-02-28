@@ -68,33 +68,47 @@
                           <% unless result[:job_offer].user.company == current_user.company %>
                             <% result[:job_offer].candidates.each do |candidate| %>
                               <div class="candidates">
-                                  <div class="candidates-info">
+                                <div class="candidates-info">
+
+                                  <% if candidate.document.nil? %>
+                                    <%# path = company_candidate_path %>
                                     <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
                                       <h3><%= candidate.name %></h3>
                                       <p><strong>Current Position: </strong><%= candidate.position %></p>
                                       <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
                                     <% end %>
-                                  </div>
-                                  <div class="candidates-rating">
-                                    <div class="text-center">
-                                          <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
-                                              <% if jb.voted_for? candidate %>
+                                  <% else %>
+                                    <%# path = cl_image_path("#{candidate.document.public_id}.png", width: 800,
+                                    height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2"  %>
+                                    <%= link_to cl_image_path("#{candidate.document.public_id}.png", width: 800,
+                                      height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2" do %>
+                                      <h3><%= candidate.name %></h3>
+                                      <p><strong>Current Position: </strong><%= candidate.position %></p>
+                                      <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                    <% end %>
+                                  <% end %>
 
-                                                <i class="fa fa-star favourited" aria-hidden="true"></i>
-                                              <% else %>
-                                                <i class="fa fa-star favourite" aria-hidden="true"></i>
-                                              <% end %>
-                                            <% end  %>
-                                          <div class="progress-bar">
-                                              <p><progress value="<%= (result[:score] * 100).round(1) %>" max="100"></progress></p>
-                                          </div>
+
+                                </div>
+                                <div class="candidates-rating">
+                                  <div class="text-center">
+                                        <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
+                                            <% if jb.voted_for? candidate %>
+
+                                              <i class="fa fa-star favourited" aria-hidden="true"></i>
+                                            <% else %>
+                                              <i class="fa fa-star favourite" aria-hidden="true"></i>
+                                            <% end %>
+                                          <% end  %>
+                                        <div class="progress-bar">
+                                            <p><progress value="<%= (result[:score] * 100).round(1) %>" max="100"></progress></p>
                                         </div>
                                       </div>
-                                  </div>
-                                <% end %>
+                                    </div>
+                                </div>
                               <% end %>
                             <% end %>
-                          </div>
+                          <% end %>
                         </div>
                       </div>
                     </div>
@@ -102,9 +116,20 @@
                 </div>
               </div>
             </div>
-          <% end %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+<% content_for :after_js do %>
+  <script type="text/javascript">
+  ;( function( $ ) {
+
+    $( '.swipebox' ).swipebox();
+
+  } )( jQuery );
+  </script>
+<% end %>
 
 
 

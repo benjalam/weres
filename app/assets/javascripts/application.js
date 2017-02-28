@@ -10,4 +10,3 @@
 //= require fav.js
 //= require smoothscroll.js
 //= require swipebox.js
-

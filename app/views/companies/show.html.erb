@@ -106,8 +106,8 @@
             <% @company.users.each do |user|%>
                   <% user.candidates.each do |candidate| %>
                     <div class="col-xs-12">
-                      <div class="product">
-                        <div class='product-body'>
+                      <div class="uploaded-cvs">
+                        <div class='uploaded-cvs-body'>
                         <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
                           <p><strong><%= candidate.name %></strong></p>
                           <p><%= candidate.position %></p>
@@ -183,6 +183,8 @@
     </div>
   </div>
 <% end %>
+
+
 <% content_for :after_js do %>
   <script type="text/javascript">
   ;( function( $ ) {

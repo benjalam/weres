@@ -1,3 +1,41 @@
+.job-offer {
+  border-bottom: 1px solid $darkblue;
+}
+
+.uploaded-cvs {
+  &:nth-child(even) {
+    list-style: none;
+    background-color: white;
+    border-bottom: 1px solid #E7E7E7;
+  }
+  &:nth-child(odd) {
+    list-style: none;
+    background-color: $gray;
+    border-bottom: 1px solid #E7E7E7;
+  }
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  justify-content: space-between;
+  &:hover {
+    background: #E9E9E9;
+    border-radius: 3px;
+    text-decoration: none;
+  }
+}
+
+.uploaded-cvs-body{
+  flex: 1 1 auto;
+  text-decoration: none;
+  color: $blue;
+  &:hover {
+  text-decoration: none;
+  }
+}
+
 .product {
   display: flex;
   align-items: center;

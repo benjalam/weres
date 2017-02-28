@@ -2,7 +2,6 @@
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= svg 'logo_weres'%>
-<!--     <%= image_tag "logoblanc.png", class:"logo" %> -->
   <% end %>
 
   <!-- Right Navigation -->
@@ -62,6 +61,7 @@
     // navbar transition jQuery script
     $(window).scroll(function(e){
       if ($(this).scrollTop() > 10) {
+        var path = <%= asset_path 'logobleu.png' %>
         // $(".navbar-home").css({
         //   "background": "white"
         // });
@@ -73,7 +73,6 @@
         $('.navbar-white-link').addClass('navbar-black-link');
         $('.navbar-black-link').removeClass('navbar-white-link');
         $('#Weres').css({ fill: "#1F5F8B" });
-
       }
       else {
         // $(".navbar-home").css({

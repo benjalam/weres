@@ -29,7 +29,7 @@
     <!-- tab-content-width -->
     <div class="tab-content-width">
       <div class="tab-content" id="company_profile">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
             <div class="tab-content-space">
               <div class="col-xs-12 col-sm-6">
@@ -53,7 +53,7 @@
     <!-- tab-content-width -->
     <div class="tab-content-width">
       <div class="tab-content hidden" id="job_offers">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
             <div class="tab-content-space">
               <div class="header text-center">
@@ -99,7 +99,7 @@
 
     <div class="tab-content-width">
       <div class="tab-content hidden" id="uploaded_cvs">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
             <div class="tab-content-space">
             <h2 class="sous-title text-center"> Uploaded CVs </h2>
@@ -129,7 +129,7 @@
             <h2 class="sous-title text-center"> Company Black List </h2>
 
 
-          <div class="container">
+          <div class="container-fluid">
             <div id="black_listed_companies">
               <% @company.black_listed_companies.each do |blacklist|%>
                     <%= render 'company_companies/show', company: blacklist %>
@@ -154,7 +154,7 @@
 
     <div class="tab-content-width">
       <div class="tab-content" id="top-tab">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-xs-12 col-sm-4 col-sm-offset-4">
               <div class="tab-content-space">

@@ -1,2 +1,7 @@
-$("#candidates-list_<%= @job_offer.id %> #favorite-link-container_<%= @candidate.id %>").html("<%= j render 'candidates/favorite_link', candidate: @candidate, job_offer: @job_offer %>");
+$("#candidates-list_<%= @job_offer.id %> .favorite-link-container_<%= @candidate.id %>").html("<%= j render 'candidates/favorite_link', candidate: @candidate, job_offer: @job_offer %>");
+$("#favorites_<%= @job_offer.id %> .favorite-link-container_<%= @candidate.id %>").html("<%= j render 'candidates/favorite_link', candidate: @candidate, job_offer: @job_offer %>");
+$("contacted_<%= @job_offer.id %> .favorite-link-container_<%= @candidate.id %>").html("<%= j render 'candidates/favorite_link', candidate: @candidate, job_offer: @job_offer %>");
+
 $('[data-toggle="tooltip"]').tooltip();
+
+

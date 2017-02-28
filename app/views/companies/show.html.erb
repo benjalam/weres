@@ -62,9 +62,6 @@
 
               <% @company.job_offers.each do |job_offer|%>
                 <% if job_offer.candidates == [] %>
-
-
-
                   <%= link_to cl_image_path("#{job_offer.document.public_id}.png", width: 800, height: 1000, crop: :fill), class: "swipebox", rel: "gallery" do %>
                     <div class="col-xs-9">
                       <div class="product">
@@ -94,10 +91,6 @@
                   </div>
                 <% end %><!-- end of if job_offer.candidates -->
               <% end %><!-- end of job_offer block -->
-
-
-
-
             </div>
           </div>
         </div>
@@ -113,8 +106,8 @@
             <% @company.users.each do |user|%>
                   <% user.candidates.each do |candidate| %>
                     <div class="col-xs-12">
-                      <div class="product">
-                        <div class='product-body'>
+                      <div class="uploaded-cvs">
+                        <div class='uploaded-cvs-body'>
                         <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
                           <p><strong><%= candidate.name %></strong></p>
                           <p><%= candidate.position %></p>

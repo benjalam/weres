@@ -16,8 +16,10 @@
   align-items: center;
   padding: 20px;
   position: relative;
+  overflow-x: hidden;
 }
 .candidates-info {
+  overflow-x: hidden;
   flex: 0 0 80%;
   h3 {
     width: 600px;

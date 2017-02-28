@@ -61,20 +61,16 @@
               </div>
 
               <% @company.job_offers.each do |job_offer|%>
+              <div class="candidates">
                 <% if job_offer.candidates == [] %>
                   <%= link_to cl_image_path("#{job_offer.document.public_id}.png", width: 800, height: 1000, crop: :fill), class: "swipebox", rel: "gallery" do %>
-                    <div class="col-xs-9">
-                      <div class="product">
-                        <div class='product-body'>
+                    <div class="candidates-info">
                           <h3><strong><%= job_offer.title %></strong></h3>
                           <p>Uploaded on: <%= job_offer.created_at.strftime("%b %d, %Y")%></p>
-                        </div>
-                      </div>
                     </div>
                   <% end %><!-- end of link_to swipebox -->
-                  <div class="col-xs-3">
-                    <div class="product-candidates text-center">
-                      <p class="productright">
+                    <div class="product-candidates rating-candidates text-center">
+                      <p>
                         <a href="<%= @company.id %>/candidates#job_offer_<%= job_offer.id %>"><i class="fa fa-users"></i>   See Candidates</a>
                       </p>
                       <% if current_user.company_admin %>
@@ -88,8 +84,11 @@
                         </ul>
                       <% end %><!-- end of if condition -->
                     </div>
-                  </div>
                 <% end %><!-- end of if job_offer.candidates -->
+            </div>
+
+
+
               <% end %><!-- end of job_offer block -->
             </div>
           </div>
@@ -107,10 +106,10 @@
             <% @company.users.each do |user|%>
                   <% user.candidates.each do |candidate| %>
                     <div class="col-xs-12">
-                        <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
-                          <p><strong><%= candidate.name %></strong></p>
-                          <p><%= candidate.position %></p>
-                          <% end %>
+                      <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
+                        <p><strong><%= candidate.name %></strong></p>
+                        <p><%= candidate.position %></p>
+                        <% end %>
                     </div>
                   <% end %>
                 <% end %>

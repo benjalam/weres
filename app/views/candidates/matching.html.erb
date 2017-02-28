@@ -81,16 +81,16 @@
 
                                   <div class="rating">
                                     <div class="text-center" >
-                                        <div class="favorite-link-container_<%= candidate.id %>">
-                                          <%= render 'favorite_link', candidate: candidate, job_offer: jb %>
-                                        </div>
-
-
-                                          <div class="progress-bar-home">
-                                            <figure data-skill="<%= (result[:score] * 100).round(1) %> " data-skill-size="<%= (result[:score] * 100).round(1) %>"></figure>
-                                         </div>
-                                        </div>
+                                      <div class="favorite-link-container_<%= candidate.id %>">
+                                        <%= render 'favorite_link', candidate: candidate, job_offer: jb %>
                                       </div>
+
+
+                                        <div class="progress-bar-home">
+                                          <figure data-skill="<%= (result[:score] * 100).round(1) %> " data-skill-size="<%= (result[:score] * 100).round(1) %>"></figure>
+                                       </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 <% end %>
                               <% end %>

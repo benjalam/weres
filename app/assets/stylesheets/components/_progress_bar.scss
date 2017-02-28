@@ -1,9 +1,9 @@
 .progress-bar {
-  width: 100px;
   height: 25px;
   background-color: transparent;
   display: flex;
   margin-right: 8px;
+  margin-top: 20px;
 }
 
 .progress-value {
@@ -13,6 +13,7 @@
 }
 
 progress {
+  width: 100px;
   background-color: transparent;
   border: 0;
   height: 25px;
@@ -21,7 +22,8 @@ progress {
 
 progress::after {
   content: attr(value)'%';
-  color: black;
+  color: $darkblue;
+  margin-top: 10px;
 }
 
 progress::-webkit-progress-bar {

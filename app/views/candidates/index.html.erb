@@ -77,24 +77,22 @@
                                   </div>
                                   <div class="candidates-rating">
                                     <div class="text-center">
-                                          <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
-                                              <% if jb.voted_for? candidate %>
+                                      <p class="rating"><%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
+                                          <% if jb.voted_for? candidate %>
 
-                                                <i class="fa fa-star favourited" aria-hidden="true"></i>
-                                              <% else %>
-                                                <i class="fa fa-star favourite" aria-hidden="true"></i>
-                                              <% end %>
-                                            <% end  %>
-                                          <div class="progress-bar">
-                                              <p><progress value="<%= (result[:score] * 100).round(1) %>" max="100"></progress></p>
-                                          </div>
-                                        </div>
-                                      </div>
+                                            <i class="fa fa-star favourited" aria-hidden="true"></i>
+                                          <% else %>
+                                            <i class="fa fa-star favourite" aria-hidden="true"></i>
+                                          <% end %>
+                                        <% end  %>
+                                      </p>
+                                      <p><progress value="<%= (result[:score] * 100).round(1) %>" max="100"></progress></p>
+                                    </div>
                                   </div>
-                                <% end %>
+                                </div>
                               <% end %>
                             <% end %>
-                          </div>
+                          <% end %>
                         </div>
                       </div>
                     </div>
@@ -102,9 +100,10 @@
                 </div>
               </div>
             </div>
-          <% end %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
 
 

@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :companies, only: [:show, :edit, :update] do
-    resources :candidates, only: [:show, :index]
+    resources :candidates, only: [:show, :index] do
+      collection do
+        get :matching
+      end
+    end
+
     resources :company_companies, only: [:new, :create]
     resources :job_offers, only: [:index, :create, :new] do
       resources :contacted_candidates, only: [:new, :create]

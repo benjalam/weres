@@ -8,6 +8,5 @@
 //= require tabs.js
 //= require init_attachinary.js
 //= require fav.js
-//= require menutabs.js
-//=require popover.js
-//=require displaytabs.js
+//= require smoothscroll.js
+

@@ -30,6 +30,7 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 gem "tf-idf-similarity"
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'rails-assets-swipebox', source: 'https://rails-assets.org'
 
 
 group :development, :test do

@@ -49,7 +49,7 @@
                     <% score.reverse.each do |result| %>
                       <% unless result[:job_offer].user.company == current_user.company %>
                         <% result[:job_offer].candidates.each do |candidate| %>
-                          <div class="candidates">
+                          <div class="candidates" id="favorited-candidates">
                               <div class="candidates-info">
                                 <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
                                   <h3><%= candidate.name %></h3>

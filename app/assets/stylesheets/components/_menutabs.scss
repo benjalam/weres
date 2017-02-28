@@ -3,7 +3,7 @@
   display: flex;
 }
 .menu-tabs a {
-  color: $blue;
+  color: $darkblue;
 }
 .menu-tabs a:hover {
   cursor: pointer;
@@ -32,6 +32,6 @@
   border-radius: 0 50px 50px 0;
 }
 .menu-tab.active {
-  background: #7293A0;
+  background: $darkblue;
   color: white;
 }

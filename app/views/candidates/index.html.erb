@@ -58,7 +58,7 @@
                   <h3>Contacted</h3>
                 </a>
             </div>
-            <div id="candidates-list">
+            <div class="menu-tab-content" id="candidates-list">
               <div class="container-fluid">
                 <div class="row">
                   <div class="tab-content-space">
@@ -100,6 +100,57 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="menu-tab-content" id="favourites">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="tab-content-space">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <% score.reverse.each do |result| %>
+                              <% unless result[:job_offer].user.company == current_user.company %>
+                                <% result[:job_offer].candidates.each do |candidate| %>
+                                <% if jb.voted_for? candidate %>
+                                    <div class="candidates">
+                                        <div class="candidates-info">
+                                          <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
+                                            <h3><%= candidate.name %></h3>
+                                            <p><strong>Current Position: </strong><%= candidate.position %></p>
+                                            <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                          <% end %>
+                                        </div>
+                                        <div class="candidates-rating">
+                                          <div class="text-center">
+                                                <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
+                                                    <% if jb.voted_for? candidate %>
+
+                                                      <i class="fa fa-star favourited" aria-hidden="true"></i>
+                                                    <% else %>
+                                                      <i class="fa fa-star favourite" aria-hidden="true"></i>
+                                                    <% end %>
+                                                  <% end  %>
+                                                <div class="progress-bar">
+                                                    <p><progress value="<%= (result[:score] * 100).round(1) %>" max="100"></progress></p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+                                      <% end %>
+                                    <% end %>
+                                  <% end %>
+                                <% end %>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+
+
               </div>
             </div>
           <% end %>

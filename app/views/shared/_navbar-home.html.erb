@@ -1,7 +1,9 @@
 <div class="navbar-wagon-fixed navbar-home">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logoblanc.png", class:"logo" %>
+
+    <%= inline_svg("weres_logo")%>
+    <%#= image_tag "logoblanc.png", class:"logo" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -61,6 +63,7 @@
     // navbar transition jQuery script
     $(window).scroll(function(e){
       if ($(this).scrollTop() > 10) {
+        var path = <%= asset_path 'logobleu.png' %>
         // $(".navbar-home").css({
         //   "background": "white"
         // });
@@ -71,7 +74,7 @@
         $('.navbar-wagon').removeClass('navbar-home');
         $('.navbar-white-link').addClass('navbar-black-link');
         $('.navbar-black-link').removeClass('navbar-white-link');
-        $('.logo').attr('src','assets/logobleu.png');
+        $('.logo').attr('src', path);
       }
       else {
         // $(".navbar-home").css({

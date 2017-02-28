@@ -1,7 +1,7 @@
 <div class="navbar-wagon-fixed navbar-home">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
+    <%= image_tag "logoblanc.png", class:"logo" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -46,7 +46,7 @@
             <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
           <% end %>
         </li>
-      <% else %>
+      <% else %>notf
         <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
       </ul>
@@ -71,6 +71,7 @@
         $('.navbar-wagon').removeClass('navbar-home');
         $('.navbar-white-link').addClass('navbar-black-link');
         $('.navbar-black-link').removeClass('navbar-white-link');
+        $('.logo').attr('src','assets/logobleu.png');
       }
       else {
         // $(".navbar-home").css({
@@ -83,6 +84,7 @@
         $('.navbar-home').removeClass('navbar-wagon');
         $('.navbar-black-link').addClass('navbar-white-link');
         $('.navbar-white-link').removeClass('navbar-black-link');
+        $('.logo').attr('src','assets/logoblanc.png');
       }
     });
   });

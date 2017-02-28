@@ -41,7 +41,8 @@ class JobOffersController < ApplicationController
   def destroy
     @company = @job_offer.user.company
     @job_offer.delete
-    redirect_to "/companies/#{@company.id}#job_offers"
+    redirect_to company_path(current_user.company, anchor: "job_offers")
+    # redirect_to "/companies/#{@company.id}#job_offers"
   end
 
 private

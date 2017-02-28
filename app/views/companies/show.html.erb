@@ -1,6 +1,5 @@
 <% if policy(@company).show? %>
-
-  <!-- SIDEBAR -->
+  <% content_for :sidebar do %>
   <div id="sidebar">
     <div class="all-tabs-profile">
       <div class="tab-block">
@@ -19,7 +18,8 @@
       </div>
         <a class="tabs" data-target="#top-tab"><h5></h5></a>
     </div>
-  </div><!-- end of #SIDEBAR -->
+  </div>
+  <% end %>
 
   <div class="page-content">
     <div class="text-center index-title">

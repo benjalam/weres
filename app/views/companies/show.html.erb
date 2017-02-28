@@ -1,192 +1,194 @@
 <% if policy(@company).show? %>
-<div id="sidebar">
-  <div class="all-tabs-profile">
-    <div class="tab-block">
-      <a class="tabs active" data-target="#company_profile">
-        <h4><i class="fa fa-user"></i> Company profile</h4>
-      </a>
-      <a class="tabs" data-target="#job_offers">
-        <h4><i class="fa fa-file-text"></i>  Job Offers </h4>
-      </a>
-      <a class="tabs" data-target="#uploaded_cvs">
-        <h4><i class="fa fa-users"></i> Uploaded CVs</h4>
-      </a>
-      <a class="tabs" data-target="#blacklist">
-        <h4><i class="fa fa-list-ul"></i>  Black List</h4>
-      </a>
+
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+    <div class="all-tabs-profile">
+      <div class="tab-block">
+        <a class="tabs active" data-target="#company_profile">
+          <h4><i class="fa fa-user"></i> Company profile</h4>
+        </a>
+        <a class="tabs" data-target="#job_offers">
+          <h4><i class="fa fa-file-text"></i>  Job Offers </h4>
+        </a>
+        <a class="tabs" data-target="#uploaded_cvs">
+          <h4><i class="fa fa-users"></i> Uploaded CVs</h4>
+        </a>
+        <a class="tabs" data-target="#blacklist">
+          <h4><i class="fa fa-list-ul"></i>  Black List</h4>
+        </a>
+      </div>
+        <a class="tabs" data-target="#top-tab"><h5></h5></a>
     </div>
+  </div><!-- end of #SIDEBAR -->
 
-      <a class="tabs" data-target="#top-tab"><h5></h5></a>
-
-  </div>
-</div>
-
-
-<div class="page-content">
+  <div class="page-content">
     <div class="text-center index-title">
       <h1 class="title"> <%= @company.name %>'s Profile</h1>
     </div>
 
-<div class="tab-content-width">
-    <div class="tab-content" id="company_profile">
-      <div class="container">
-        <div class="row">
-          <div class="tab-content-space">
-            <div class="col-xs-12 col-sm-6">
-              <div class="profile-about text-center">
-                <h2 class="sous-title text-center">About <i class="fa fa-question profile-icon" aria-hidden="true"></i></h2>
-                <% website = @company.website  %>
-                <p><%= link_to "Website", "http://#{website}"%></p>
+    <!-- tab-content-width -->
+    <div class="tab-content-width">
+      <div class="tab-content" id="company_profile">
+        <div class="container">
+          <div class="row">
+            <div class="tab-content-space">
+              <div class="col-xs-12 col-sm-6">
+                <div class="profile-about text-center">
+                  <h2 class="sous-title text-center">About <i class="fa fa-question profile-icon" aria-hidden="true"></i></h2>
+                  <% website = @company.website  %>
+                  <p><%= link_to "Website", "http://#{website}"%></p>
+                </div>
               </div>
-            </div>
 
-            <div class="col-xs-12 col-sm-6">
-              <h2 class="sous-title text-center">Description <i class="fa fa-file-text-o profile-icon" aria-hidden="true"></i></h2>
-                <p class="text-center"><%= @company.description %></p>
+              <div class="col-xs-12 col-sm-6">
+                <h2 class="sous-title text-center">Description <i class="fa fa-file-text-o profile-icon" aria-hidden="true"></i></h2>
+                  <p class="text-center"><%= @company.description %></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-</div>
+    </div><!-- end of .tab-content-width -->
 
-<div class="tab-content-width">
-    <div class="tab-content hidden" id="job_offers">
-      <div class="container">
-        <div class="row">
-          <div class="tab-content-space">
-            <div class="header text-center">
-                <h2 class="sous-title text-center"> Job Offers</h2>
-            </div>
+    <!-- tab-content-width -->
+    <div class="tab-content-width">
+      <div class="tab-content hidden" id="job_offers">
+        <div class="container">
+          <div class="row">
+            <div class="tab-content-space">
+              <div class="header text-center">
+                  <h2 class="sous-title text-center"> Job Offers</h2>
+              </div>
 
-            <% @company.job_offers.each do |job_offer|%>
-              <% if job_offer.candidates == [] %>
-                <%= link_to job_offer_path(job_offer) do %>
-                  <div class="col-xs-9">
-                     <div class="product">
+              <% @company.job_offers.each do |job_offer|%>
+                <% if job_offer.candidates == [] %>
+                  <%= link_to cl_image_path("#{job_offer.document.public_id}.png", width: 800, height: 1000, crop: :fill), class: "swipebox", rel: "gallery" do %>
+                    <div class="col-xs-9">
+                      <div class="product">
                         <div class='product-body'>
                           <h3><strong><%= job_offer.title %></strong></h3>
                           <p>Uploaded on: <%= job_offer.created_at.strftime("%b %d, %Y")%></p>
                         </div>
                       </div>
-                  </div>
+                    </div>
+                  <% end %><!-- end of link_to swipebox -->
                   <div class="col-xs-3">
                     <div class="product-candidates text-center">
-
-                    <p class="productright">
-                      <a href="<%= @company.id %>/candidates#job_offer_<%= job_offer.id %>"><i class="fa fa-users"></i>   See Candidates</a>
-                    </p>
-
-                    <% if current_user.company_admin %>
-                      <ul class="list-inline">
-                      <li><%= link_to edit_job_offer_path(job_offer) do %>
-                          <i class="fa fa-file-text-o"></i>
-                      <% end %></li>
-                      <li><%= link_to job_offer_path(job_offer), method: :delete, data: { confirm: "Are you sure?" } do %>
-                          <i class="fa fa-trash delete-offer"></i>
-                      <% end %></li>
-                      </ul>
-                    <% end %>
-
+                      <p class="productright">
+                        <a href="<%= @company.id %>/candidates#job_offer_<%= job_offer.id %>"><i class="fa fa-users"></i>   See Candidates</a>
+                      </p>
+                      <% if current_user.company_admin %>
+                        <ul class="list-inline">
+                          <li><%= link_to edit_job_offer_path(job_offer) do %>
+                              <i class="fa fa-file-text-o"></i>
+                          <% end %></li>
+                          <li><%= link_to job_offer_path(job_offer), method: :delete, data: { confirm: "Are you sure?" } do %>
+                              <i class="fa fa-trash delete-offer"></i>
+                          <% end %></li>
+                        </ul>
+                      <% end %><!-- end of if condition -->
                     </div>
                   </div>
-                <% end %>
-              <% end %>
-            <% end %>
+                <% end %><!-- end of if job_offer.candidates -->
+              <% end %><!-- end of job_offer block -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
-</div>
+    </div><!-- end of .tab-content-width -->
 
-<div class="tab-content-width">
-    <div class="tab-content hidden" id="uploaded_cvs">
-      <div class="container">
-        <div class="row">
-          <div class="tab-content-space">
-          <h2 class="sous-title text-center"> Uploaded CVs </h2>
-          <% @company.users.each do |user|%>
-                <% user.candidates.each do |candidate| %>
-                  <div class="col-xs-12">
-                    <div class="product">
-                      <div class='product-body'>
-                      <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
-                        <p><strong><%= candidate.name %></strong></p>
-                        <p><%= candidate.position %></p>
-                        <% end %>
+    <div class="tab-content-width">
+      <div class="tab-content hidden" id="uploaded_cvs">
+        <div class="container">
+          <div class="row">
+            <div class="tab-content-space">
+            <h2 class="sous-title text-center"> Uploaded CVs </h2>
+            <% @company.users.each do |user|%>
+                  <% user.candidates.each do |candidate| %>
+                    <div class="col-xs-12">
+                      <div class="product">
+                        <div class='product-body'>
+                        <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
+                          <p><strong><%= candidate.name %></strong></p>
+                          <p><%= candidate.position %></p>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  <% end %>
                 <% end %>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="tab-content-width">
+      <div class="tab-content hidden" id="blacklist">
+            <div class="tab-content-space">
+            <h2 class="sous-title text-center"> Company Black List </h2>
+
+
+          <div class="container">
+            <div id="black_listed_companies">
+              <% @company.black_listed_companies.each do |blacklist|%>
+                    <%= render 'company_companies/show', company: blacklist %>
               <% end %>
             </div>
           </div>
-        </div>
-    </div>
-</div>
+          <div class="row">
+            <div class="text-center">
+                <div class="col-xs-12 col-sm-4 col-sm-offset-4">
 
-<div class="tab-content-width">
-    <div class="tab-content hidden" id="blacklist">
-          <div class="tab-content-space">
-          <h2 class="sous-title text-center"> Company Black List </h2>
+                 <div class="formulaire" id="add-to-blacklist">
+                  <%= render 'company_companies/form', company: @company, company_company: @company_company %>
+                </div>
 
+                </div>
 
-        <div class="container">
-          <div id="black_listed_companies">
-            <% @company.black_listed_companies.each do |blacklist|%>
-                  <%= render 'company_companies/show', company: blacklist %>
-            <% end %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="text-center">
-              <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-
-               <div class="formulaire" id="add-to-blacklist">
-                <%= render 'company_companies/form', company: @company, company_company: @company_company %>
-              </div>
-
-              </div>
-
+            </div>
           </div>
         </div>
       </div>
     </div>
-</div>
 
-<div class="tab-content-width">
-  <div class="tab-content" id="top-tab">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-          <div class="tab-content-space">
-            <div class="text-center title-form">
-              <h1>Add your Job Offer</h1>
+    <div class="tab-content-width">
+      <div class="tab-content" id="top-tab">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+              <div class="tab-content-space">
+                <div class="text-center title-form">
+                  <h1>Add your Job Offer</h1>
+                </div>
+
+                <div class="add-card">
+                    <h1 class="text-center title"></h1>
+
+                  <div class="formulaire">
+
+                  <%= render 'job_offers/form', job_offer: JobOffer.new %>
+
+                </div>
+
+                </div>
+
+              </div>
             </div>
 
-            <div class="add-card">
-                <h1 class="text-center title"></h1>
-
-              <div class="formulaire">
-
-              <%= render 'job_offers/form', job_offer: JobOffer.new %>
-
-            </div>
-
-            </div>
 
           </div>
         </div>
-
-
       </div>
     </div>
   </div>
-</div>
+<% end %>
+<% content_for :after_js do %>
+  <script type="text/javascript">
+  ;( function( $ ) {
 
+    $( '.swipebox' ).swipebox();
 
-
-
-</div>
-
+  } )( jQuery );
+  </script>
 <% end %>

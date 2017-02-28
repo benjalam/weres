@@ -7,6 +7,9 @@ class JobOffer < ApplicationRecord
   acts_as_voter
 
 
+  def candidate_contacted?(candidate)
+    contacted_candidates.where(candidate: candidate).exists?
+  end
 
   def to_tfidf
     TfIdfSimilarity::Document.new(tfidf["text"], term_counts: tfidf["term_counts"], size: tfidf["size"])

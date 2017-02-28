@@ -1,9 +1,7 @@
 <div class="navbar-wagon-fixed navbar-home">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-
-    <%= inline_svg("weres_logo")%>
-    <%#= image_tag "logoblanc.png", class:"logo" %>
+    <%= svg 'logo_weres'%>
   <% end %>
 
   <!-- Right Navigation -->
@@ -74,7 +72,7 @@
         $('.navbar-wagon').removeClass('navbar-home');
         $('.navbar-white-link').addClass('navbar-black-link');
         $('.navbar-black-link').removeClass('navbar-white-link');
-        $('.logo').attr('src', path);
+        $('#Weres').css({ fill: "#1F5F8B" });
       }
       else {
         // $(".navbar-home").css({
@@ -87,7 +85,7 @@
         $('.navbar-home').removeClass('navbar-wagon');
         $('.navbar-black-link').addClass('navbar-white-link');
         $('.navbar-white-link').removeClass('navbar-black-link');
-        $('.logo').attr('src','assets/logoblanc.png');
+        $('#Weres').css({ fill: "#FFFFFF" });
       }
     });
   });

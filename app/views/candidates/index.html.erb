@@ -48,17 +48,17 @@
         <div class="tab-content" id="job_offer_<%=jb.id %>">
           <h1 class="title text-center"><%= jb.title %></h1>
             <div class="menu-tabs">
-                <a class="menu-tab active" href="#" data-target="#candidates-list" >
+                <a class="menu-tab active" href="#" data-target="#candidates-list_<%=jb.id %>" >
                   <h3>Candidates</h3>
                 </a>
-                <a class="menu-tab" href="#" data-target="#favourites">
+                <a class="menu-tab" href="#" data-target="#favourites_<%=jb.id %>">
                   <h3>Favourites</h3>
                 </a>
-                <a class="menu-tab" href="#" data-target="#contacted">
+                <a class="menu-tab" href="#" data-target="#contacted_<%=jb.id %>">
                   <h3>Contacted</h3>
                 </a>
             </div>
-            <div class="menu-tab-content" id="candidates-list">
+            <div class="menu-tab-content" id="candidates-list_<%=jb.id %>">
               <div class="container-fluid">
                 <div class="row">
                   <div class="tab-content-space">
@@ -80,7 +80,7 @@
                                           <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
                                               <% if jb.voted_for? candidate %>
 
-                                                <i class="fa fa-star favourited" aria-hidden="true"></i>
+                                                <i id= "popover" data-content="Favourites this candidate" data-placement="bottom" data-trigger="hover" class="fa fa-star favourited" aria-hidden="true"></i>
                                               <% else %>
                                                 <i class="fa fa-star favourite" aria-hidden="true"></i>
                                               <% end %>
@@ -101,7 +101,7 @@
                   </div>
                 </div>
 
-                <div class="menu-tab-content" id="favourites">
+                <div class="menu-tab-content" id="favourites_<%=jb.id %>">
                   <div class="container-fluid">
                     <div class="row">
                       <div class="tab-content-space">

@@ -61,8 +61,8 @@
               </div>
 
               <% @company.job_offers.each do |job_offer|%>
-              <div class="candidates">
                 <% if job_offer.candidates == [] %>
+                  <div class="candidates">
                   <%= link_to cl_image_path("#{job_offer.document.public_id}.png", width: 800, height: 1000, crop: :fill), class: "swipebox", rel: "gallery" do %>
                     <div class="candidates-info">
                           <h3><strong><%= job_offer.title %></strong></h3>
@@ -84,8 +84,8 @@
                         </ul>
                       <% end %><!-- end of if condition -->
                     </div>
-                <% end %><!-- end of if job_offer.candidates -->
-            </div>
+                </div>
+              <% end %><!-- end of if job_offer.candidates -->
 
 
 

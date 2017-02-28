@@ -37,6 +37,7 @@ GIT
 
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actioncable (5.0.1)
       actionpack (= 5.0.1)
@@ -220,6 +221,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.1)
       sprockets-rails (>= 2.0.0)
+    rails-assets-swipebox (1.4.4)
     rails-dom-testing (2.0.2)
       activesupport (>= 4.2.0, < 6.0)
       nokogiri (~> 1.6)
@@ -326,6 +328,7 @@ DEPENDENCIES
   puma
   pundit
   rails (= 5.0.1)
+  rails-assets-swipebox!
   redis
   sass-rails
   sidekiq

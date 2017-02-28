@@ -20,8 +20,10 @@ $(document).ready(function() {
       id = $(this).data("target");
       $(id).removeClass("hidden");
 
-      });
-
+      // make the first tab active buy clicking on it
+      var candidate_list_id = id.replace("job_offer", "candidates-list");
+      $("a[data-target='" + candidate_list_id + "']").trigger("click");
+    });
 
     $('#sidebar .tabs').click(function (e) {
       id = $(this).data("target") ;
@@ -31,6 +33,4 @@ $(document).ready(function() {
 
   });
 
-
 })
-

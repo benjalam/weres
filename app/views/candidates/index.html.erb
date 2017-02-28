@@ -51,7 +51,14 @@
           $(".page-content").hide();
           $(".page-content").html(data);
           $("a[data-target='" + tab_anchor + "']").trigger("click")
+
           $(".page-content").slideDown();
+
+          // make the first tab active buy clicking on it
+          var candidate_list_id = tab_anchor.replace("job_offer", "candidates-list");
+          console.log(candidate_list_id);
+          $("a[data-target='" + candidate_list_id + "']").trigger("click");
+
 
 
           $('[data-skill]').each(function(){
@@ -87,12 +94,11 @@
           }, speed);
           });
 
-          $(".favourite, .favourited").click(function(){
-             $(this).toggleClass("favourited")
-           });
+          // $(".favourite, .favourited").click(function(){
+          //    $(this).toggleClass("favourited");
+          //  });
 
-          $(".menu-tab").removeClass("active");
-          $(".menu-tab-content").addClass("hidden");
+
           id = window.location.hash ;
           if ( id ) {
             $( "a[data-target='" + id + "']" ).addClass("active") ;

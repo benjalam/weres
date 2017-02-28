@@ -1,4 +1,4 @@
 $(document).ready(function() {
-  $('#popover').popover();
+  $('[data-toggle="tooltip"]').tooltip()
 
 });

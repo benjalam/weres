@@ -80,9 +80,9 @@
                                           <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
                                               <% if jb.voted_for? candidate %>
 
-                                                <i id= "popover" data-content="Favourites this candidate" data-placement="bottom" data-trigger="hover" class="fa fa-star favourited" aria-hidden="true"></i>
+                                                <i data-toggle="tooltip" data-placement="bottom" title="Unfavourite this candidate" class="fa fa-star favourited" aria-hidden="true"></i>
                                               <% else %>
-                                                <i class="fa fa-star favourite" aria-hidden="true"></i>
+                                                <i data-toggle="tooltip" data-placement="bottom" title="Favourite this candidate" class="fa fa-star favourite" aria-hidden="true"></i>
                                               <% end %>
                                             <% end  %>
                                           <div class="progress-bar">
@@ -124,9 +124,9 @@
                                                 <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
                                                     <% if jb.voted_for? candidate %>
 
-                                                      <i class="fa fa-star favourited" aria-hidden="true"></i>
+                                                      <i data-toggle="tooltip" data-placement="bottom" title="Unfavourite this candidate" class="fa fa-star favourited" aria-hidden="true"></i>
                                                     <% else %>
-                                                      <i class="fa fa-star favourite" aria-hidden="true"></i>
+                                                      <i data-toggle="tooltip" data-placement="bottom" title="Favourite this candidate" class="fa fa-star favourite" aria-hidden="true"></i>
                                                     <% end %>
                                                   <% end  %>
                                                 <div class="progress-bar">

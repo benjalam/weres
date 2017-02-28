@@ -10,3 +10,4 @@
 //= require fav.js
 //= require menutabs.js
 //=require popover.js
+//=require displaytabs.js

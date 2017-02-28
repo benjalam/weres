@@ -60,7 +60,7 @@
                                             <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index' %>
                                           </p>
                                   </div>
-                                  <div class="candidates-rating">
+                                  <div class="rating">
                                     <div class="text-center">
                                           <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
                                               <% if jb.voted_for? candidate %>
@@ -107,9 +107,9 @@
                                             <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index' %>
                                           </p>
                                         </div>
-                                        <div class="candidates-rating">
+                                        <div class="rating">
                                           <div class="text-center">
-                                                <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
+                                                  <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
                                                     <% if jb.voted_for? candidate %>
 
                                                       <i data-toggle="tooltip" data-placement="bottom" title="Unfavourite this candidate" class="fa fa-star favourited" aria-hidden="true"></i>
@@ -117,6 +117,7 @@
                                                       <i data-toggle="tooltip" data-placement="bottom" title="Favourite this candidate" class="fa fa-star favourite" aria-hidden="true"></i>
                                                     <% end %>
                                                   <% end  %>
+
                                                 <div class="progress-bar-home">
                                                   <figure data-skill="<%= (result[:score] * 100).round(1) %> " data-skill-size="<%= (result[:score] * 100).round(1) %>"></figure>
                                                </div>

@@ -104,27 +104,3 @@
 
   </ul>
 </div>
-
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    document.querySelector('#how').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('#how-it-works').scrollIntoView({ behavior: 'smooth' });
-    });
-    document.querySelector('#ideas').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('#our-ideas').scrollIntoView({ behavior: 'smooth' });
-    });
-    document.querySelector('#last').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('#last-gifts').scrollIntoView({ behavior: 'smooth' });
-    });
-    document.querySelector('#reviews').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('#temoignages').scrollIntoView({ behavior: 'smooth' });
-    });
-  <% end %>
-<% end %>
-
-

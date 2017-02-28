@@ -15,21 +15,28 @@
   display: flex;
   align-items: center;
   padding: 20px;
+  position: relative;
 }
 .candidates-info {
   flex: 0 0 80%;
 }
-.candidates-rating {
-  flex: 0 0 18%;
-}
 
 .favourite {
-  color: black;
+  color: $darkblue;
 }
 .favourited {
-  color: yellow !important;
+  color: $green !important;
 }
 
-.send-inmail {
-  margin-top: 40px;
+.send-inmail-index {
+  position: absolute;
+  top: 93px;
+  right: 38px;
+}
+
+.rating {
+  position: absolute;
+  top: 43px;
+  right: 87px;
+  font-size: 20px;
 }

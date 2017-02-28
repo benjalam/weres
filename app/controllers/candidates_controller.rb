@@ -1,11 +1,9 @@
 class CandidatesController < ApplicationController
+  skip_after_action :verify_authorized, only: :matching
+
   def index
     @company = Company.find(params[:company_id])
     @candidates = policy_scope(Candidate)
-    @job_offers = {}
-    @company.job_offers.each do |job_offer|
-      @job_offers[job_offer] = Matching.new.matching(job_offer) if job_offer.candidates == []
-    end
   end
 
   def show
@@ -34,12 +32,23 @@ class CandidatesController < ApplicationController
   def upvote
     @candidate = Candidate.find(params[:id])
     authorize @candidate
-    job_offer = JobOffer.find(params[:job_offer_id])
-    if job_offer.voted_for? @candidate
-       job_offer.unvote_for @candidate
+    @job_offer = JobOffer.find(params[:job_offer_id])
+
+    if @job_offer.voted_for? @candidate
+       @job_offer.unvote_for @candidate
     else
-      job_offer.up_votes @candidate
+      @job_offer.up_votes @candidate
     end
+  end
+
+  def matching
+    @company = Company.find(params[:company_id])
+    @candidates = policy_scope(Candidate)
+    @job_offers = {}
+    @company.job_offers.each do |job_offer|
+      @job_offers[job_offer] = Matching.new.matching(job_offer) if job_offer.candidates == []
+    end
+    render layout: false
   end
 
   private

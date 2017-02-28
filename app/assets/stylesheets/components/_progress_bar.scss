@@ -1,36 +1,132 @@
-.progress-bar {
-  width: 100px;
-  height: 25px;
-  background-color: transparent;
-  display: flex;
-  margin-right: 8px;
+.progress-bar-home {
+  top: 40px;
+  right: 50px;
+  position: absolute;
+  z-index: 1;
+}
+[data-skill] {
+  position: relative;
+  display: table;
+  margin: -143px 48px;
+  h3 {
+    text-align: left;
+    position: absolute;
+    top: 57%;
+    right: -21%;
+    width: 100%;
+    font-size: 16px;
+  }
+  svg {
+    transform: rotate(-90deg);
+    .back {
+      stroke: lightgrey;
+      stroke-width: 8;
+      fill: none;
+    }
+    .front {
+      stroke: $green;
+      stroke-width: 8;
+      fill: none;
+      background: red;
+    }
+  }
 }
 
-.progress-value {
-  width: 100%;
-  color: black;
-  z-index: 1
-}
 
-progress {
-  background-color: transparent;
-  border: 0;
-  height: 25px;
-  border: 1px solid $darkblue;
-}
+// CODEPEN PROGRESS CIRCLE
+// @mixin circle($size) {
+//   content: "";
+//   position: absolute;
+//   border-radius: 50%;
+//   left: calc(50% - #{$size/2});
+//   top: calc(50% - #{$size/2});
+//   width: $size;
+//   height: $size;
+// }
 
-progress::after {
-  content: attr(value)'%';
-  color: black;
-}
+// $size: 60px;
+// .progress-pie-chart {
+//   width: $size;
+//   height: $size;
+//   border-radius: 50%;
+//   background-color: #E5E5E5;
+//   position: relative;
+//   margin: 0px auto 0;
+//   &.gt-50 {
+//     background-color: #81CE97;
+//   }
+// }
+// .ppc-progress {
+//   @include circle($size);
+//   clip: rect(0, $size, $size, #{$size/2});
+//   .ppc-progress-fill {
+//     @include circle($size);
+//     clip: rect(0, #{$size/2}, $size, 0);
+//     background: $green;
+//     transform: rotate(60deg);
+//   }
+//   .gt-50 & {
+//   clip: rect(0, #{$size/2}, $size, 0);
+//   .ppc-progress-fill {
+//     clip: rect(0, $size, $size, #{$size/2});
+//     background: #E5E5E5;
+//   }
+//   }
+// }
+// .ppc-percents {
+//   @include circle(#{$size/1.15});
+//   background: #fff;
+//   text-align: center;
+//   display: table;
+//   p {
+//     padding-top:13px;
+//     display: block;
+//     font-size: 13px;
+//     color: $green;
+//   }
+// }
+// .pcc-percents-wrapper {
+//   display: table-cell;
+//   vertical-align: middle;
+//   background-color: transparent;
+// }
 
-progress::-webkit-progress-bar {
-  background-color: transparent;
-}
-progress::-webkit-progress-value {
-  background-color: $green
-}
+// PROGRESS-BAR CODE - OLD VERSION
+// .progress-bar {
+//   height: 25px;
+//   background-color: transparent;
+//   display: flex;
+//   margin-right: 8px;
+//   margin-top: 20px;
+// }
 
-progress::-moz-progress-bar {
-  background-color: transparent;
-}
+// .progress-value {
+//   width: 100%;
+//   color: black;
+//   z-index: 1
+// }
+
+// progress {
+//   width: 100px;
+//   background-color: transparent;
+//   border: 0;
+//   height: 25px;
+//   border: 1px solid $darkblue;
+// }
+
+// progress::after {
+//   content: attr(value)'%';
+//   color: $darkblue;
+//   padding-top: 10px;
+// }
+
+// progress::-webkit-progress-bar {
+//   background-color: transparent;
+// }
+// progress::-webkit-progress-value {
+//   background-color: $green
+// }
+
+// progress::-moz-progress-bar {
+//   background-color: transparent;
+// }

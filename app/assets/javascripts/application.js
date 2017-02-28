@@ -4,8 +4,10 @@
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
-//= require swipebox.js
 //= require cable.js
 //= require tabs.js
 //= require init_attachinary.js
 //= require fav.js
+//= require smoothscroll.js
+//= require swipebox.js
+

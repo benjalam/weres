@@ -1,0 +1,153 @@
+<% if policy(@candidates).show? %>
+
+    <div class="tab-content-width">
+      <div class="tab-content" id="top-tab">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="tab-content-space">
+              <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+                <div class="text-center title-form">
+                  <h1>Add your Job Offer</h1>
+                </div>
+
+                <div class="add-card">
+                    <h1 class="text-center title"></h1>
+
+                  <div class="formulaire">
+                    <%= render 'job_offers/form', job_offer: JobOffer.new %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+ <% @job_offers.each do |jb, score|%>
+      <div class="tab-content-width tab-content-width-index">
+        <div class="tab-content" id="job_offer_<%=jb.id %>">
+          <h1 class="title text-center"><%= jb.title %></h1>
+            <div class="menu-tabs">
+                <a class="menu-tab active" href="#" data-target="#candidates-list_<%=jb.id %>" >
+                  <h3>Candidates</h3>
+                </a>
+                <a class="menu-tab" href="#" data-target="#favourites_<%=jb.id %>">
+                  <h3>Favourites</h3>
+                </a>
+                <a class="menu-tab" href="#" data-target="#contacted_<%=jb.id %>">
+                  <h3>Contacted</h3>
+                </a>
+            </div>
+            <div class="menu-tab-content" id="candidates-list_<%=jb.id %>">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="tab-content-space">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <% score.reverse.each do |result| %>
+                          <% unless result[:job_offer].user.company == current_user.company %>
+                            <% result[:job_offer].candidates.each do |candidate| %>
+                              <div class="candidates">
+                                  <div class="candidates-info">
+
+                                  <% if candidate.document.nil? %>
+                                    <%# path = company_candidate_path %>
+                                    <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
+                                      <h3><%= candidate.name %></h3>
+                                      <p><strong>Current Position: </strong><%= candidate.position %></p>
+                                      <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                    <% end %>
+                                  <% else %>
+                                    <%# path = cl_image_path("#{candidate.document.public_id}.png", width: 800,
+                                    height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2"  %>
+                                    <%= link_to cl_image_path("#{candidate.document.public_id}.png", width: 800,
+                                      height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2" do %>
+                                      <h3><%= candidate.name %></h3>
+                                      <p><strong>Current Position: </strong><%= candidate.position %></p>
+                                      <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                    <% end %>
+                                  <% end %>
+
+                                    <p class="text-center">
+                                      <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index' %>
+                                    </p>
+                                  </div>
+
+                                  <div class="rating">
+                                    <div class="text-center" >
+                                        <div id="favorite-link-container_<%= candidate.id %>">
+                                          <%= render 'favorite_link', candidate: candidate, job_offer: jb %>
+                                        </div>
+
+
+                                          <div class="progress-bar-home">
+                                            <figure data-skill="<%= (result[:score] * 100).round(1) %> " data-skill-size="<%= (result[:score] * 100).round(1) %>"></figure>
+                                         </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                                <% end %>
+                              <% end %>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="menu-tab-content" id="favourites_<%=jb.id %>">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="tab-content-space">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <% score.reverse.each do |result| %>
+                              <% unless result[:job_offer].user.company == current_user.company %>
+                                <% result[:job_offer].candidates.each do |candidate| %>
+                                <% if jb.voted_for? candidate %>
+                                    <div class="candidates">
+                                        <div class="candidates-info">
+                                          <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
+                                            <h3><%= candidate.name %></h3>
+                                            <p><strong>Current Position: </strong><%= candidate.position %></p>
+                                            <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                          <% end %>
+                                          <p class="text-center">
+                                            <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index' %>
+                                          </p>
+                                        </div>
+                                        <div class="rating">
+                                          <div class="text-center">
+                                                  <%= link_to upvote_candidate_path(candidate, job_offer_id: jb.id), method: :post do %>
+                                                    <% if jb.voted_for? candidate %>
+
+                                                      <i data-toggle="tooltip" data-placement="bottom" title="Unfavourite this candidate" class="fa fa-star favourited" aria-hidden="true"></i>
+                                                    <% else %>
+                                                      <i data-toggle="tooltip" data-placement="bottom" title="Favourite this candidate" class="fa fa-star favourite" aria-hidden="true"></i>
+                                                    <% end %>
+                                                  <% end  %>
+
+                                                <div class="progress-bar-home">
+                                                  <figure data-skill="<%= (result[:score] * 100).round(1) %> " data-skill-size="<%= (result[:score] * 100).round(1) %>"></figure>
+                                               </div>
+                                              </div>
+                                            </div>
+                                        </div>
+                                      <% end %>
+                                    <% end %>
+                                  <% end %>
+                                <% end %>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          <% end %>
+      <% end %>
+

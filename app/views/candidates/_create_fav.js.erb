@@ -1,0 +1,17 @@
+// Here you will write *javascript* that would be executed by the browser
+<% if @company_company.errors.any? %>
+  // Render new review form with errors
+  $('#new_black_listed_company').html("<%= j render 'company_companies/form', company: @company, company_company: @company_company %>");
+<% else %>
+
+
+  // Create a paragraph for the new review. But hide it.
+  var new_company_company = $("<%= j render 'company_companies/show', company: @append %>").hide();
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  $('#favorited-candidates').prepend(new_company_company);
+  // Show the new review with an animation!
+  new_company_company.slideDown();
+
+  // Reset the form
+  $('#add-to-blacklist').html("<%= j render 'company_companies/form', company: @company, company_company: CompanyCompany.new %>");
+<% end %>

@@ -13,7 +13,10 @@
       <%= render 'shared/navbar-home' %>
         <%= render 'shared/flashes' %>
     <% else %>
-      <%= render 'shared/sidebar' %>
+      <div id="sidebar-container">
+        <%= render 'shared/sidebar' %>
+        <%= yield :sidebar %>
+      </div>
     <% end %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>

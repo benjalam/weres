@@ -49,7 +49,7 @@
                         <% score.reverse.each do |result| %>
                           <% unless result[:job_offer].user.company == current_user.company %>
                             <% result[:job_offer].candidates.each do |candidate| %>
-                              <div class="candidates">
+                              <div class="candidates" data-candidate-id="<%= candidate.id %>">
                                   <div class="candidates-info">
 
                                   <% if candidate.document.nil? %>
@@ -107,12 +107,12 @@
                     <div class="row">
                       <div class="tab-content-space">
                         <div class="container-fluid">
-                          <div class="row">
+                          <div class="row candidates-container">
                             <% score.reverse.each do |result| %>
                               <% unless result[:job_offer].user.company == current_user.company %>
                                 <% result[:job_offer].candidates.each do |candidate| %>
                                 <% if jb.voted_for? candidate %>
-                                    <div class="candidates">
+                                    <div class="candidates" data-candidate-id="<%= candidate.id %>">
                                         <div class="candidates-info">
                                           <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
                                             <h3><%= candidate.name %></h3>
@@ -170,10 +170,6 @@
                                             </div>
                                             <div class="rating">
                                               <div class="text-center">
-                                                <div class="favorite-link-container_<%= candidate.id %>">
-                                                  <%= render 'favorite_link', candidate: candidate, job_offer: jb %>
-                                                </div>
-
                                                     <div class="progress-bar-home">
                                                       <figure data-skill="<%= (result[:score] * 100).round(1) %> " data-skill-size="<%= (result[:score] * 100).round(1) %>"></figure>
                                                    </div>

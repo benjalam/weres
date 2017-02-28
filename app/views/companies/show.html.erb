@@ -187,7 +187,9 @@
   <script type="text/javascript">
   ;( function( $ ) {
 
-    $( '.swipebox' ).swipebox();
+    if ($('.swipebox').length) {
+      $( '.swipebox' ).swipebox();
+    }
 
   } )( jQuery );
   </script>

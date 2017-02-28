@@ -50,8 +50,12 @@
           var tab_anchor = window.location.hash;
           $(".page-content").hide();
           $(".page-content").html(data);
-          $("a[data-target='" + tab_anchor + "']").trigger("click")
 
+          if (tab_anchor == '') {
+            tab_anchor = $(".tab-block .tabs:first").data("target");
+          }
+
+          $("a[data-target='" + tab_anchor + "']").trigger("click")
           $(".page-content").slideDown();
 
           // make the first tab active buy clicking on it

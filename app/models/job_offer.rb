@@ -1,8 +1,8 @@
 class JobOffer < ApplicationRecord
   belongs_to :user
   has_many :candidates, dependent: :destroy
-  validates :title, presence: true
   has_many :contacted_candidates, dependent: :destroy
+  validates :title, presence: true
   has_attachment :document
   acts_as_voter
 

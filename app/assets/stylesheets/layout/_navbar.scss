@@ -31,7 +31,11 @@
 
 /* Navbar logo */
 .navbar-wagon-brand {
-  font-size: 18px;
+  font-size: 18px
+}
+
+.navbar-wagon-brand svg{
+padding-left: 10px;
 }
 
 /* Navbar right section (with form, links, button) */

@@ -62,6 +62,10 @@
 
 .home-images {
   margin: 20px;
+  overflow-x: hidden;
+  img {
+    border: 1px solid $darkgray;
+  }
 }
 
 .row-lighten {

@@ -7,20 +7,29 @@
         <% end %>
       </div>
       <div class="tools">
-          <% if user_signed_in? %>
-            <p><%= link_to company_path(current_user.company, anchor: "top-tab") do %>
-            <i class="fa fa-cog"></i><%= "   My profile" %></p>
-            <% end %>
-          <% end %>
+        <% if user_signed_in? %>
+          <div class="sidebar-top-except-add">
+            <div class="tab-button-add">
+              <%= link_to company_path(@company, anchor: "job_offers") do %>
+                <div class="tabs">
+                  <h4><i class="fa fa-cog"></i> My Dashboard </h4>
+                </div>
+              <% end %>
+            </div>
+            <div class="tab-button-add">
+              <%= link_to company_candidates_path(@company) do %>
+                <div class="tabs">
+                  <h4><i class="fa fa-users"></i> My Matching </h4>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
-        <div class="tab-button-add">
-          <a class="tabs" data-target="#top-tab"><h4><i class="fa fa-plus-circle"></i> Add a Job Offer </h4></a>
-        </div>
     </div>
 
     <div class="logout-button">
       <p><i class="fa fa-sign-out"></i><%= link_to "  LOGOUT", destroy_user_session_path, method: :delete %></p>
     </div>
-
 
 </div>

@@ -34,7 +34,7 @@ require 'matrix'
     corpus.each do |job_offer|
       if job_offer[:offer].user.company.black_listed_companies.where(name: offer.user.company.name).empty?
             @scores << { job_offer: job_offer[:offer],
-                         score: matrix[model.document_index(job_offer[:tfidf]), model.document_index(offer_tfidf)]
+                         score: norme(matrix[model.document_index(job_offer[:tfidf]), model.document_index(offer_tfidf)])
                        }
       end
     end
@@ -46,6 +46,14 @@ require 'matrix'
 
   def print_time(start, step)
     puts " TIME FOR #{step} ==> #{Time.now - start}"
+  end
+
+  def norme(score)
+    if score > 0.5
+      return 0.99
+    else
+     return (score / Math.exp(1-score))*(Math.exp(1-0.5)/0.5)
+   end
   end
 
 end

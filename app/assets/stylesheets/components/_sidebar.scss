@@ -96,22 +96,41 @@ h5 {
   margin-right: 40px;
 
 }
+
 .back-button-sidebar.active {
   background-color: $blue;
 }
 
+@keyframes droptabs {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0}
+  100% {
+    transform: translateX(0);
+    opacity: 1
+  }
+}
 
 .all-tabs {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  animation-name: droptabs;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
 }
 
 .all-tabs-profile {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  animation-name: droptabs;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
 }
+
 
 #top-tab {
   margin-left: 10px;
@@ -119,4 +138,32 @@ h5 {
     margin-top: 10px;
     margin-right: 4px;
   }
+}
+
+
+#sidebar .all-tabs {
+  height: 50vh;
+  overflow-y: auto;
+}
+
+.all-tabs::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.all-tabs::-webkit-scrollbar:vertical {
+    width: 8px;
+}
+
+.all-tabs::-webkit-scrollbar:horizontal {
+    height: 8px;
+}
+
+.all-tabs:hover::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: $green;
+}
+
+.all-tabs:hover::-webkit-scrollbar-track {
+    background-color: rgba(243, 243, 243, 0.2);
+    border-radius: 8px;
 }

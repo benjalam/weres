@@ -1,12 +1,16 @@
-<h1 class="text-center title">Edit your job offer</h1>
+<div class="page-content">
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      <div class="formulaire">
-        <%= render 'form', job_offer: @job_offer %>
-        <%= link_to "Cancel", company_path(@job_offer.user.company, anchor: "job_offers"), class: "btn btn-danger" %>
+  <h1 class="text-center title">Edit your job offer</h1>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <div class="formulaire">
+          <%= render 'form', job_offer: @job_offer %>
+          <%= link_to "Cancel", company_path(@job_offer.user.company, anchor: "job_offers"), class: "btn btn-danger" %>
+        </div>
       </div>
     </div>
   </div>
+
 </div>

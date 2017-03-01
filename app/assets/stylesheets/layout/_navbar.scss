@@ -76,10 +76,10 @@ padding-left: 10px;
   padding: 0 20px;
   border-radius: 5em;
   line-height: 40px;
-  background-color: $blue;
+  background-color: $green;
   color: white;
   font-size: 14px;
-  border: 1px solid $blue;
+  border: 1px solid $green;
 }
 .navbar-wagon-button-bis {
   margin-left: 10px;
@@ -87,20 +87,19 @@ padding-left: 10px;
   border-radius: 5em;
   line-height: 40px;
   background-color: white;
-  color: $blue;
+  color: $green;
   font-size: 14px;
-  border: 1px solid $blue;
+  border: 1px solid $green;
 }
 .navbar-wagon-button:hover {
   color: white;
-  background: $green;
-  border-color: $green;
+  background: $lightgreen;
+  border-color: $lightgreen;
 }
 
 .navbar-wagon-button-bis:hover {
-  color: white;
-  color: $green;
-  border: 2px solid $green;
+  color: $lightgreen;
+  border: 2px solid $lightgreen;
 }
 
 //* Navbar search form */

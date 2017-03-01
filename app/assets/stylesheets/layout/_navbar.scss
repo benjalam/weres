@@ -74,33 +74,33 @@ padding-left: 10px;
 .navbar-wagon-button {
   margin-left: 10px;
   padding: 0 20px;
-  border-radius: 20em;
+  border-radius: 5em;
   line-height: 40px;
-  background-color: $lightblue;
+  background-color: $blue;
   color: white;
   font-size: 14px;
-  border: 2px solid $lightblue;
+  border: 1px solid $blue;
 }
 .navbar-wagon-button-bis {
   margin-left: 10px;
   padding: 0 20px;
-  border-radius: 20em;
+  border-radius: 5em;
   line-height: 40px;
   background-color: white;
-  color: $lightblue;
+  color: $blue;
   font-size: 14px;
-  border: 2px solid $lightblue;
+  border: 1px solid $blue;
 }
 .navbar-wagon-button:hover {
   color: white;
-  background: $red;
-  border-color: $red;
+  background: $green;
+  border-color: $green;
 }
 
 .navbar-wagon-button-bis:hover {
   color: white;
-  color: $red;
-  border: 2px solid $red;
+  color: $green;
+  border: 2px solid $green;
 }
 
 //* Navbar search form */

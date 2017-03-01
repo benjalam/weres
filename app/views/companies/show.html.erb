@@ -74,24 +74,22 @@
         <div class="container-fluid">
           <div class="row">
             <div class="tab-content-space">
-            <h2 class="sous-title text-center"> Uploaded CVs </h2>
-          <div class="candidates">
-            <% @company.users.each do |user|%>
-                  <% user.candidates.each do |candidate| %>
+              <h2 class="sous-title text-center"> Uploaded CVs </h2>
+              <% @company.users.each do |user|%>
+                <% user.candidates.each do |candidate| %>
+                  <div class="candidates">
                     <div class="col-xs-12">
                       <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
                         <p><strong><%= candidate.name %></strong></p>
                         <p><%= candidate.position %></p>
-                        <% end %>
+                      <% end %>
                     </div>
-                  <% end %>
+                  </div>
                 <% end %>
-            </div>
-
-
-              </div>
+              <% end %>
             </div>
           </div>
+        </div>
       </div>
     </div>
 

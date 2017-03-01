@@ -1,6 +1,5 @@
 $(document).ready(function() {
-
-  $(".tabs").removeClass("active");
+  $(".all-tabs .tabs, .all-tabs-profile .tabs").removeClass("active");
   $(".tab-content").addClass("hidden");
   id = window.location.hash ;
   if ( id ) {
@@ -11,8 +10,8 @@ $(document).ready(function() {
 
   $(function(){
 
-    $(".tabs").on("click", function(e){
-      $(".tabs").removeClass("active");
+    $(".all-tabs .tabs, .all-tabs-profile .tabs").on("click", function(e){
+      $(".all-tabs .tabs, .all-tabs-profile .tabs").removeClass("active");
       $(this).addClass("active");
 
       $(".tab-content").addClass("hidden");

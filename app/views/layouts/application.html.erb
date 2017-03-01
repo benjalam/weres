@@ -34,6 +34,9 @@
     <% if current_page?(root_path) %>
       <%= render 'shared/navbar-home' %>
         <%= render 'shared/flashes' %>
+
+    <% elsif user_signed_in? == false %>
+        <%= render 'shared/flashes' %>
     <% else %>
       <div id="sidebar-container">
         <%= render 'shared/sidebar' %>

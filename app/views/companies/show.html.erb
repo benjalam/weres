@@ -18,10 +18,6 @@
   <% end %>
 
   <div class="page-content">
-    <div class="text-center index-title">
-      <h1 class="title"> <%= @company.name %>'s Profile</h1>
-    </div>
-
     <!-- tab-content-width -->
     <div class="tab-content-width tab-content-width-index">
       <div class="tab-content hidden" id="job_offers">
@@ -29,7 +25,7 @@
           <div class="row">
             <div class="tab-content-space">
               <div class="header text-center">
-                  <h2 class="sous-title text-center"> Job Offers</h2>
+                  <h2 class="title text-center"> Job Offers</h2>
               </div>
 
               <% @company.job_offers.each do |job_offer|%>
@@ -73,7 +69,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="tab-content-space">
-              <h2 class="sous-title text-center"> Uploaded CVs </h2>
+              <h2 class="title text-center"> Uploaded CVs </h2>
               <% @company.users.each do |user|%>
                 <% user.candidates.each do |candidate| %>
                   <div class="candidates">
@@ -95,7 +91,7 @@
     <div class="tab-content-width">
       <div class="tab-content hidden" id="blacklist">
             <div class="tab-content-space">
-            <h2 class="sous-title text-center"> Company Black List </h2>
+            <h2 class="title text-center"> Company Black List </h2>
 
 
           <div class="container-fluid">

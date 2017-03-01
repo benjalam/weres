@@ -25,12 +25,12 @@ class JobOfferPolicy < ApplicationPolicy
 
 
   def new?
-    user.company_admin && (user == record.user)
+    user.company_admin
   end
 
 
   def create?
-    user.company_admin && (user == record.user)
+    user.company_admin
   end
 
 

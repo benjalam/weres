@@ -6,6 +6,6 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user.company == record
   end
 end

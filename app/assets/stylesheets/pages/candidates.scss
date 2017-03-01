@@ -11,7 +11,27 @@
   }
 }
 
+.candidates-black-list {
+  &:nth-child(odd) {
+    list-style: none;
+    background-color: white;
+    border-bottom: 1px solid #E7E7E7;
+  }
+  &:nth-child(even) {
+    list-style: none;
+    background-color: $gray;
+    border-bottom: 1px solid #E7E7E7;
+  }
+}
 .candidates {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.candidates-black-list {
   display: flex;
   align-items: center;
   padding: 30px;

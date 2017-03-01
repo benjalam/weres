@@ -1,15 +1,17 @@
-<div class="text-center">
-  <h1 class="text-center title">Your job offer</h1>
+<div class="page-content">
+  <div class="text-center">
+    <h1 class="text-center title">Your job offer</h1>
 
-  <p class="sous-title"><%= @job_offer.title %></p>
+    <p class="sous-title"><%= @job_offer.title %></p>
 
-  <% if @job_offer.document? %>
-    <%= cl_image_tag "#{@job_offer.document.public_id}.png", width: 200, height: 300, crop: :fill %>
-  <% end %>
+    <% if @job_offer.document? %>
+      <%= cl_image_tag "#{@job_offer.document.public_id}.png", width: 200, height: 300, crop: :fill %>
+    <% end %>
 
-  <ul class="list-inline">
-  <%= link_to "Edit", edit_job_offer_path(@job_offer), class: "btn btn-primary back-button" %>
-  <%= link_to "Back", company_path(@job_offer.user.company, anchor: "job_offers"), class: "btn btn-primary back-button" %>
-  </ul>
+    <ul class="list-inline">
+    <%= link_to "Edit", edit_job_offer_path(@job_offer), class: "btn btn-primary back-button" %>
+    <%= link_to "Back", company_path(@job_offer.user.company, anchor: "job_offers"), class: "btn btn-primary back-button" %>
+    </ul>
 
+  </div>
 </div>

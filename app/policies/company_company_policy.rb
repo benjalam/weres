@@ -6,9 +6,9 @@ class CompanyCompanyPolicy < ApplicationPolicy
   end
 
   def create?
-    user.company_admin
+    user.company_admin && (user.company == record.company)
   end
   def destroy?
-    user.company_admin
+    user.company_admin && (user.company == record.company)
   end
 end

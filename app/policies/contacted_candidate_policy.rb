@@ -6,10 +6,10 @@ class ContactedCandidatePolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    user.company == company
   end
 
   def create?
-    true
+    user.company == company
   end
 end

@@ -6,35 +6,35 @@ class JobOfferPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    user == record.user
   end
 
   def show?
-    true
+    user == record.user
   end
 
 
   def edit?
-    true
+    user.company_admin && (user == record.user)
   end
 
 
   def update?
-    true
+    user.company_admin && (user == record.user)
   end
 
 
   def new?
-    true
+    user.company_admin && (user == record.user)
   end
 
 
   def create?
-    true
+    user.company_admin && (user == record.user)
   end
 
 
   def destroy?
-    true
+    user.company_admin && (user == record.user)
   end
 end

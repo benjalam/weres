@@ -19,7 +19,5 @@ class ContactedCandidatesController < ApplicationController
 
 # Mailer removed as it's not working in Production environment (no domain name to use)
     # UserMailer.inmail(@candidate, @job_offer).deliver_now
-
-    redirect_to company_candidates_path(@company)
   end
 end

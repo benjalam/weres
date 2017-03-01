@@ -69,13 +69,13 @@
                                     <% end %>
                                   <% end %>
 
-                                    <p class="text-center">
+                                    <div class="text-center contacted-container_<%= candidate.id %>">
                                     <% if jb.candidate_contacted? candidate %>
                                       <p class='sent-inmail-index'>Inmail Sent</p>
                                     <% else %>
-                                      <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index' %>
+                                      <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index', remote: true %>
                                     <% end %>
-                                    </p>
+                                    </div>
                                   </div>
 
                                   <div class="rating">
@@ -118,13 +118,13 @@
                                             <p><strong>Current Position: </strong><%= candidate.position %></p>
                                             <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
                                           <% end %>
-                                          <p class="text-center">
+                                          <div class="text-center contacted-container_<%= candidate.id %>">
                                             <% if jb.candidate_contacted? candidate %>
                                               <p class='sent-inmail-index'>Inmail Sent</p>
                                             <% else %>
-                                              <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index' %>
+                                              <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index', remote: true %>
                                             <% end %>
-                                          </p>
+                                          </div>
                                         </div>
                                         <div class="rating">
                                           <div class="text-center">
@@ -154,27 +154,38 @@
                         <div class="row">
                           <div class="tab-content-space">
                             <div class="container-fluid">
-                              <div class="row">
+                              <div class="row candidates-container">
                                 <% score.reverse.each do |result| %>
                                   <% unless result[:job_offer].user.company == current_user.company %>
                                     <% result[:job_offer].candidates.each do |candidate| %>
                                     <% if jb.candidate_contacted? candidate %>
                                         <div class="candidates">
-                                            <div class="candidates-info">
-                                              <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
-                                                <h4><strong><%= candidate.name %></strong></h4>
-                                                <p><strong>Current Position: </strong><%= candidate.position %></p>
-                                                <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                          <div class="candidates-info">
+                                            <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
+                                              <h4><strong><%= candidate.name %></strong></h4>
+                                              <p><strong>Current Position: </strong><%= candidate.position %></p>
+                                              <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                            <% end %>
+                                            <div class="text-center contacted-container_<%= candidate.id %>">
+                                              <% if jb.candidate_contacted? candidate %>
+                                                <p class='sent-inmail-index'>Inmail Sent</p>
+                                              <% else %>
+                                                <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index', remote: true %>
                                               <% end %>
                                             </div>
-                                            <div class="rating">
-                                              <div class="text-center">
-                                                    <div class="progress-bar-home">
-                                                      <figure data-skill="<%= (result[:score] * 100).round(1) %> " data-skill-size="<%= (result[:score] * 100).round(1) %>"></figure>
-                                                   </div>
-                                                  </div>
+                                          </div>
+                                          <div class="rating">
+                                            <div class="text-center">
+                                              <div class="favorite-link-container_<%= candidate.id %>">
+                                                <%= render 'favorite_link', candidate: candidate, job_offer: jb %>
+                                              </div>
+
+                                                  <div class="progress-bar-home">
+                                                    <figure data-skill="<%= (result[:score] * 100).round(1) %> " data-skill-size="<%= (result[:score] * 100).round(1) %>"></figure>
+                                                 </div>
                                                 </div>
-                                            </div>
+                                              </div>
+                                        </div>
                                           <% end %>
                                         <% end %>
                                       <% end %>

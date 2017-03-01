@@ -1,5 +1,6 @@
 $("#candidates-list_<%= @job_offer.id %> .favorite-link-container_<%= @candidate.id %>").html("<%= j render 'candidates/favorite_link', candidate: @candidate, job_offer: @job_offer %>");
 $("#favorites_<%= @job_offer.id %> .favorite-link-container_<%= @candidate.id %>").html("<%= j render 'candidates/favorite_link', candidate: @candidate, job_offer: @job_offer %>");
+$("#contacted_<%= @job_offer.id %> .favorite-link-container_<%= @candidate.id %>").html("<%= j render 'candidates/favorite_link', candidate: @candidate, job_offer: @job_offer %>");
 
 // update favourites tab: append when favorited else remove
 <% if @job_offer.voted_for? @candidate %>
@@ -11,5 +12,6 @@ $("#favorites_<%= @job_offer.id %> .favorite-link-container_<%= @candidate.id %>
 <% end %>
 
 $('[data-toggle="tooltip"]').tooltip();
+
 
 

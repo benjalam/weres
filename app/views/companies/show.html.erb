@@ -3,9 +3,6 @@
   <div id="sidebar">
     <div class="all-tabs-profile">
       <div class="tab-block">
-        <a class="tabs active" data-target="#company_profile">
-          <h4><i class="fa fa-user"></i> Company profile</h4>
-        </a>
         <a class="tabs" data-target="#job_offers">
           <h4><i class="fa fa-file-text"></i>  Job Offers </h4>
         </a>
@@ -25,30 +22,6 @@
     <div class="text-center index-title">
       <h1 class="title"> <%= @company.name %>'s Profile</h1>
     </div>
-
-    <!-- tab-content-width -->
-    <div class="tab-content-width">
-      <div class="tab-content" id="company_profile">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="tab-content-space">
-              <div class="col-xs-12 col-sm-6">
-                <div class="profile-about text-center">
-                  <h2 class="sous-title text-center">About <i class="fa fa-question profile-icon" aria-hidden="true"></i></h2>
-                  <% website = @company.website  %>
-                  <p><%= link_to "Website", "http://#{website}"%></p>
-                </div>
-              </div>
-
-              <div class="col-xs-12 col-sm-6">
-                <h2 class="sous-title text-center">Description <i class="fa fa-file-text-o profile-icon" aria-hidden="true"></i></h2>
-                  <p class="text-center"><%= @company.description %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div><!-- end of .tab-content-width -->
 
     <!-- tab-content-width -->
     <div class="tab-content-width">

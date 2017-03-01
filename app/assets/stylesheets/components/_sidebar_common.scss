@@ -35,13 +35,14 @@
 }
 
 .logout-button {
-  margin-left: 50px;
-  z-index: 1;
+  margin-left: 12px;
   color: white;
   a {
     color: white
   }
-
+  i {
+    margin-right: 8px;
+  }
 }
 
 .tab-button-add {

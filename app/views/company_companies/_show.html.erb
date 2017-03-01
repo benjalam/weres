@@ -1,7 +1,9 @@
 
-<div class="tab-content-width-index">
+<div class="candidates tab-content-width-index">
+
+
   <div data-company-id="<%= company.id %>">
-    <div class="candidates">
+
       <div class="candidates-info product-body">
           <h4><strong><%= company.name %></strong></h4>
           <p>Blacklisted on: <%= company.created_at.strftime("%b %d, %Y")%></p>
@@ -19,7 +21,7 @@
           </ul>
         <% end %>
       </div>
-    </div>
-  </div>
-</div>
 
+  </div>
+
+</div>

@@ -1,0 +1,10 @@
+$("#candidates-list_<%= @job_offer.id %> .contacted-container_<%= @candidate.id %>").html("<p class='sent-inmail-index'>Inmail Sent</p>")
+$("#favourites_<%= @job_offer.id %> .contacted-container_<%= @candidate.id %>").html("<p class='sent-inmail-index'>Inmail Sent</p>");
+
+
+<% if @job_offer.candidate_contacted? @candidate %>
+console.log("test")
+  var candidate_row = $("#candidates-list_<%= @job_offer.id %> .candidates[data-candidate-id='<%= @candidate.id %>']");
+  $("#contacted_<%= @job_offer.id %> .candidates-container").append($(candidate_row).clone(true, true));
+  console.log("#contacted_<%= @job_offer.id %> .candidates-container")
+<% end %>

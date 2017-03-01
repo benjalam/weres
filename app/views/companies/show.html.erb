@@ -96,7 +96,9 @@
 
           <div class="container-fluid">
             <div id="black_listed_companies">
+
               <% @company.black_listed_companies.each do |blacklist|%>
+
                     <%= render 'company_companies/show', company: blacklist %>
               <% end %>
             </div>

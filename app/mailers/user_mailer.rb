@@ -5,9 +5,10 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.inmail.subject
   #
-  def inmail(candidate)
+  def inmail(candidate, job_offer)
     @candidate = candidate
+    @job_offer = job_offer.title
     @company = @candidate.user.company.name
-    mail(to: @candidate.email, subject: 'WeRes has a new job opportunity for you !')
+    mail(to: @candidate.email, subject: 'We.Res has a new job opportunity for you !')
   end
 end

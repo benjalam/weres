@@ -17,7 +17,7 @@ class ContactedCandidatesController < ApplicationController
     authorize @contacted_candidate
     @contacted_candidate.save
 
-    UserMailer.inmail(@candidate).deliver_now
+    UserMailer.inmail(@candidate, @job_offer).deliver_now
 
     redirect_to company_candidates_path(@company)
   end

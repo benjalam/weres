@@ -56,6 +56,8 @@
         type: "GET",
         url: "<%= matching_company_candidates_path(@company) %>",
         success: function(data) {
+          console.log(data);
+
           var tab_anchor = window.location.hash;
           $(".page-content").hide();
           $(".page-content").html(data);

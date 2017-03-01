@@ -56,7 +56,7 @@
                                   <% if candidate.document.nil? %>
                                     <%# path = company_candidate_path %>
                                     <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
-                                      <h3><%= candidate.name %></h3>
+                                      <h4><strong><%= candidate.name %></strong></h4>
                                       <p><strong>Current Position: </strong><%= candidate.position %></p>
                                       <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
                                     <% end %>
@@ -65,7 +65,7 @@
                                     height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2"  %>
                                     <%= link_to cl_image_path("#{candidate.document.public_id}.png", width: 800,
                                       height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2" do %>
-                                      <h3><%= candidate.name %></h3>
+                                      <h4><strong><%= candidate.name %></strong></h4>
                                       <p><strong>Current Position: </strong><%= candidate.position %></p>
                                       <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
                                     <% end %>
@@ -116,7 +116,7 @@
                                     <div class="candidates" data-candidate-id="<%= candidate.id %>">
                                         <div class="candidates-info">
                                           <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
-                                            <h3><%= candidate.name %></h3>
+                                            <h4><strong><%= candidate.name %></strong></h4>
                                             <p><strong>Current Position: </strong><%= candidate.position %></p>
                                             <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
                                           <% end %>
@@ -164,7 +164,7 @@
                                         <div class="candidates">
                                             <div class="candidates-info">
                                               <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
-                                                <h3><%= candidate.name %></h3>
+                                                <h4><strong><%= candidate.name %></strong></h4>
                                                 <p><strong>Current Position: </strong><%= candidate.position %></p>
                                                 <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
                                               <% end %>

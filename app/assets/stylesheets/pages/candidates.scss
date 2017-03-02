@@ -2,12 +2,12 @@
   &:nth-child(even) {
     list-style: none;
     background-color: white;
-    border-bottom: 1px solid #E7E7E7;
+    border-bottom: 1px solid #a1a1a1;
   }
   &:nth-child(odd) {
     list-style: none;
     background-color: $gray;
-    border-bottom: 1px solid #E7E7E7;
+    border-bottom: 1px solid #a1a1a1;
   }
 }
 
@@ -15,12 +15,12 @@
   &:nth-child(odd) {
     list-style: none;
     background-color: white;
-    border-bottom: 1px solid #E7E7E7;
+    border-bottom: 1px solid #a1a1a1;
   }
   &:nth-child(even) {
     list-style: none;
     background-color: $gray;
-    border-bottom: 1px solid #E7E7E7;
+    border-bottom: 1px solid #a1a1a1;
   }
 }
 .candidates {
@@ -47,7 +47,7 @@
 }
 
 .favourite {
-  color: $darkgray;
+  color: #A1A1A1;
 }
 .favourited {
   color: $yellow !important;

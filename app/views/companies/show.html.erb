@@ -39,7 +39,7 @@
                   <% end %><!-- end of link_to swipebox -->
                     <div class="product-candidates rating-candidates text-center">
                       <p>
-                        <a href="<%= @company.id %>/candidates#job_offer_<%= job_offer.id %>"><i class="fa fa-users"></i>   See Candidates</a>
+                        <a href="<%= @company.id %>/candidates#job_offer_<%= job_offer.id %>"><i class="fa fa-users"></i>    Who matched this offer ?</a>
                       </p>
                       <% if current_user.company_admin %>
                         <ul class="list-inline">
@@ -72,7 +72,7 @@
               <h2 class="title text-center"> Uploaded CVs </h2>
               <% @company.users.each do |user|%>
                 <% user.candidates.each do |candidate| %>
-                  <div class="candidates-black-list">
+                  <div class="candidates">
                     <div class="col-xs-12" id="my_uploaded_cvs" data-cv-id="<%= candidate.id %>">
                       <div class="candidates-info">
                         <% if candidate.document.nil? %>

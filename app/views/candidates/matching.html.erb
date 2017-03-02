@@ -15,9 +15,35 @@
                     <%= render 'job_offers/form', job_offer: JobOffer.new %>
                   </div>
                 </div>
+                <!-- <h3>How does it work ?</h3>
+                <p>Our algorithm compares the content of your job-offer with all the job-offers in our database to find the most accurate candidates !</p> -->
               </div>
             </div>
-
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="picto-add-form">
+              <div class="col-xs-12 col-sm-4">
+                <%= image_tag "upload-offer.svg", class: "avatar-form-new" %>
+                <p>Simply <strong>upload your job offer (.pdf)</strong></p>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <%= image_tag "percentage.svg", class: "avatar-form-new" %>
+                <p>Our matching algorithm compares the content of your job-offer with <strong>our database</strong></p>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <%= image_tag "resume.svg", class: "avatar-form-new" %>
+                <p>We find the <strong>best fitted candidates for your offer</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="text-center">
+                <%= link_to "Cancel", company_path(@company, anchor: "job_offers"), class: "btn btn-danger back-button" %>
+              </div>
+            </div>
           </div>
         </div>
       </div>

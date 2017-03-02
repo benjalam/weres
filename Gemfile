@@ -33,6 +33,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'rails-assets-swipebox', source: 'https://rails-assets.org'
 
 
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

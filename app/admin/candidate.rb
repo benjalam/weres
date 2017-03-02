@@ -1,5 +1,5 @@
 ActiveAdmin.register Candidate do
-  permit_params :name, :user_id, :position, :job_offer_id
+  permit_params :name, :user_id, :position, :job_offer_id, :email
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -19,6 +19,7 @@ ActiveAdmin.register Candidate do
         f.input :user, as: :select, collection: User.all.map {|user| "#{user.first_name} #{user.company.name}" }
         f.input :position
         f.input :job_offer
+        f.input :email
     end
     actions
   end

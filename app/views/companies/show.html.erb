@@ -73,7 +73,7 @@
               <% @company.users.each do |user|%>
                 <% user.candidates.each do |candidate| %>
                   <div class="candidates-black-list">
-                    <div class="col-xs-12" id="my_uploaded_cvs">
+                    <div class="col-xs-12" id="my_uploaded_cvs" data-cv-id="<%= candidate.id %>">
                       <div class="candidates-info">
                         <% if candidate.document.nil? %>
                           <%# path = company_candidate_path %>
@@ -90,6 +90,11 @@
                             <p><strong>Current Position: </strong><%= candidate.position %></p>
                           <% end %>
                         <% end %>
+                      </div>
+                      <div class="rating-candidates">
+                        <%= link_to candidate_path(candidate), method: :delete, remote: true, data: { confirm: "Are you sure?" } do %>
+                          <i class="fa fa-trash delete-offer"></i>
+                      <% end %>
                       </div>
                     </div>
                   </div>

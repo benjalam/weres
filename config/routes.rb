@@ -29,5 +29,5 @@ Rails.application.routes.draw do
       post :upvote
     end
   end
-  resources :candidates, only: [:new, :create]
+  resources :candidates, only: [:new, :create, :destroy]
 end

@@ -1,0 +1,2 @@
+$('[data-cv-id = <%= @candidate.id %>]').slideUp();
+  $('#add-cv').html("<%= j render 'candidates/form', user: current_user, candidate: Candidate.new %>");

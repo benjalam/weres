@@ -40,6 +40,7 @@ class JobOffersController < ApplicationController
 
   def destroy
     @company = @job_offer.user.company
+    @job_offer.contacted_candidates.destroy_all
     @job_offer.delete
     redirect_to company_path(current_user.company, anchor: "job_offers")
     # redirect_to "/companies/#{@company.id}#job_offers"
@@ -57,7 +58,7 @@ private
   end
 
   def job_offer_params
-    params.require(:job_offer).permit(:title, :document)
+    params.require(:job_offer).permit(:title, :document, :user)
   end
 
   def conversion(offer)

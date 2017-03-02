@@ -56,6 +56,10 @@
         success: function(data) {
           console.log(data);
 
+          $('.page-content').on('mouseover', '.tooltip-hover', function(){
+            $(this).tooltip('show');
+          })
+
           var tab_anchor = window.location.hash;
           $(".page-content").hide();
           $(".page-content").html(data);

@@ -45,6 +45,17 @@
 
 .delete-offer {
   color: $red;
+  transition: all 0.5s;
+  &:hover {
+    font-size: 25px;
+  }
+}
+
+.edit-offer {
+  transition: all 0.5s;
+  &:hover {
+    font-size: 25px;
+  }
 }
 
 .add-job-offer {

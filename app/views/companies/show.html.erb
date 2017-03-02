@@ -74,10 +74,24 @@
                 <% user.candidates.each do |candidate| %>
                   <div class="candidates">
                     <div class="col-xs-12">
-                      <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
-                        <h4><strong><%= candidate.name %></strong></h4>
-                        <p><%= candidate.position %></p>
-                      <% end %>
+                                                      <% if candidate.document.nil? %>
+                                    <%# path = company_candidate_path %>
+                                    <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
+                                      <h4><strong><%= candidate.name %></strong></h4>
+                                      <p><strong>Current Position: </strong><%= candidate.position %></p>
+                                      <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                    <% end %>
+                                  <% else %>
+                                    <%# path = cl_image_path("#{candidate.document.public_id}.png", width: 800,
+                                    height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2"  %>
+                                    <%= link_to cl_image_path("#{candidate.document.public_id}.png", width: 800,
+                                      height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2" do %>
+                                      <h4><strong><%= candidate.name %></strong></h4>
+                                      <p><strong>Current Position: </strong><%= candidate.position %></p>
+                                      <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                    <% end %>
+                                  <% end %>
+
                     </div>
                   </div>
                 <% end %>

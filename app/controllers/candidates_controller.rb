@@ -23,7 +23,7 @@ class CandidatesController < ApplicationController
     @candidate.user = current_user
     authorize @candidate
     if @candidate.save
-      redirect_to :root
+      redirect_to root_path
     else
       render :new
     end

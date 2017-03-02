@@ -19,7 +19,7 @@
             <div class="tab-button-add">
               <%= link_to company_candidates_path(current_user.company) do %>
                 <div class="tabs <%= set_main_category("candidates", params[:controller]) %>">
-                  <h4><i class="fa fa-users"></i> My Matching </h4>
+                  <h4><i class="fa fa-users"></i> Find Candidates </h4>
                 </div>
               <% end %>
             </div>
@@ -29,7 +29,10 @@
     </div>
 
     <div class="logout-button">
-      <p><i class="fa fa-sign-out"></i><%= link_to "  LOGOUT", destroy_user_session_path, method: :delete %></p>
+      <p><%= link_to destroy_user_session_path, method: :delete  do %>
+        <i class="fa fa-sign-out"></i>
+      <% end %>
+      </p>
     </div>
 
 </div>

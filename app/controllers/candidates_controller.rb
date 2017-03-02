@@ -29,6 +29,12 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def destroy
+    @candidate = Candidate.find(params[:id])
+    authorize @candidate
+    @candidate.delete
+  end
+
   def upvote
     @candidate = Candidate.find(params[:id])
     authorize @candidate

@@ -1,0 +1,9 @@
+  // Create a paragraph for the new review. But hide it.
+  var new_uploaded_CV = $("<%= j render 'candidates/new' %>").hide();
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  $('#my_uploaded_cvs').append(new_uploaded_CV);
+  // Show the new review with an animation!
+  new_uploaded_CV.slideDown();
+
+  // Reset the form
+  $('#add-cv').html("<%= j render 'candidates/form', user: current_user, candidate: Candidate.new %>");

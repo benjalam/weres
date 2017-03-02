@@ -72,28 +72,34 @@
               <h2 class="title text-center"> Uploaded CVs </h2>
               <% @company.users.each do |user|%>
                 <% user.candidates.each do |candidate| %>
-                  <div class="candidates">
-                    <div class="col-xs-12">
-                                                      <% if candidate.document.nil? %>
-                                    <%# path = company_candidate_path %>
-                                    <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
-                                      <h4><strong><%= candidate.name %></strong></h4>
-                                      <p><strong>Current Position: </strong><%= candidate.position %></p>
-                                    <% end %>
-                                  <% else %>
-                                    <%# path = cl_image_path("#{candidate.document.public_id}.png", width: 800,
-                                    height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2"  %>
-                                    <%= link_to cl_image_path("#{candidate.document.public_id}.png", width: 800,
-                                      height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2" do %>
-                                      <h4><strong><%= candidate.name %></strong></h4>
-                                      <p><strong>Current Position: </strong><%= candidate.position %></p>
-                                    <% end %>
-                                  <% end %>
-
+                  <div class="candidates-black-list">
+                    <div class="col-xs-12" id="my_uploaded_cvs">
+                      <div class="candidates-info">
+                        <% if candidate.document.nil? %>
+                          <%# path = company_candidate_path %>
+                          <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
+                            <h4><strong><%= candidate.name %></strong></h4>
+                            <p><strong>Current Position: </strong><%= candidate.position %></p>
+                          <% end %>
+                        <% else %>
+                          <%# path = cl_image_path("#{candidate.document.public_id}.png", width: 800,
+                          height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2"  %>
+                          <%= link_to cl_image_path("#{candidate.document.public_id}.png", width: 800,
+                            height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2" do %>
+                            <h4><strong><%= candidate.name %></strong></h4>
+                            <p><strong>Current Position: </strong><%= candidate.position %></p>
+                          <% end %>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
                 <% end %>
               <% end %>
+              <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+                <div class="formulaire" id="add-cv">
+                  <%= render 'candidates/form', user: current_user, candidate: @candidate %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -108,9 +114,7 @@
 
           <div class="container-fluid">
             <div id="black_listed_companies">
-
               <% @company.black_listed_companies.each do |blacklist|%>
-
                     <%= render 'company_companies/show', company: blacklist %>
               <% end %>
             </div>
@@ -118,7 +122,6 @@
           <div class="row">
             <div class="text-center">
                 <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-
                  <div class="formulaire" id="add-to-blacklist">
                   <%= render 'company_companies/form', company: @company, company_company: @company_company %>
                 </div>

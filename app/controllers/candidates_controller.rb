@@ -23,7 +23,7 @@ class CandidatesController < ApplicationController
     @candidate.user = current_user
     authorize @candidate
     if @candidate.save
-      redirect_to root_path
+      redirect_to company_path(@candidate.user.company, anchor: "uploaded_cvs")
     else
       render :new
     end

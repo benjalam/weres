@@ -5,6 +5,7 @@ class CompaniesController < ApplicationController
 
 
   def show
+    @candidate = Candidate.new
     @companies_not_black_listed = @company.not_black_listed_companies
     @job_offer = JobOffer.new
     @company_company = CompanyCompany.new

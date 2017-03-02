@@ -14,11 +14,13 @@ class CandidatesController < ApplicationController
   end
 
   def new
+    @company = Company.find(params[:company_id])
     @candidate = Candidate.new
     authorize @candidate
   end
 
   def create
+    @company = Company.find(params[:company_id])
     @candidate = Candidate.new(candidate_params)
     @candidate.user = current_user
     authorize @candidate

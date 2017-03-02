@@ -1,8 +1,8 @@
 <%= link_to upvote_candidate_path(candidate, job_offer_id: job_offer.id), method: :post, remote: true do %>
     <% if job_offer.voted_for? candidate %>
-      <i data-toggle="tooltip" data-placement="bottom" title="Unfavourite this candidate" class="fa fa-star favourited tooltip-hover" aria-hidden="true"></i>
+      <i data-toggle="tooltip" data-placement="top" title="Unfavourite" class="fa fa-star favourited tooltip-hover" aria-hidden="true"></i>
     <% else %>
-      <i data-toggle="tooltip" data-placement="bottom" title="Favourite this candidate" class="fa fa-star favourite tooltip-hover" aria-hidden="true"></i>
+      <i data-toggle="tooltip" data-placement="top" title="Favourite" class="fa fa-star favourite tooltip-hover" aria-hidden="true"></i>
     <% end %>
   <% end  %>
 

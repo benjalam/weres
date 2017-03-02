@@ -99,7 +99,9 @@
                                     <% if jb.candidate_contacted? candidate %>
                                       <p class='sent-inmail-index'>Inmail Sent</p>
                                     <% else %>
-                                      <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index', remote: true %>
+                                      <%= link_to 'Send Inmail', company_job_offer_contacted_candidates_path(@company, jb, candidate_id: candidate.id), method: :post, class: 'btn btn-primary send-inmail-index', remote: true, data: { confirm: "Do you confirm you want us to contact this candidate for you ?
+                                        The We.Res Team
+                                        " }%>
                                     <% end %>
                                     </div>
                                   </div>

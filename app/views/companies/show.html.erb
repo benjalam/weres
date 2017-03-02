@@ -4,7 +4,7 @@
     <div class="all-tabs-profile">
       <div class="tab-block">
         <a class="tabs" data-target="#job_offers">
-          <h4><i class="fa fa-file-text"></i>  Job Offers </h4>
+          <h4><i class="fa fa-file-text"></i> Uploaded Job Offers </h4>
         </a>
         <a class="tabs" data-target="#uploaded_cvs">
           <h4><i class="fa fa-users"></i> Uploaded CVs</h4>
@@ -25,7 +25,7 @@
           <div class="row">
             <div class="tab-content-space">
               <div class="header text-center">
-                  <h2 class="title text-center"> Job Offers</h2>
+                  <h2 class="title text-center"> Your Job Offers</h2>
               </div>
 
               <% @company.job_offers.each do |job_offer|%>
@@ -44,10 +44,10 @@
                       <% if current_user.company_admin %>
                         <ul class="list-inline">
                           <li><%= link_to edit_job_offer_path(job_offer) do %>
-                              <i class="fa fa-file-text-o"></i>
+                              <i data-toggle="tooltip" data-placement="bottom" title="Edit this job offer" class="fa fa-file-text-o edit-offer tooltip-hover"></i>
                           <% end %></li>
                           <li><%= link_to job_offer_path(job_offer), method: :delete, data: { confirm: "Are you sure?" } do %>
-                              <i class="fa fa-trash delete-offer"></i>
+                              <i data-toggle="tooltip" data-placement="bottom" title="Delete this job offer" class="fa fa-trash delete-offer tooltip-hover"></i>
                           <% end %></li>
                         </ul>
                       <% end %><!-- end of if condition -->
@@ -125,6 +125,10 @@
 <% content_for :after_js do %>
   <script type="text/javascript">
   ;( function( $ ) {
+
+    $('.tooltip-hover').mouseover(function(){
+      $(this).tooltip('show');
+    })
 
     if ($('.swipebox').length) {
       $( '.swipebox' ).swipebox({

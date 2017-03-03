@@ -113,12 +113,10 @@
 
     <div class="tab-content-width">
       <div class="tab-content hidden" id="blacklist">
-            <div class="tab-content-space">
-            <h2 class="title text-center"> Company Black List </h2>
-
-
+          <div class="tab-content-space">
           <div class="container-fluid">
             <div id="black_listed_companies">
+            <h2 class="title title-blacklist text-center"> Company Black List </h2>
               <% @company.black_listed_companies.each do |blacklist|%>
                     <%= render 'company_companies/show', company: blacklist %>
               <% end %>

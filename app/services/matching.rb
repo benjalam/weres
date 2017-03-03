@@ -49,10 +49,10 @@ require 'matrix'
   end
 
   def norme(score)
-    if score > 0.3
-      return 0.99
+    if score > 0.29
+      return 0.95
     else
-     return (score / Math.exp(1-score))*(Math.exp(1-0.5)/0.3)
+     return (score / Math.exp(1-score))*(Math.exp(1-0.3)/0.3)
    end
   end
 

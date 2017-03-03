@@ -1,26 +1,22 @@
 .candidates {
+  border-bottom: 1px solid #d8d8d8;
+  list-style: none;
   &:nth-child(even) {
-    list-style: none;
     background-color: white;
-    border-bottom: 1px solid #a1a1a1;
   }
   &:nth-child(odd) {
-    list-style: none;
     background-color: $gray;
-    border-bottom: 1px solid #a1a1a1;
   }
 }
 
 .candidates-black-list {
+  border-bottom: 1px solid #d8d8d8;
+  list-style: none;
   &:nth-child(odd) {
-    list-style: none;
     background-color: white;
-    border-bottom: 1px solid #a1a1a1;
   }
   &:nth-child(even) {
-    list-style: none;
     background-color: $gray;
-    border-bottom: 1px solid #a1a1a1;
   }
 }
 .candidates {
@@ -48,7 +44,7 @@
 }
 
 .favourite {
-  color: #A1A1A1;
+  color: #d8d8d8;
 }
 .favourited {
   color: $yellow !important;

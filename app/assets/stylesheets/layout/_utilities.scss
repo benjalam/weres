@@ -28,8 +28,13 @@
   color: $blue;
   font-size: 30px;
   font-weight: bold;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 25px;
+  padding-bottom: 15px;
+  text-align: left;
+}
+
+.title-blacklist {
+  padding-left: 100px
 }
 
 .sous-title {

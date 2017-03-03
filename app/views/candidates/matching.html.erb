@@ -48,7 +48,14 @@
  <% @job_offers.each do |jb, score|%>
       <div class="tab-content-width tab-content-width-index">
         <div class="tab-content" id="job_offer_<%=jb.id %>">
-          <h1 class="title text-center"><%= jb.title %></h1>
+          <h1 class="title text-center"><%= jb.title %>
+            <span class="pull-right" style="
+              font-size: 14px;
+              margin-top: 10px;
+              color: #a1a1a1;
+              font-weight: normal;
+          ">created <%= time_ago_in_words jb.created_at %> days ago</span>
+          </h1>
             <div class="menu-tabs">
                 <a class="menu-tab active" href="#" data-target="#candidates-list_<%=jb.id %>" >
                   <h3>Candidates</h3>

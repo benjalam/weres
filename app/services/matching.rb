@@ -52,7 +52,7 @@ require 'matrix'
     if score > 0.3
       return 0.99
     else
-     return (score / Math.exp(1-score))*(Math.exp(1-0.5)/0.3)
+     return (score / Math.exp(1-score))*(Math.exp(1-0.3)/0.3)
    end
   end
 

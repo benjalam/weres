@@ -11,14 +11,10 @@
 
       <div class="delete-blacklist">
         <% if current_user.company_admin %>
-          <ul class="list-inline">
             <% @black_listed = CompanyCompany.find_by(black_listed_company_id: company.id, company_id: @company.id) %>
-            <li>
               <%= link_to company_company_path(@black_listed.id), method: :delete, remote: true, data: { confirm: "Are you sure?" } do %>
                   <i class="fa fa-trash delete-offer"></i>
               <% end %>
-            </li>
-          </ul>
         <% end %>
       </div>
 

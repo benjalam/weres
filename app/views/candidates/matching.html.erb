@@ -77,8 +77,22 @@
                                     <%# path = company_candidate_path %>
                                     <%= link_to company_candidate_path(@company, candidate, job_offer_id: jb.id) do %>
                                       <h4><strong><%= candidate.name %></strong></h4>
-                                      <p><strong>Current Position: </strong><%= candidate.position %></p>
-                                      <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                      <p><strong>Recommended by: </strong>
+                                          <% case candidate.job_offer.user.company.name
+                                            when "Facebook" %><%= image_tag "facebook.png", class: "logo-company" %>
+                                            <% when "Twitter" %><%= image_tag "twitter.png", class: "logo-company" %>
+                                            <% when "Blackberry" %><%= image_tag "Blackberry.png", class: "logo-company" %>
+                                            <% when "Nokia" %><%= image_tag "Nokia.png", class: "logo-company" %>
+                                            <% when "The Good Gift" %><%= image_tag "thegoodgift.png", class: "logo-company" %>
+                                            <% when "Sanofi" %><%= image_tag "sanofi.png", class: "logo-company" %>
+                                            <% when "Rocket Internet" %><%= image_tag "rocket-internet.png", class: "logo-company" %>
+                                            <% when "Omnes Capital" %><%= image_tag "omnes-capital.png", class: "logo-company" %>
+                                            <% when "BlaBlaCar" %><%= image_tag "BlaBlaCar.png", class: "logo-company" %>
+                                            <% when "KPMG" %><%= image_tag "KPMG.png", class: "logo-company" %>
+                                          <% end %>
+
+                                      </p>
+                                      <p><strong>For a position as: </strong><%= candidate.job_offer.title%></p>
                                     <% end %>
                                   <% else %>
                                     <%# path = cl_image_path("#{candidate.document.public_id}.png", width: 800,
@@ -86,8 +100,20 @@
                                     <%= link_to cl_image_path("#{candidate.document.public_id}.png", width: 800,
                                       height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2" do %>
                                       <h4><strong><%= candidate.name %></strong></h4>
-                                      <p><strong>Current Position: </strong><%= candidate.position %></p>
-                                      <p><strong>Recommended by: </strong><%= candidate.job_offer.user.company.name%></p>
+                                      <p><strong>Recommended by: </strong>
+                                          <% case candidate.job_offer.user.company.name
+                                            when "Facebook" %><%= image_tag "facebook.png", class: "logo-company" %>
+                                            <% when "Twitter" %><%= image_tag "twitter.png", class: "logo-company" %>
+                                            <% when "Blackberry" %><%= image_tag "Blackberry.png", class: "logo-company" %>
+                                            <% when "Nokia" %><%= image_tag "Nokia.png", class: "logo-company" %>
+                                            <% when "The Good Gift" %><%= image_tag "thegoodgift.png", class: "logo-company" %>
+                                            <% when "Sanofi" %><%= image_tag "sanofi.png", class: "logo-company" %>
+                                            <% when "Rocket Internet" %><%= image_tag "rocket-internet.png", class: "logo-company" %>
+                                            <% when "Omnes Capital" %><%= image_tag "omnes-capital.png", class: "logo-company" %>
+                                            <% when "BlaBlaCar" %><%= image_tag "BlaBlaCar.png", class: "logo-company" %>
+                                            <% when "KPMG" %><%= image_tag "KPMG.png", class: "logo-company" %>
+                                          <% end %></p>
+                                      <p><strong>For a position as: </strong><%= candidate.job_offer.title%></p>
                                     <% end %>
                                   <% end %>
 

@@ -1,14 +1,23 @@
 class ContactController < ApplicationController
   def new
-
+   @contact = Contact.new
+    authorize @contact
   end
 
   def create
+    @contact = Contact.new(contact_params)
+    @contact.user = current_user
+    authorize @contact
+    if @contact.save
+     redirect_to(root_path)
+    else
+      render :new
+    end
   end
 
   private
 
-  def candidate_params
-    params.require(:candidate).permit(:name, :position, :document, :email)
+  def contact_params
+    params.require(:contact).permit(:name, :position, :document, :email)
   end
 end

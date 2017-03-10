@@ -1,4 +1,6 @@
-class ContactController < ApplicationController
+class ContactsController < ApplicationController
+  skip_before_action :verify_authorized
+
   def new
    @contact = Contact.new
     authorize @contact

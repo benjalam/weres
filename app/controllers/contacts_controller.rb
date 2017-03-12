@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  skip_before_action :authenticate_user!, :only => :new
+  skip_before_action :authenticate_user!
 
   def new
    @contact = Contact.new
@@ -8,7 +8,6 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    @contact.user = current_user
     authorize @contact
     if @contact.save
      redirect_to(root_path)
@@ -20,6 +19,6 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:name, :position, :document, :email)
+    params.require(:contact).permit(:email, :first_name, :last_name, :message)
   end
 end

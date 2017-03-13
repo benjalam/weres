@@ -3,9 +3,9 @@
     <h1>Find the best candidates</h1>
     <p>Selected by top recruiters from top companies</p>
     <% if user_signed_in? %>
-      <a href="companies/<%= current_user.company.id %>/candidates#top-tab", class="btn btn-primary btn-banner">Find a Candidate</a>
+      <a href="companies/<%= current_user.company.id %>/candidates#top-tab" class="btn btn-primary btn-banner">Find a Candidate</a>
     <% else %>
-       <a href="", class="btn btn-primary btn-banner">Contact us</a>
+       <a href="contacts/new", class="btn btn-primary btn-banner">Contact us</a>
        <% end %>
   </div>
 </div>
@@ -21,7 +21,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4">
       <%= image_tag "three-candidates.svg" %>
-      <p>For each job there is <strong>more than one good candidate</strong></p>
+      <p>For each job we believe there is <strong>more than one great candidate</strong></p>
     </div>
     <div class="col-xs-12 col-sm-4">
       <%= image_tag "resume.svg" %>
@@ -44,7 +44,11 @@
         <p class="content">
           In order to find the best matches for you needs, you just have to upload the job offer you want to fullfill.
         </p>
-        <a class="btn btn-primary btn-banner" href="#">UPLOAD MY JOB OFFER</a>
+        <% if user_signed_in? %>
+          <a class="btn btn-primary btn-banner" href="companies/<%= current_user.company.id %>/candidates#top-tab">UPLOAD MY JOB OFFER</a>
+        <% else %>
+          <a class="btn btn-primary btn-banner" href="contacts/new">UPLOAD MY JOB OFFER</a>
+        <% end %>
       </div>
     </div>
     <div class="hidden-xs hidden-sm col-md-5 full-height">
@@ -69,7 +73,11 @@
           <p class="content">
             We compare your job offers to our thousands of job offer we already have to find which candidates match your needs<br>All this candidates have been selected by other recruiters for a similar position.
           </p>
-          <a class="btn btn-primary btn-banner" href="#">FIND CANDIDATES</a>
+          <% if user_signed_in? %>
+            <a class="btn btn-primary btn-banner" href="companies/<%= current_user.company.id %>/candidates#top-tab">FIND CANDIDATES</a>
+          <% else %>
+            <a class="btn btn-primary btn-banner" href="contacts/new">FIND CANDIDATES</a>
+          <% end %>
         </div>
       </div>
     </div>
@@ -85,9 +93,9 @@
           Monetize the time you spent sorting candidates by selling your best profile on WeRes
         </p>
         <% if user_signed_in? %>
-          <%= link_to "PUSH CANDIDATES", "#", class: 'btn btn-primary btn-banner' %>
+          <a class="btn btn-primary btn-banner" href="companies/<%= current_user.company.id %>/candidates#top-tab">PUSH CANDIDATES</a>
         <% else %>
-          <a class="btn btn-primary btn-banner" href="#">PUSH CANDIDATES</a>
+          <a class="btn btn-primary btn-banner" href="contacts/new">PUSH CANDIDATES</a>
         <% end %>
       </div>
     </div>
@@ -107,13 +115,10 @@
       <div><span class="">THEY TRUST US</span></div>
     </div>
     <ul class="list-unstyled list-inline text-center responsive">
-      <li><%= image_tag "om.png", height: "80px" %></li>
       <li><%= image_tag "timzy.png", height: "80px" %></li>
       <li><%= image_tag "rhythm.png", height: "80px" %></li>
       <li><%= image_tag "thegoodgift.png", height: "80px" %></li>
       <li><%= image_tag "wktp.png", height: "80px" %></li>
-      <li><%= image_tag "google.jpg", height: "80px" %></li>
-
     </ul>
   </div>
 </div>

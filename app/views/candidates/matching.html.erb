@@ -1,5 +1,4 @@
 <% if policy(@candidates).show? %>
-
     <div class="tab-content-width">
       <div class="tab-content" id="top-tab">
         <div class="container-fluid">
@@ -44,7 +43,6 @@
         </div>
       </div>
     </div>
-
  <% @job_offers.each do |jb, score|%>
       <div class="tab-content-width tab-content-width-index">
         <div class="tab-content" id="job_offer_<%=jb.id %>">
@@ -67,7 +65,6 @@
                   <h3>Contacted</h3>
                 </a>
             </div>
-
             <div class="menu-tab-content" id="candidates-list_<%=jb.id %>">
               <div class="container-fluid">
                 <div class="row">

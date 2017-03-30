@@ -27,7 +27,6 @@
               <div class="header text-center">
                   <h2 class="title text-center"> Your Job Offers</h2>
               </div>
-
               <% @company.job_offers.each do |job_offer|%>
                 <% if job_offer.candidates == [] %>
                   <div class="candidates">

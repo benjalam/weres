@@ -1,9 +1,12 @@
 <%= simple_form_for ([@user, @candidate]) do |f| %>
   <%= f.error_notification %>
-
   <%= f.input :name %>
   <%= f.input :position %>
   <%= f.input :email %>
   <%= f.input :document, as: :attachinary, class: "drag-drop-box" %>
+  <%= f.simple_fields_for :job_offer do |ff|  %>
+    <%= ff.input :title %>
+    <%= ff.input :document, as: :attachinary, label: "DRAG & DROP or CLICK to add your job offer" %>
+  <% end %>
   <%= f.button :submit, class: "btn btn-primary"%>
 <% end %>

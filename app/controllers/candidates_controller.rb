@@ -20,17 +20,17 @@ class CandidatesController < ApplicationController
   end
 
   def create
-    @candidate = Candidate.new(candidate_params)
-    @candidate.job_offer.user = current_user
-    @candidate.job_offer.tfidf = conversion(@candidate.job_offer)
-    @candidate.user = current_user
-    authorize @candidate
-    if @candidate.save
-      redirect_to company_path(@candidate.user.company, anchor: "uploaded_cvs")
-    else
-      render :new
+      @candidate = Candidate.new(candidate_params)
+      @candidate.job_offer.user = current_user
+      @candidate.job_offer.tfidf = conversion(@candidate.job_offer)
+      @candidate.user = current_user
+      authorize @candidate
+      if @candidate.save
+        redirect_to company_path(@candidate.user.company, anchor: "uploaded_cvs")
+      else
+        render :new
+      end
     end
-  end
 
 
   def destroy

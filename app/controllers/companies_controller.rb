@@ -8,6 +8,7 @@ class CompaniesController < ApplicationController
     @job_offer = JobOffer.new
     @company_company = CompanyCompany.new
     @black_listed = CompanyCompany.new
+    @candidate.build_job_offer
   end
 
   def edit

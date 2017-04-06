@@ -1,3 +1,4 @@
+<% if policy(@candidates).show? %>
 <% content_for :sidebar do %>
   <div id="sidebar">
     <div class="all-tabs">
@@ -45,7 +46,6 @@
   } )( jQuery );
   </script>
 <% end %>
-
 
 <% content_for(:after_js) do %>
   <script type="text/javascript">
@@ -154,7 +154,5 @@
     });
   </script>
  <% end %>
-
-
-
+<%end %>
 

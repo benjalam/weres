@@ -27,7 +27,6 @@
               <div class="header text-center">
                   <h2 class="title text-center"> Your Job Offers</h2>
               </div>
-
               <% @company.job_offers.each do |job_offer|%>
                 <% if job_offer.candidates == [] %>
                   <div class="candidates">
@@ -100,7 +99,7 @@
                   </div>
                 <% end %>
               <% end %>
-              <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+              <div class="col-xs-12">
                 <div class="formulaire" id="add-cv">
                   <%= render 'candidates/form', user: current_user, candidate: @candidate %>
                 </div>

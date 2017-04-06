@@ -55,5 +55,4 @@ require 'matrix'
      return (score / Math.exp(1-score))*(Math.exp(1-0.3)/0.3)
    end
   end
-
 end

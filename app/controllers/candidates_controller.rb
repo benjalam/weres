@@ -4,7 +4,7 @@ class CandidatesController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @candidates = policy_scope(Candidate)
-    authorize @candidates
+    authorize @company
   end
 
   def show

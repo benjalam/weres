@@ -4,13 +4,14 @@ class CandidatesController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @candidates = policy_scope(Candidate)
+    authorize @candidates
   end
 
   def show
+    authorize @candidate
     @company = Company.find(params[:company_id])
     @job_offer = JobOffer.find(params[:job_offer_id])
     @candidate = Candidate.find(params[:id])
-    authorize @candidate
   end
 
   def new

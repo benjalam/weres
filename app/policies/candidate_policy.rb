@@ -27,4 +27,8 @@ class CandidatePolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def matching?
+    false
+  end
 end

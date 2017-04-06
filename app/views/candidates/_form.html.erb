@@ -2,25 +2,22 @@
   <div class="row">
     <h2 class="text-center">Push a candidate</h2>
     <%= simple_form_for ([@user, @candidate]) do |f| %>
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
     <h4>Candidate details</h4>
       <%= f.error_notification %>
       <%= f.input :name %>
-      <%= f.input :email %>
       <%= f.input :document, as: :attachinary, label: "DRAG & DROP or CLICK to add the CV", class: "drag-drop-box" %>
       <%= f.simple_fields_for :job_offer do |ff|  %>
     </div>
-      <div class="col-xs-6">
+      <div class="col-xs-12 col-sm-6">
       <h4>Job Offer Details</h4>
         <%= ff.input :title %>
         <%= ff.input :document, as: :attachinary, label: "DRAG & DROP or CLICK to add the job offer" %>
       <% end %>
       </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6 col-offset-6">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <%= f.button :submit, class: "btn btn-primary"%>
-    </div>
     <% end %>
+  </div>
   </div>
 </div>

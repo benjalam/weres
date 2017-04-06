@@ -78,7 +78,7 @@
                           <%# path = company_candidate_path %>
                           <%= link_to company_candidate_path(@company, candidate, job_offer_id: candidate.job_offer) do %>
                             <h4><strong><%= candidate.name %></strong></h4>
-                            <p><strong>Current Position: </strong><%= candidate.position %></p>
+                            <p><strong>For a position as: </strong><%= candidate.job_offer.title%></p>
                           <% end %>
                         <% else %>
                           <%# path = cl_image_path("#{candidate.document.public_id}.png", width: 800,
@@ -86,7 +86,7 @@
                           <%= link_to cl_image_path("#{candidate.document.public_id}.png", width: 800,
                             height: 1000, crop: :fill), class: "swipebox", rel: "gallery_2" do %>
                             <h4><strong><%= candidate.name %></strong></h4>
-                            <p><strong>Current Position: </strong><%= candidate.position %></p>
+                            <p><strong>For a position as: </strong><%= candidate.job_offer.title%></p>
                           <% end %>
                         <% end %>
                       </div>

@@ -3,11 +3,14 @@
   <div id="sidebar">
     <div class="all-tabs-profile">
       <div class="tab-block">
+      <a class="tabs" data-target="#push_candidate">
+          <h4><i class="fa fa-plus-circle"></i>  Push a candidate </h4>
+        </a>
         <a class="tabs" data-target="#job_offers">
-          <h4><i class="fa fa-file-text"></i> Uploaded Job Offers </h4>
+          <h4><i class="fa fa-file-text"></i>  Uploaded Job Offers </h4>
         </a>
         <a class="tabs" data-target="#uploaded_cvs">
-          <h4><i class="fa fa-users"></i> Uploaded CVs</h4>
+          <h4><i class="fa fa-users"></i>  Uploaded CVs</h4>
         </a>
         <a class="tabs" data-target="#blacklist">
           <h4><i class="fa fa-list-ul"></i>  Black List</h4>
@@ -19,6 +22,24 @@
 
   <div class="page-content">
     <!-- tab-content-width -->
+    <div class="tab-content-width">
+      <div class="tab-content hidden" id="push_candidate">
+        <div class="tab-content-space">
+          <div class="container-fluid text-center">
+            <div id="black_listed_companies">
+              <div class="row">
+                <div class="col-xs-9 col-xs-offset-1">
+                  <div class="formulaire" id="add-cv">
+                    <%= render 'candidates/form', user: current_user, candidate: @candidate %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="tab-content-width tab-content-width-index">
       <div class="tab-content hidden" id="job_offers">
         <div class="container-fluid">
@@ -99,11 +120,6 @@
                   </div>
                 <% end %>
               <% end %>
-              <div class="col-xs-12">
-                <div class="formulaire" id="add-cv">
-                  <%= render 'candidates/form', user: current_user, candidate: @candidate %>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -135,6 +151,7 @@
         </div>
       </div>
     </div>
+
   </div>
 <% end %>
 

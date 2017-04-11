@@ -6,11 +6,11 @@
       <a class="tabs" data-target="#push_candidate">
           <h4><i class="fa fa-plus-circle"></i>  Push a candidate </h4>
         </a>
-        <a class="tabs" data-target="#job_offers">
-          <h4><i class="fa fa-file-text"></i>  Uploaded Job Offers </h4>
-        </a>
         <a class="tabs" data-target="#uploaded_cvs">
           <h4><i class="fa fa-users"></i>  Uploaded CVs</h4>
+        </a>
+        <a class="tabs" data-target="#job_offers">
+          <h4><i class="fa fa-file-text"></i>  Uploaded Job Offers </h4>
         </a>
         <a class="tabs" data-target="#blacklist">
           <h4><i class="fa fa-list-ul"></i>  Black List</h4>
@@ -24,65 +24,25 @@
     <!-- tab-content-width -->
     <div class="tab-content-width">
       <div class="tab-content hidden" id="push_candidate">
-        <div class="tab-content-space">
-          <div class="container-fluid text-center">
+          <div class="tab-content-space">
+          <div class="container-fluid">
             <div id="black_listed_companies">
-              <div class="row">
-                <div class="col-xs-9 col-xs-offset-1">
-                  <div class="formulaire" id="add-cv">
-                    <%= render 'candidates/form', user: current_user, candidate: @candidate %>
-                  </div>
-                </div>
-              </div>
+            <h2 class="title title-blacklist text-center"> Push a candidate </h2>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-content-width tab-content-width-index">
-      <div class="tab-content hidden" id="job_offers">
-        <div class="container-fluid">
           <div class="row">
-            <div class="tab-content-space">
-              <div class="header text-center">
-                  <h2 class="title text-center"> Your Job Offers</h2>
-              </div>
-              <% @company.job_offers.each do |job_offer|%>
-                <% if job_offer.candidates == [] %>
-                  <div class="candidates">
-                  <%= link_to cl_image_path("#{job_offer.document.public_id}.png", width: 800, height: 1000, crop: :fill), class: "swipebox", rel: "gallery" do %>
-                    <div class="candidates-info">
-                          <h4><strong><%= job_offer.title %></strong></h4>
-                          <p>Uploaded on: <%= job_offer.created_at.strftime("%b %d, %Y")%></p>
-                    </div>
-                  <% end %><!-- end of link_to swipebox -->
-                    <div class="product-candidates rating-candidates text-center">
-                      <p>
-                        <a href="<%= @company.id %>/candidates#job_offer_<%= job_offer.id %>"><i class="fa fa-users"></i>    Who matched this offer ?</a>
-                      </p>
-                      <% if current_user.company_admin %>
-                        <ul class="list-inline">
-                          <li><%= link_to edit_job_offer_path(job_offer) do %>
-                              <i data-toggle="tooltip" data-placement="bottom" title="Edit this job offer" class="fa fa-file-text-o edit-offer tooltip-hover"></i>
-                          <% end %></li>
-                          <li><%= link_to job_offer_path(job_offer), method: :delete, data: { confirm: "Are you sure?" } do %>
-                              <i data-toggle="tooltip" data-placement="bottom" title="Delete this job offer" class="fa fa-trash delete-offer tooltip-hover"></i>
-                          <% end %></li>
-                        </ul>
-                      <% end %><!-- end of if condition -->
-                    </div>
+            <div class="text-center">
+                <div class="col-xs-9 col-xs-offset-1">
+                 <div class="formulaire" id="add-to-blacklist">
+                    <%= render 'candidates/form', user: current_user, candidate: @candidate %>
                 </div>
-              <% end %><!-- end of if job_offer.candidates -->
 
+                </div>
 
-
-              <% end %><!-- end of job_offer block -->
             </div>
           </div>
         </div>
       </div>
-    </div><!-- end of .tab-content-width -->
 
     <div class="tab-content-width tab-content-width-index">
       <div class="tab-content hidden" id="uploaded_cvs">
@@ -125,6 +85,49 @@
         </div>
       </div>
     </div>
+
+    <div class="tab-content-width tab-content-width-index">
+      <div class="tab-content hidden" id="job_offers">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="tab-content-space">
+              <h2 class="title text-center"> Your Job Offers</h2>
+              <% @company.job_offers.each do |job_offer|%>
+                <% if job_offer.candidates == [] %>
+                  <div class="candidates">
+                  <%= link_to cl_image_path("#{job_offer.document.public_id}.png", width: 800, height: 1000, crop: :fill), class: "swipebox", rel: "gallery" do %>
+                    <div class="candidates-info">
+                          <h4><strong><%= job_offer.title %></strong></h4>
+                          <p>Uploaded on: <%= job_offer.created_at.strftime("%b %d, %Y")%></p>
+                    </div>
+                  <% end %><!-- end of link_to swipebox -->
+                    <div class="product-candidates rating-candidates text-center">
+                      <p>
+                        <a href="<%= @company.id %>/candidates#job_offer_<%= job_offer.id %>"><i class="fa fa-users"></i>    Who matched this offer ?</a>
+                      </p>
+                      <% if current_user.company_admin %>
+                        <ul class="list-inline">
+                          <li><%= link_to edit_job_offer_path(job_offer) do %>
+                              <i data-toggle="tooltip" data-placement="bottom" title="Edit this job offer" class="fa fa-file-text-o edit-offer tooltip-hover"></i>
+                          <% end %></li>
+                          <li><%= link_to job_offer_path(job_offer), method: :delete, data: { confirm: "Are you sure?" } do %>
+                              <i data-toggle="tooltip" data-placement="bottom" title="Delete this job offer" class="fa fa-trash delete-offer tooltip-hover"></i>
+                          <% end %></li>
+                        </ul>
+                      <% end %><!-- end of if condition -->
+                    </div>
+                </div>
+              <% end %><!-- end of if job_offer.candidates -->
+
+
+
+              <% end %><!-- end of job_offer block -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end of .tab-content-width -->
+
 
     <div class="tab-content-width">
       <div class="tab-content hidden" id="blacklist">

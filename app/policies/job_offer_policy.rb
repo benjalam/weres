@@ -15,12 +15,12 @@ class JobOfferPolicy < ApplicationPolicy
 
 
   def edit?
-    user.company_admin && (user == record.user)
+    user.company_admin || (user == record.user)
   end
 
 
   def update?
-    user.company_admin && (user == record.user)
+    user.company_admin || (user == record.user)
   end
 
 
@@ -35,6 +35,6 @@ class JobOfferPolicy < ApplicationPolicy
 
 
   def destroy?
-    user.company_admin && (user == record.user)
+    user.company_admin || (user == record.user)
   end
 end
